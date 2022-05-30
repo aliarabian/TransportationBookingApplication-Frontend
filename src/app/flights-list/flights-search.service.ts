@@ -3,6 +3,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ApiResponse} from "../api-response";
 import {Flight} from "./flight";
+import {FlightSearchQuery} from "../flight-search-form/flight-search-form.component";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,10 @@ import {Flight} from "./flight";
 export class FlightsSearchService {
 
   constructor(private http: HttpClient) {
+  }
+
+  searchWithQueryParams(queryParams: FlightSearchQuery) {
+    return this.search(queryParams.offset, queryParams.destination, queryParams.departureDate);
   }
 
   search(offset: string, destination: string, departuresAt: Date): Observable<ApiResponse<Flight[]>> {

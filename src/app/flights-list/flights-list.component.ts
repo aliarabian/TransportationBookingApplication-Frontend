@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Flight} from "./flight";
 import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
@@ -10,17 +10,13 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class FlightsListComponent implements OnInit {
 
-  flights?: Flight[];
+  @Input() flights?: Flight[];
 
-  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
 
-    this.activatedRoute.data
-      .subscribe(resolvedData => {
-        this.flights = resolvedData.flightsData.data;
-      })
   }
 
 }
