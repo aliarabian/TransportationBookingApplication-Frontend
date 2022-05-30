@@ -12,13 +12,9 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
-
     return next.handle(request).pipe(
       catchError((error) => {
         if (error.status === 401) {
-          console.log(error.staus);
-          this.authService.clearToken();
           this.router.navigate(['login']);
         }
         return throwError(error);

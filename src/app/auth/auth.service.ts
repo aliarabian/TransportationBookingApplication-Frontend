@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AppCredentialsStorageService} from "./app-credentials-storage.service";
 import {LoginRequest} from "./login-request";
 import {LoginResponse} from "./login-response";
 import {ApiResponse} from "../api-response";
@@ -13,8 +12,7 @@ import {Router} from "@angular/router";
 export class AuthService {
 
   constructor(private http: HttpClient,
-              private router: Router,
-              private storageService: AppCredentialsStorageService) {
+              private router: Router) {
   }
 
   login(loginRequest: LoginRequest) {
@@ -23,20 +21,12 @@ export class AuthService {
         tap(response => console.log(response))
       )
       .subscribe(response => {
-        this.storageService.store(response.data);
         this.router.navigate(["home"]);
       });
   }
 
   isLoggedIn(): boolean {
-    return !!this.storageService.getToken();
+    return true;
   }
 
-  getToken() {
-    return this.storageService.getToken();
-  }
-
-  clearToken() {
-    this.storageService.clear();
-  }
 }

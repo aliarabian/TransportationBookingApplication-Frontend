@@ -8,17 +8,15 @@ import {
   UrlTree
 } from '@angular/router';
 import {Observable} from 'rxjs';
-import {AppCredentialsStorageService} from "./app-credentials-storage.service";
 import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
-  constructor(private storageService: AppCredentialsStorageService,
-              private authService: AuthService,
-              private router: Router) {
-
+  constructor(
+    private authService: AuthService,
+    private router: Router) {
   }
 
   canActivate(

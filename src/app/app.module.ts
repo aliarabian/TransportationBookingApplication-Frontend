@@ -7,7 +7,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthModule} from "./auth/auth.module";
 import {RouterModule} from "@angular/router";
 import {HomePageComponent} from './home-page/home-page.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
 import {FlightsListComponent} from './flights-list/flights-list.component';
 import {UserRegistrationComponent} from './user-registration/user-registration.component';
 import {ReactiveFormsModule} from "@angular/forms";
@@ -36,7 +36,8 @@ import {ClickOutsideDirective} from './click-outside.directive';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

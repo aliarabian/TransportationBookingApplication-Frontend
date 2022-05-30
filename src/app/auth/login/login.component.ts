@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.authenticationService.isLoggedIn()) {
-      this.router.navigate(['/home'])
-    }
+    // if (this.authenticationService.isLoggedIn()) {
+    //   this.router.navigate(['/home'])
+    // }
     this.route.paramMap.pipe(
       tap(params => {
         this.registered = Boolean(params.get('registrationSuccess')!);
