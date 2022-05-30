@@ -10,13 +10,15 @@ export class AppCredentialsStorageService {
   }
 
   store(credentials: LoginResponse) {
-    localStorage.setItem("authToken", JSON.stringify(credentials.token));
-    localStorage.setItem("id", JSON.stringify(credentials.id));
-    localStorage.setItem("username", JSON.stringify(credentials.username));
+    localStorage.setItem("authDetails", JSON.stringify(credentials));
   }
 
   getToken(): string | null {
-    let token = localStorage.getItem("authToken");
-    return token ? JSON.parse(token) : null;
+    let authDetails = localStorage.getItem("authDetails");
+    return authDetails ? JSON.parse(authDetails).token : null;
+  }
+
+  clear() {
+    localStorage.removeItem("authDetails");
   }
 }

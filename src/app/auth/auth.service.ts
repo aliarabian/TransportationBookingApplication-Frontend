@@ -31,4 +31,12 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.storageService.getToken();
   }
+
+  getToken() {
+    return this.storageService.getToken();
+  }
+
+  clearToken() {
+    this.storageService.clear();
+  }
 }
