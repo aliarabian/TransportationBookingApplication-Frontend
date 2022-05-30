@@ -1,0 +1,14 @@
+<div (clickOutside)="clickedOutside()">
+  <input
+    id="flight-offset"
+    [formControl]="terminal"
+    type="text"
+    name="offset"
+    autocomplete="off"
+    placeholder="{{placeholder}}"
+    (input)="onInput()"
+    required
+    (click)="onClickToggleCitiesList()"
+  />
+  <app-cities-list *ngIf="citiesListState" (citySelection)="onCitySelection($event)"></app-cities-list>
+</div>

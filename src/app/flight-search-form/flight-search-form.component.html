@@ -1,0 +1,20 @@
+<article>
+  <div id="flight-search">
+    <form id="flight-search-form" [formGroup]="searchFlightForm" (ngSubmit)="onSubmit()">
+      <div class="flight-search-form-section">
+        <app-select formControlName="flightOffset" [placeholder]="'Offset'"></app-select>
+        <app-select formControlName="flightDestination" [placeholder]="'Destination'"></app-select>
+      </div>
+      <div class="flight-search-form-section">
+        <input
+          id="flight-departure-time"
+          formControlName="flightDepartureTime"
+          type="date"
+          name="departureTime"
+          required
+        />
+        <button type="submit" [disabled]="!searchFlightForm.valid">Search</button>
+      </div>
+    </form>
+  </div>
+</article>
