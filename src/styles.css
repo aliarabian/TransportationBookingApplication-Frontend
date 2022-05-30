@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'normalize.css';
+
+:root {
+  --padding-left-right-default: 2%;
+  /* --primary-color: rgb(82, 84, 187); */
+  /* --primary-color: rgb(30, 76, 163); */
+  --primary-color: #3c6d9e;
+
+  --headline-font: Georgia;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: whitesmoke;
+}
+
+h1 {
+  margin-top: 5%;
+  text-align: center;
+}
+
+section {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 5%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+input {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+form div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+button {
+  background: yellowgreen;
+  color: azure;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 30%;
+}
