@@ -9,7 +9,6 @@ import {FlightsResolver} from "./flights-list/flights.resolver";
 
 const routes: Routes = [
   {path: 'home', canActivate: [AuthGuard], resolve: {flightsData: FlightsResolver}, component: HomePageComponent},
-  {path: 'search', canActivate: [AuthGuard], resolve: {flightsData: FlightsResolver}, component: HomePageComponent},
   {path: 'users/registration', component: UserRegistrationComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
