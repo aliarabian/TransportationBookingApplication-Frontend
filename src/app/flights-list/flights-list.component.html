@@ -1,17 +1,22 @@
 <article id="filterable-flight-list" *ngIf="flights">
   <div id="filter-component">
-    <div>
-      <h3>Filter Results</h3>
+    <div class="filter-header">
+      <p>Filter Results:</p>
     </div>
     <div id="filter-component-checkboxes">
-      <label for="economy-class">Economy Class <input type="checkbox" name="economy" id="economy-class"
-                                                      value="economy" checked/></label>
+      <label for="economy-class"><input type="checkbox" name="economy" id="economy-class"
+                                        value="economy" checked/>Economy Class </label>
 
-      <label for="business-class">Business Class
-        <input type="checkbox" name="business" id="business-class" value="business" checked/></label>
+      <label for="business-class">
+        <input type="checkbox" name="business" id="business-class" value="business" checked/>
+        Business Class
+      </label>
 
-      <label for="first-class">First Class
-        <input type="checkbox" name="first" id="first-class" value="first" checked/></label>
+      <label for="first-class">
+        <input type="checkbox" name="first" id="first-class" value="first" checked/>
+
+        First Class
+      </label>
     </div>
 
   </div>
@@ -21,7 +26,7 @@
         <article class="flight-card">
           <div class="flight-card-header">
             <p>FlightNO #{{flight.id}}</p>
-            <p><strong>{{section.title}}</strong></p>
+            <p>{{section.title}}</p>
             <a href="#">Homa Airlines</a>
           </div>
           <div class="flight-card-body">

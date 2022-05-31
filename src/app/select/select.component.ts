@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-select',
@@ -14,7 +14,7 @@ import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from "@angular/for
   ]
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
-  terminal: FormControl = new FormControl('');
+  terminal: FormControl = new FormControl('', [Validators.required]);
   citiesListState: boolean = false;
   touched = false;
   disabled = false;

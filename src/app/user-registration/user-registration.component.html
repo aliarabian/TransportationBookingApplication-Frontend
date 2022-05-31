@@ -1,18 +1,21 @@
-<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-  <div>
-    <input name="username" type="text" formControlName="username" placeholder="username" required>
-  </div>
-  <div>
-    <input name="password" type="password" formControlName="password" placeholder="password" required>
-  </div>
-  <div>
-    <input name="nationalId" type="text" formControlName="nationalId" placeholder="national ID" required>
-  </div>
-  <div>
-    <input name="firstName" type="text" formControlName="firstName" placeholder="first name" required>
-  </div>
-  <div>
-    <input name="lastName" type="text" formControlName="lastName" placeholder="last name" required>
-  </div>
-  <button type="submit" [disabled]="!registrationForm.valid">Register</button>
-</form>
+<section>
+  <h4>Registration</h4>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div>
+      <input name="username" type="text" formControlName="username" placeholder="username" required>
+    </div>
+    <div>
+      <input name="password" type="password" formControlName="password" placeholder="password" required>
+    </div>
+    <div>
+      <input name="nationalId" type="text" formControlName="nationalId" placeholder="national ID" required>
+    </div>
+    <div>
+      <input name="firstName" type="text" formControlName="firstName" placeholder="first name" required>
+    </div>
+    <div>
+      <input name="lastName" type="text" formControlName="lastName" placeholder="last name" required>
+    </div>
+    <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+  </form>
+</section>

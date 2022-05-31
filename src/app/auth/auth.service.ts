@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthService {
+  loggedIn: boolean = false;
 
   constructor(private http: HttpClient,
               private router: Router) {
@@ -21,12 +22,13 @@ export class AuthService {
         tap(response => console.log(response))
       )
       .subscribe(response => {
+        localStorage.setItem("loggedIn", "true");
         this.router.navigate(["home"]);
       });
   }
 
   isLoggedIn(): boolean {
-    return true;
+    return Boolean(localStorage.getItem("loggedIn"));
   }
 
 }

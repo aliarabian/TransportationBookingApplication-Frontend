@@ -1,0 +1,12 @@
+header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: rgba(19, 108, 74, 0.89);
+  color: #ffffff;
+  padding: 0 4%;
+}
+
+header h1 {
+  font-family: Georgia, sans-serif;
+}
