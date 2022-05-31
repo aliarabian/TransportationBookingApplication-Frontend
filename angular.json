@@ -71,7 +71,8 @@
               "browserTarget": "TransportationBookingApplication-Frontend:build:production"
             },
             "development": {
-              "browserTarget": "TransportationBookingApplication-Frontend:build:development"
+              "browserTarget": "TransportationBookingApplication-Frontend:build:development",
+              "proxyConfig": "src/proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"

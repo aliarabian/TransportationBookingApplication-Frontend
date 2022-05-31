@@ -23,7 +23,7 @@ export class HomePageComponent implements OnInit {
       })
   }
 
-  onSearchComplete(flights: Flight[]) {
+  onSearchComplete(flights: Flight[]): void {
     this.fetchedFlights = flights;
   }
 }

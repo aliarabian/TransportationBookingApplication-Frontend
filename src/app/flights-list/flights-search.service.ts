@@ -10,7 +10,7 @@ import {FlightSearchQuery} from "../flight-search-form/flight-search-form.compon
 })
 export class FlightsSearchService {
 
-  flightsEndpointURL: string = "http://localhost:8080/flights";
+  flightsEndpointURL: string = "/flights";
 
   constructor(private http: HttpClient) {
   }

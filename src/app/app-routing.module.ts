@@ -10,7 +10,7 @@ import {BookingComponent} from "./booking/booking.component";
 
 const routes: Routes = [
   {path: 'home', canActivate: [AuthGuard], resolve: {flightsData: FlightsResolver}, component: HomePageComponent},
-  {path: 'users/registration', component: UserRegistrationComponent},
+  {path: 'registration', component: UserRegistrationComponent},
   {path: 'booking', component: BookingComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}

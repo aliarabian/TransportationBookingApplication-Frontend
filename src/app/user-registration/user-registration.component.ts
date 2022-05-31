@@ -38,7 +38,7 @@ export class UserRegistrationComponent implements OnInit {
         lastName: this.registrationForm.value.lastName,
         nationalId: this.registrationForm.value.nationalId
       }
-    this.http.post<ApiResponse<any>>("http://localhost:8080/users", userData)
+    this.http.post<ApiResponse<any>>("/users", userData)
       .subscribe((response: ApiResponse<any>) => {
         console.log(response)
         this.router.navigate(['login', {registrationSuccess: true}])

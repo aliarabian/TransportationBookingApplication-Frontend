@@ -17,6 +17,6 @@ export class TerminalsService {
   }
 
   fetchTerminals(): Observable<ApiResponse<Terminal[]>> {
-    return this.http.get<ApiResponse<Terminal[]>>("http://localhost:8080/terminals");
+    return this.http.get<ApiResponse<Terminal[]>>("/terminals");
   }
 }

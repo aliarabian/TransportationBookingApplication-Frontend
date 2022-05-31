@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   login(loginRequest: LoginRequest) {
-    this.http.post<ApiResponse<LoginResponse>>("http://localhost:8080/auth/login", loginRequest)
+    this.http.post<ApiResponse<LoginResponse>>("/auth/login", loginRequest)
       .pipe(
         tap(response => console.log(response))
       )
