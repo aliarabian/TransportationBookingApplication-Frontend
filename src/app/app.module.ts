@@ -15,6 +15,8 @@ import {FlightSearchFormComponent} from './flight-search-form/flight-search-form
 import {TerminalsListComponent} from './terminals-list/terminals-list.component';
 import {SelectComponent} from './select/select.component';
 import {ClickOutsideDirective} from './click-outside.directive';
+import { BookingComponent } from './booking/booking.component';
+import { FlightDetailsComponent } from './flight-details/flight-details.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {ClickOutsideDirective} from './click-outside.directive';
     TerminalsListComponent,
     SelectComponent,
     ClickOutsideDirective,
+    BookingComponent,
+    FlightDetailsComponent,
   ],
   imports: [
     BrowserModule,

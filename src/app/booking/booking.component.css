@@ -1,0 +1,31 @@
+.form-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.form-group button, input {
+
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group button {
+  color: #ffffff;
+  background: rgb(228, 48, 87);
+  background: linear-gradient(90deg, rgba(228, 48, 87, 1) 0%, rgba(237, 66, 66, 1) 32%, rgba(254, 71, 61, 0.7511379551820728) 100%);
+}
+
+@media screen and (min-width: 992px) {
+
+  .form-group{
+    justify-content: flex-start;
+  }
+  .form-group button, input {
+    width: 20%;
+
+  }
+}

@@ -1,0 +1,20 @@
+<!--<app-flight-details></app-flight-details>-->
+<ng-container *ngFor="let passenger of passengers(); let i = index">
+  <ng-container [formGroup]="passenger">
+    <div class="form-group">
+      <input formControlName="firstName" placeholder="first name"/>
+      <input formControlName="lastName" placeholder="last name"/>
+      <input formControlName="nationalId" placeholder="National ID"/>
+      <input type="date" formControlName="birthDate" placeholder="Birthdate"/>
+      <input formControlName="passportNO" placeholder="Passport Number"/>
+      <input formControlName="issuedIn" placeholder="Issuer Country"/>
+      <input type="date" formControlName="expiresAt" placeholder="Expire Date"/>
+      <button type="button" (click)="removeForm(i)">Remove</button>
+    </div>
+  </ng-container>
+
+</ng-container>
+<button type="button" (click)="addPassengerForm()">Add Passenger</button>
+<button type="submit" (click)="onSubmit()" [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
+  Tickets
+</button>

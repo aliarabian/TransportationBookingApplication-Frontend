@@ -5,11 +5,13 @@ import {HomePageComponent} from "./home-page/home-page.component";
 import {AuthGuard} from "./auth/auth.guard";
 import {UserRegistrationComponent} from "./user-registration/user-registration.component";
 import {FlightsResolver} from "./flights-list/flights.resolver";
+import {BookingComponent} from "./booking/booking.component";
 
 
 const routes: Routes = [
   {path: 'home', canActivate: [AuthGuard], resolve: {flightsData: FlightsResolver}, component: HomePageComponent},
   {path: 'users/registration', component: UserRegistrationComponent},
+  {path: 'booking', component: BookingComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ]

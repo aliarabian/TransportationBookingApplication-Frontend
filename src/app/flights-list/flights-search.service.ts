@@ -10,6 +10,8 @@ import {FlightSearchQuery} from "../flight-search-form/flight-search-form.compon
 })
 export class FlightsSearchService {
 
+  flightsEndpointURL: string = "http://localhost:8080/flights";
+
   constructor(private http: HttpClient) {
   }
 
@@ -19,7 +21,7 @@ export class FlightsSearchService {
 
   search(offset: string, destination: string, departuresAt: Date): Observable<ApiResponse<Flight[]>> {
     return this.http
-      .get<ApiResponse<Flight[]>>('http://localhost:8080/flights', {
+      .get<ApiResponse<Flight[]>>(this.flightsEndpointURL, {
         params: {
           offset: offset, destination: destination, departureTime: departuresAt.toISOString()
         }
@@ -27,6 +29,10 @@ export class FlightsSearchService {
   }
 
   fetchLatestAvailableFlights() {
-    return this.http.get<ApiResponse<Flight[]>>("http://localhost:8080/flights");
+    return this.http.get<ApiResponse<Flight[]>>(this.flightsEndpointURL);
+  }
+
+  getFlight(id: number): Observable<ApiResponse<Flight>> {
+    return this.http.get<ApiResponse<Flight>>(this.flightsEndpointURL + `/${id}`);
   }
 }
