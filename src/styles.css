@@ -15,3 +15,7 @@ body {
   background: whitesmoke;
 }
 
+button:disabled {
+  background: #797979 !important;
+  border: none !important;
+}

@@ -48,11 +48,15 @@ export class BookingComponent implements OnInit {
     this.flightService.getFlight(flightId)
       .subscribe(response => {
         this.flight = response.data;
-      })
+      });
     this.addPassengerForm();
   }
 
   removeForm(i: number) {
+    if (this.passengersForm.length === 1) {
+      this.passengersForm.at(0).reset();
+      return;
+    }
     this.passengersForm.removeAt(i);
   }
 

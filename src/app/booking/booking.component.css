@@ -1,31 +1,125 @@
+article {
+  padding: 48px;
+  max-width: 992px;
+  width: 100%;
+
+}
+
+h3 {
+  font-size: 20px;
+  text-decoration: underline;
+  letter-spacing: 0.05rem;
+  margin-bottom: 48px;
+}
+
 .form-group {
+  position: relative;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
+  padding: 24px 24px 0;
+  margin-top: 16px;
+  border-radius: 8px;
 }
 
 .form-group button, input {
 
-  width: 50%;
-  border: 1px solid black;
+  border: 1px solid #797979;
   border-radius: 5px;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding: 0.6rem;
+  width: 100%;
+
+}
+
+.passenger-info-input {
+  position: relative;
+  margin-bottom: 24px;
+  font-family: Cambria, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.passenger-info-input label {
+  position: absolute;
+  top: -0.5rem;
+  background: #ffffff;
+  left: 0.5rem;
+  font-size: 12px;
+  /*font-weight: ;*/
+  letter-spacing: 0.07rem;
+  font-family: Verdana, sans-serif;
+  color: #797979;
 }
 
 .form-group button {
+  position: absolute;
+  border: none;
+  padding: 2px 4px;
+  border-radius: 50%;
+  max-width: 36px;
+  max-height: 36px;
+  font-size: 14px;
+  font-weight: 950;
+  top: -12px;
+  right: -12px;
+}
+
+#passenger-form-adder {
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  max-width: 64px;
+  width: 64px;
+  height: 36px;
+  margin-top: 24px;
+  background: rgba(121, 121, 121, 0.14);
+  color: #5c8355;
+}
+
+#passengers-form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#booking-btn:disabled {
+  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
+}
+
+#booking-btn {
+
+  padding: 20px;
+  line-height: 1.2;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  border: none;
   color: #ffffff;
-  background: rgb(228, 48, 87);
-  background: linear-gradient(90deg, rgba(228, 48, 87, 1) 0%, rgba(237, 66, 66, 1) 32%, rgba(254, 71, 61, 0.7511379551820728) 100%);
+  width: 80%;
+  align-self: center;
+  font-weight: 600;
+  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
+  background: rgba(11, 179, 114, 0.89);
 }
 
 @media screen and (min-width: 992px) {
-
-  .form-group{
-    justify-content: flex-start;
+  article {
+    padding: 64px;
+    margin: 0 auto;
   }
-  .form-group button, input {
-    width: 20%;
 
+  .form-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .passenger-info-input {
+    width: 19%;
+    margin-right: 0.5rem;
+  }
+
+  .form-group button {
+    width: 20%;
   }
 }

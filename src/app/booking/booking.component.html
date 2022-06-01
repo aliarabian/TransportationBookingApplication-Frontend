@@ -1,20 +1,46 @@
-<!--<app-flight-details></app-flight-details>-->
-<ng-container *ngFor="let passenger of passengers(); let i = index">
-  <ng-container [formGroup]="passenger">
-    <div class="form-group">
-      <input formControlName="firstName" placeholder="first name"/>
-      <input formControlName="lastName" placeholder="last name"/>
-      <input formControlName="nationalId" placeholder="National ID"/>
-      <input type="date" formControlName="birthDate" placeholder="Birthdate"/>
-      <input formControlName="passportNO" placeholder="Passport Number"/>
-      <input formControlName="issuedIn" placeholder="Issuer Country"/>
-      <input type="date" formControlName="expiresAt" placeholder="Expire Date"/>
-      <button type="button" (click)="removeForm(i)">Remove</button>
-    </div>
-  </ng-container>
-
-</ng-container>
-<button type="button" (click)="addPassengerForm()">Add Passenger</button>
-<button type="submit" (click)="onSubmit()" [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
-  Tickets
-</button>
+<app-flight-details *ngIf="flight" [flightDetails]="flight"></app-flight-details>
+<div id="passengers-form-wrapper">
+  <article>
+    <h3>Passengers:</h3>
+    <ng-container *ngFor="let passenger of passengers(); let i = index">
+      <ng-container [formGroup]="passenger">
+        <div class="form-group">
+          <div class="passenger-info-input">
+            <label for="firstName">First Name</label>
+            <input id="firstName" formControlName="firstName" placeholder="Ali"/>
+          </div>
+          <div class="passenger-info-input">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" formControlName="lastName" placeholder="Arabian"/>
+          </div>
+          <div class="passenger-info-input">
+            <label for="nationalId">National Id</label>
+            <input id="nationalId" formControlName="nationalId" placeholder="12345678914"/>
+          </div>
+          <div class="passenger-info-input">
+            <label for="birthdate">Birthdate</label>
+            <input id="birthdate" type="date" formControlName="birthDate"/>
+          </div>
+          <div class="passenger-info-input">
+            <label for="passportNO">Passport NO</label>
+            <input id="passportNO" formControlName="passportNO" placeholder="23345347542"/>
+          </div>
+          <div class="passenger-info-input">
+            <label for="issuedIn">Issuer Country</label>
+            <input id="issuedIn" formControlName="issuedIn" placeholder="IR"/>
+          </div>
+          <div class="passenger-info-input">
+            <label for="passportExpirationDate">Passport Expiration:</label>
+            <input id="passportExpirationDate" type="date" formControlName="expiresAt"/>
+          </div>
+          <button type="button" (click)="removeForm(i)">x</button>
+        </div>
+      </ng-container>
+    </ng-container>
+    <button id="passenger-form-adder" type="button" (click)="addPassengerForm()">+</button>
+  </article>
+  <button id="booking-btn" type="submit" (click)="onSubmit()"
+          [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
+    Tickets
+  </button>
+</div>

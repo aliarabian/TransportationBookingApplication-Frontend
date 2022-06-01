@@ -1,0 +1,138 @@
+.flight-card {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(0, 0, 0, 0.38);
+  margin: 24px;
+  padding: 1% var(--padding-left-right-default);
+  background: #fff8f8;
+  color: #cfcfcf;
+  border-radius: 8px;
+}
+
+
+.flight-card-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  font-family: var(--headline-font);
+  /*color: #595959;*/
+  letter-spacing: 0.099rem;
+  color: rgb(5, 7, 9);
+}
+
+.flight-card-header a {
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+  font-family: Verdana, sans-serif;
+  color: #313131;
+}
+
+.flight-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #3f3f3f;
+}
+
+.flight-card-body .flight-route {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+.content{
+  padding-left: 128px;
+}
+.flight-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  letter-spacing: 0.1rem;
+  padding: 0 4%;
+  font-weight: bold;
+  font-family: Georgia, sans-serif;
+  color: #797979;
+}
+
+.flight-card-footer p {
+  font-size: large;
+  text-decoration: underline;
+}
+
+
+.flight-card-body,
+.flight-card-footer {
+  border-top: 2px solid whitesmoke;
+}
+
+.flight-direction-icon {
+  transform: rotate(180deg);
+}
+
+
+div.card-wrapper {
+  width: 100%;
+  /* transition: height 1s ease-out; */
+}
+
+
+@media screen and (min-width: 992px) {
+  div.card-wrapper {
+  }
+
+  #filter-component-checkboxes label:nth-child(2n) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  #filter-component-checkboxes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #flights-container {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .flight-card {
+    margin-top: 1%;
+    font-size: 0.8rem;
+  }
+
+  .flight-card-body {
+    flex-direction: column;
+  }
+
+  .flight-card .flight-route {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .flight-card-header {
+    justify-content: space-around;
+  }
+
+  .flight-card-footer {
+    letter-spacing: 0;
+    font-size: medium;
+    font-weight: normal;
+  }
+
+  #filter-component-checkboxes {
+    width: 85%;
+  }
+
+  .filter-header {
+    width: 15%;
+  }
+}
+

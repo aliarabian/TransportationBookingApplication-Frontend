@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Flight} from "../flights-list/flight";
 
 @Component({
   selector: 'app-flight-details',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flight-details.component.css']
 })
 export class FlightDetailsComponent implements OnInit {
+  @Input() flightDetails: Flight | undefined;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

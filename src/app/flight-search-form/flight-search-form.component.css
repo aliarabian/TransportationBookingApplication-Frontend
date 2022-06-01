@@ -46,6 +46,7 @@ app-select {
 .flight-search-form-section input[type="datetime-local"] {
   padding: 0.1rem var(--padding-left-right-default);
 }
+
 input {
   padding: 0.5rem;
   margin-bottom: 0.5rem;

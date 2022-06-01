@@ -93,6 +93,8 @@ main {
 
 .flight-card-footer {
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   letter-spacing: 0.1rem;
   padding: 0 4%;
   font-weight: bold;
@@ -103,6 +105,15 @@ main {
 .flight-card-footer p {
   font-size: large;
   text-decoration: underline;
+}
+
+.flight-card-footer a {
+  padding: 0.5rem;
+  background: #10984f;
+  /*background: #13a651;*/
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 .flight-card-footer p:hover {
@@ -122,7 +133,7 @@ main {
 #filter-component {
   display: flex;
   justify-content: flex-start;
-  align-items: baseline;
+  align-items: center;
   box-shadow: 1px 1px 15px 0px rgba(130, 122, 122, 0.7);
   -webkit-box-shadow: 1px 1px 2px 0px rgba(130, 122, 122, 0.7);
   -moz-box-shadow: 1px 1px 15px 0px rgba(130, 122, 122, 0.7);
@@ -134,7 +145,11 @@ main {
 }
 
 #filter-component-checkboxes {
-  width: 70%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 45%;
   padding: 0.4rem 0.8rem;
 }
 
@@ -145,10 +160,6 @@ main {
   /*letter-spacing: 0.099rem;*/
 }
 
-#filter-component-checkboxes label:nth-child(2n) {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
 
 .filter-header {
   width: 30%;
@@ -222,11 +233,24 @@ div.card-wrapper {
 @media screen and (min-width: 992px) {
   div.card-wrapper {
     width: 48%;
+    /*margin-right: 2%;*/
+  }
+
+  #filter-component-checkboxes label:nth-child(2n) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  #filter-component-checkboxes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   #flights-container {
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   .flight-card {

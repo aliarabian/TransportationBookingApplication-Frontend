@@ -5,13 +5,11 @@
 <section id="login-form-container">
   <h2>Login</h2>
   <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <!--    <input name="_csrfToken" value="${sessionScope._csrfToken}" type="hidden">-->
-    <input id="username" type="text" name="username" placeholder="Email" formControlName="username" required>
-    <input id="password" type="password" name="password" placeholder="Password" formControlName="password" required>
-    <div>
-      <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
-      <a href="#">Forgot Your Password?</a>
-      <a routerLink="/registration">Register</a>
-    </div>
+    <label for="username">username</label>
+    <input id="username" type="text" name="username" placeholder="example@mail.com" formControlName="username" required>
+    <label for="password">password</label>
+    <input id="password" type="password" name="password" placeholder="" formControlName="password" required>
+    <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
+  <a routerLink="/registration">Register</a>
 </section>
