@@ -37,7 +37,7 @@
         </div>
       </ng-container>
     </ng-container>
-    <button id="passenger-form-adder" type="button" (click)="addPassengerForm()">+</button>
+    <button *ngIf="passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button" (click)="addPassengerForm()">+</button>
   </article>
   <button id="booking-btn" type="submit" (click)="onSubmit()"
           [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
