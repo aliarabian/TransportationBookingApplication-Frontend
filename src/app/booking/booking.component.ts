@@ -51,15 +51,9 @@ export class BookingComponent implements OnInit {
       });
     this.addPassengerForm();
   }
-
   removeForm(i: number) {
-    if (this.passengersForm.length === 1) {
-      this.passengersForm.at(0).reset();
-      return;
-    }
     this.passengersForm.removeAt(i);
   }
-
   onSubmit() {
     console.log(this.flight);
     console.log(this.passengersForm)

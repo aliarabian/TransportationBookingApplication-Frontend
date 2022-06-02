@@ -33,7 +33,7 @@
             <label for="passportExpirationDate">Passport Expiration:</label>
             <input id="passportExpirationDate" type="date" formControlName="expiresAt"/>
           </div>
-          <button type="button" (click)="removeForm(i)">x</button>
+          <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">x</button>
         </div>
       </ng-container>
     </ng-container>
