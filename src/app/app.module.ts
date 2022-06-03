@@ -15,10 +15,13 @@ import {FlightSearchFormComponent} from './flight-search-form/flight-search-form
 import {TerminalsListComponent} from './terminals-list/terminals-list.component';
 import {SelectComponent} from './select/select.component';
 import {ClickOutsideDirective} from './click-outside.directive';
-import { BookingComponent } from './booking/booking.component';
-import { FlightDetailsComponent } from './flight-details/flight-details.component';
-import { BookingResultComponent } from './booking-result/booking-result.component';
-import { BookingFormComponent } from './booking-form/booking-form.component';
+import {BookingComponent} from './booking/booking.component';
+import {FlightDetailsComponent} from './flight-details/flight-details.component';
+import {BookingResultComponent} from './booking-result/booking-result.component';
+import {BookingFormComponent} from './booking-form/booking-form.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FlightCardModalComponent} from './flight-card-modal/flight-card-modal.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     FlightDetailsComponent,
     BookingResultComponent,
     BookingFormComponent,
+    FlightCardModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,10 +46,11 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     RouterModule,
     AuthModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

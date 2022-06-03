@@ -19,13 +19,12 @@
   display: flex;
   flex-direction: column;
   border-radius: 8px;
-  padding: 1% var(--padding-left-right-default);
+  padding: 8px;
   -webkit-box-shadow: 1px 1px 10px 0 rgba(128, 128, 128, 0.5);
   -moz-box-shadow: 1px 1px 10px 0 rgba(128, 128, 128, 0.5);
   box-shadow: 1px 1px 10px 0 rgba(128, 128, 128, 0.5);
   background: #ffffff;
   color: #cfcfcf;
-  margin-top: 1%;
 }
 
 
@@ -33,9 +32,7 @@
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  /*font-family: var(--headline-font);*/
   background: #ffffff;
-  /*color: #595959;*/
   letter-spacing: 0.05rem;
   color: rgb(102, 102, 102);
 }
@@ -137,7 +134,6 @@
   /*letter-spacing: 0.099rem;*/
 }
 
-
 .filter-header {
   width: 30%;
   padding: 0 0.8rem;
@@ -147,44 +143,6 @@
   background-color: #f6f6f6;
   margin: 0;
   font-size: 1.2rem;
-}
-
-#flight-details-modal {
-  padding: 1rem var(--padding-left-right-default);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #2e2e2e3d;
-  width: 100vw;
-  height: 100vh;
-}
-
-#flight-details-modal-content {
-  display: flex;
-  width: 80%;
-  flex-direction: column;
-  -webkit-box-shadow: 1px 1px 17px -9px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 1px 1px 17px -9px rgba(66, 68, 90, 1);
-  box-shadow: 1px 1px 17px -9px rgba(66, 68, 90, 1);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 8px;
-  /*background-color: var(--primary-color);*/
-  color: #e0dfdc;
-  font-weight: bold;
-  font-family: Verdana, sans-serif;
-}
-
-.modal-body {
-  padding: 0 8px;
-  background-color: whitesmoke;
 }
 
 div.card-wrapper {
@@ -210,7 +168,6 @@ div.card-wrapper {
 @media screen and (min-width: 992px) {
   div.card-wrapper {
     width: 48%;
-    /*margin-right: 2%;*/
   }
 
   #filter-component-checkboxes label:nth-child(2n) {
@@ -237,24 +194,29 @@ div.card-wrapper {
 
   .flight-card-body {
     flex-direction: column;
+    border-bottom: 2px solid #bdbdbd;
+    border-top: 2px solid #bdbdbd;
+    padding: 16px;
   }
 
   .flight-card .flight-route {
     width: 100%;
     flex-direction: row;
     justify-content: space-around;
-    align-items: center;
+    align-items: baseline;
+
   }
 
   .flight-card-header {
     justify-content: space-around;
+    padding: 8px;
   }
 
   .flight-card-footer {
-    letter-spacing: 0;
-    /*font-size: medium;*/
+    letter-spacing: 0.05rem;
     font-weight: 400;
     font-size: 14px;
+    padding-top: 16px;
   }
 
   #filter-component-checkboxes {

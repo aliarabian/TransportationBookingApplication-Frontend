@@ -1,9 +1,7 @@
 .flight-card {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgba(102, 102, 102, 0.38);
   border-radius: 8px;
-
 }
 
 .flight-card-header {
@@ -14,7 +12,7 @@
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   font-size: 14px;
   letter-spacing: 0.05rem;
-  /*padding: 4px 8px;*/
+  padding: 4px 8px;
   box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
   color: #7a7a7a;
 }
@@ -68,6 +66,7 @@
 .flight-card-header span, .flight-card-header a {
   width: 49%;
 }
+
 @media (min-width: 576px) {
 
   .flight-card-header {
@@ -90,15 +89,15 @@
     font-weight: 450;
     justify-content: space-evenly;
     align-items: baseline;
-    /*justify-self: center;*/
     letter-spacing: 0.05rem;
     font-size: 14px;
-    padding: 8px;
+
+    padding: 0;
   }
 
   .flight-card-header span, .flight-card-header a {
     width: auto;
-    margin-right: 4px;
+    margin-right: 4px;;
   }
 
   .flight-card-body {

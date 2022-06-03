@@ -23,7 +23,7 @@
   </div>
   <div id="flights-container">
     <ng-container *ngFor="let flight of flights">
-      <div class="card-wrapper" *ngFor="let section of flight.sections">
+      <div class="card-wrapper" *ngFor="let section of flight.sections" (click)="openModal(flight, section)">
         <article class="flight-card">
           <div class="flight-card-header">
             <p>FlightNO #{{flight.id}}</p>

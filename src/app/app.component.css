@@ -1,6 +1,6 @@
 header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   width: 100%;
   background: rgba(19, 108, 74, 0.89);
   color: #ffffff;

@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'normalize.css';
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 :root {
   --padding-left-right-default: 2%;
   --primary-color: #3c6d9e;
@@ -19,3 +19,6 @@ button:disabled {
   background: #797979 !important;
   border: none !important;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
