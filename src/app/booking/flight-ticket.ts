@@ -8,7 +8,7 @@ export interface FlightTicket {
   passengerName: string,
   age: number,
   sectionId: number,
-  seatingSectionDescription: string,
+  sectionTitle: string,
   seatNO: string,
   selectedPrivileges: string[]
 

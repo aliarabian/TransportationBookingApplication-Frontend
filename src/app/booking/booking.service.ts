@@ -11,22 +11,12 @@ import {map} from "rxjs/operators";
 })
 export class BookingService {
 
-  private bookedTickets: ReplaySubject<FlightTicket[]> = new ReplaySubject<FlightTicket[]>(1);
-
   constructor(private http: HttpClient) {
   }
 
-  bookTickets(bookingRequest: BookingRequest): void {
+  bookTickets(bookingRequest: BookingRequest): Observable<ApiResponse<FlightTicket[]>> {
     const bookingURL = `http://localhost:8080/flights/${bookingRequest.transportationId}/bookings`;
-    this.http.post<ApiResponse<FlightTicket[]>>(bookingURL, bookingRequest)
-      .pipe(
-        map(response => response.data)
-      ).subscribe(flights =>
-      this.bookedTickets.next(flights)
-    );
+    return this.http.post<ApiResponse<FlightTicket[]>>(bookingURL, bookingRequest);
   }
 
-  tickets(): Observable<FlightTicket[]> {
-    return this.bookedTickets;
-  }
 }

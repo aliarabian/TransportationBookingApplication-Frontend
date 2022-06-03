@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Flight} from "../flights-list/flight";
 import {SeatingSection} from "../flights-list/seating-section";
-import {Observable, ReplaySubject, Subscription} from "rxjs";
+import {Observable, Subscription, throwError} from "rxjs";
 import {Country} from "../booking/country";
 import {FlightsSearchService} from "../flights-list/flights-search.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -12,6 +12,7 @@ import {BookingDetails} from "../booking/booking-details";
 import {PassengerDetails} from "../booking/passenger-details";
 import {BookingRequest} from "../booking/booking-request";
 import {FlightTicket} from "../booking/flight-ticket";
+import {catchError} from "rxjs/operators";
 
 @Component({
   selector: 'app-booking-form',
@@ -81,9 +82,17 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   onSubmit() {
     let bookingRequest = this.createBookingRequest();
     this.bookingService.bookTickets(bookingRequest)
-    this.passengersForm.reset();
-
-    this.router.navigate(['tickets'], {relativeTo: this.activateRoute});
+      .pipe(
+        catchError(err => {
+          console.log(err);
+          return throwError(() => err)
+        })
+      )
+      .subscribe(
+        response => {
+          this.passengersForm.reset();
+          this.router.navigate(['tickets'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
+        });
   }
 
   private createBookingRequest() {

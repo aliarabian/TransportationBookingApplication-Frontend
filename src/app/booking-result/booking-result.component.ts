@@ -1,10 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
 import {FlightTicket} from "../booking/flight-ticket";
-import {ActivatedRoute} from "@angular/router";
-import {BookingService} from "../booking/booking.service";
-import {waitForAsync} from "@angular/core/testing";
-import loader from "@angular-devkit/build-angular/src/webpack/plugins/single-test-transform";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-booking-result',
@@ -12,13 +8,16 @@ import loader from "@angular-devkit/build-angular/src/webpack/plugins/single-tes
   styleUrls: ['./booking-result.component.css']
 })
 export class BookingResultComponent implements OnInit {
-  tickets?: Observable<FlightTicket[]>;
+  tickets?: FlightTicket[];
 
-  constructor(private bookingService: BookingService) {
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
-    this.tickets = this.bookingService.tickets()
+    this.tickets = history.state.tickets;
+    if (!this.tickets) {
+      this.router.navigate(['home']);
+    }
   }
 
 }
