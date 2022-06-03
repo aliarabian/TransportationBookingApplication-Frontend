@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FlightsSearchService} from "../flights-list/flights-search.service";
-import {Router} from "@angular/router";
 import {Flight} from "../flights-list/flight";
 import {Subscription} from "rxjs";
 

@@ -1,0 +1,57 @@
+<section id="booking-container">
+  <app-flight-details *ngIf="flight" [flightDetails]="flight" [section]="selectedSection"></app-flight-details>
+  <div id="passengers-form-wrapper">
+    <article>
+      <ng-container *ngFor="let passenger of passengers(); let i = index">
+        <ng-container [formGroup]="passenger">
+          <div class="form-group">
+            <div class="passenger-info-input">
+              <label for="firstName">First Name</label>
+              <input id="firstName" formControlName="firstName" placeholder="Ali"/>
+            </div>
+            <div class="passenger-info-input">
+              <label for="lastName">Last Name</label>
+              <input id="lastName" formControlName="lastName" placeholder="Arabian"/>
+            </div>
+            <div class="passenger-info-input">
+              <label for="nationalId">National Id</label>
+              <input id="nationalId" formControlName="nationalId" placeholder="12345678914"/>
+            </div>
+            <div class="passenger-info-input">
+              <label for="birthdate">Birthdate</label>
+              <input id="birthdate" type="date" min="1910-01-01" max="2022-01-01" formControlName="birthDate"/>
+            </div>
+            <div class="passenger-info-input">
+              <label for="passportNO">Passport NO</label>
+              <input id="passportNO" formControlName="passportNO" placeholder="23345347542"/>
+            </div>
+            <div class="passenger-info-input">
+              <label for="issuedIn">Issuer Country</label>
+              <select id="issuedIn" formControlName="issuedIn" required>
+                <option value="" disabled selected>Select Passport Issuer Country</option>
+
+                <option *ngFor="let country of countries |async" value="{{country.code}}">
+                  {{country.name}}
+                </option>
+              </select>
+            </div>
+            <div class="passenger-info-input">
+              <label for="passportExpirationDate">Passport Expiration:</label>
+              <input id="passportExpirationDate" type="date"
+                     min="{{ validPassportExpiryDate | date:'yyyy-MM-dd'}}"
+                     formControlName="expiresAt"/>
+            </div>
+            <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">x</button>
+          </div>
+        </ng-container>
+      </ng-container>
+      <button [disabled]="!passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button"
+              (click)="addPassengerForm()">+
+      </button>
+    </article>
+    <button id="booking-btn" type="submit" (click)="onSubmit()"
+            [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
+      Tickets
+    </button>
+  </div>
+</section>

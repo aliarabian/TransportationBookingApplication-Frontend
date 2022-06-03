@@ -1,31 +1,6 @@
 * {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
 }
-
-body {
-  position: relative;
-  background: whitesmoke;
-}
-
-
-header img {
-  width: 30%;
-  height: 100%;
-  border-radius: 3%;
-}
-
-main {
-  font-family: Verdana, sans-serif;
-}
-
-/** Search Component  Begin **/
-
-
-/** Search Component  End **/
-
-/** Available Flights List **/
 
 #filterable-flight-list {
   display: flex;
@@ -43,7 +18,7 @@ main {
 .flight-card {
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 1% var(--padding-left-right-default);
   -webkit-box-shadow: 1px 1px 10px 0 rgba(128, 128, 128, 0.5);
   -moz-box-shadow: 1px 1px 10px 0 rgba(128, 128, 128, 0.5);
@@ -58,19 +33,20 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  font-family: var(--headline-font);
+  /*font-family: var(--headline-font);*/
   background: #ffffff;
   /*color: #595959;*/
-  letter-spacing: 0.099rem;
-  color: rgb(5, 7, 9);
+  letter-spacing: 0.05rem;
+  color: rgb(102, 102, 102);
 }
 
 .flight-card-header a {
   text-decoration: none;
-  letter-spacing: 0.1rem;
-  font-style: italic;
-  font-family: Verdana, sans-serif;
   color: #313131;
+}
+
+.flight-card-header a:hover {
+  text-decoration: underline;
 }
 
 .flight-card-body {
@@ -103,17 +79,18 @@ main {
 }
 
 .flight-card-footer p {
-  font-size: large;
+  /*font-size: large;*/
+  letter-spacing: 0.05rem;
+  font-size: 20px;
   text-decoration: underline;
 }
 
 .flight-card-footer a {
   padding: 0.5rem;
   background: #10984f;
-  /*background: #13a651;*/
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .flight-card-footer p:hover {
@@ -198,7 +175,7 @@ main {
 .modal-header {
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--padding-left-right-default);
+  padding: 0 8px;
   /*background-color: var(--primary-color);*/
   color: #e0dfdc;
   font-weight: bold;
@@ -206,13 +183,13 @@ main {
 }
 
 .modal-body {
-  padding: 0 var(--padding-left-right-default);
+  padding: 0 8px;
   background-color: whitesmoke;
 }
 
 div.card-wrapper {
   width: 100%;
-  /* transition: height 1s ease-out; */
+  margin-top: 48px;
 }
 
 .expandable {
@@ -275,8 +252,9 @@ div.card-wrapper {
 
   .flight-card-footer {
     letter-spacing: 0;
-    font-size: medium;
-    font-weight: normal;
+    /*font-size: medium;*/
+    font-weight: 400;
+    font-size: 14px;
   }
 
   #filter-component-checkboxes {
@@ -285,6 +263,15 @@ div.card-wrapper {
 
   .filter-header {
     width: 15%;
+  }
+
+  .flight-card-footer a {
+    padding: 16px;
+    letter-spacing: 0.05rem;
+    font-size: 16px;
+    font-weight: 500;
+    color: #f2fff8;
+    text-decoration: none;
   }
 }
 

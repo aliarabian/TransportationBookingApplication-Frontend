@@ -17,6 +17,8 @@ import {SelectComponent} from './select/select.component';
 import {ClickOutsideDirective} from './click-outside.directive';
 import { BookingComponent } from './booking/booking.component';
 import { FlightDetailsComponent } from './flight-details/flight-details.component';
+import { BookingResultComponent } from './booking-result/booking-result.component';
+import { BookingFormComponent } from './booking-form/booking-form.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { FlightDetailsComponent } from './flight-details/flight-details.componen
     ClickOutsideDirective,
     BookingComponent,
     FlightDetailsComponent,
+    BookingResultComponent,
+    BookingFormComponent,
   ],
   imports: [
     BrowserModule,

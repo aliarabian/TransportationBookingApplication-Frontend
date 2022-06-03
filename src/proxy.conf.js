@@ -4,7 +4,8 @@ const PROXY_CONFIG = [
       "/flights",
       "/users",
       "/terminals",
-      "/auth"
+      "/auth",
+      "/countries"
     ],
     target: "http://localhost:8080",
     secure: false,

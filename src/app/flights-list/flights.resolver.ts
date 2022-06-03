@@ -2,15 +2,17 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {FlightsSearchService} from "./flights-search.service";
+import {ApiResponse} from "../api-response";
+import {Flight} from "./flight";
 
 @Injectable({
   providedIn: 'root'
 })
-export class FlightsResolver implements Resolve<boolean> {
+export class FlightsResolver implements Resolve<ApiResponse<Flight[]>> {
   constructor(private flightsService: FlightsSearchService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ApiResponse<Flight[]>> {
     if (!route.queryParamMap.get("offset")) {
       return this.flightsService.fetchLatestAvailableFlights();
     }

@@ -5,9 +5,9 @@
 <section id="login-form-container">
   <h2>Login</h2>
   <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="username">username</label>
+    <label for="username">username:</label>
     <input id="username" type="text" name="username" placeholder="example@mail.com" formControlName="username" required>
-    <label for="password">password</label>
+    <label for="password">password:</label>
     <input id="password" type="password" name="password" placeholder="" formControlName="password" required>
     <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
