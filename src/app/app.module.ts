@@ -22,6 +22,7 @@ import {BookingFormComponent} from './booking-form/booking-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlightCardModalComponent} from './flight-card-modal/flight-card-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

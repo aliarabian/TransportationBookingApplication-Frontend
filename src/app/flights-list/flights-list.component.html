@@ -23,7 +23,8 @@
   </div>
   <div id="flights-container">
     <ng-container *ngFor="let flight of flights">
-      <div class="card-wrapper" *ngFor="let section of flight.sections" (click)="openModal(flight, section)">
+      <div class="card-wrapper" *ngFor="let section of flight.sections"
+           (click)="openModal(flight, section)">
         <article class="flight-card">
           <div class="flight-card-header">
             <p>FlightNO #{{flight.id}}</p>
@@ -42,16 +43,23 @@
               </svg></span>
               <p>{{flight.destination}}</p>
             </div>
-            <div class="expandable">
-              <p>Departure Time: 2023-1-12 6:10 AM</p>
-              <p>Plane: planeModel</p>
-              <p>Available Seats: availableSeats</p>
-              <ul class="section-privileges">
-              </ul>
+            <div class="collapsable">
+              <span><p>{{flight.departuresAt | date:'medium'}}</p></span>
+              <p><strong>{{section.availableSeats}}</strong> seats available</p>
+              <span><p>{{flight.vehicleModelName}}</p></span>
+              <div class="section-privileges" *ngIf="section.privileges.length > 0">
+                <h3>Section Privileges</h3>
+                <ul>
+                  <li *ngFor="let privilege of section.privileges">
+                    {{privilege.description}}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="flight-card-footer">
-            <p class="flight-details-see-more">more</p>
+            <p class="flight-details-see-more" (click)="$event.stopImmediatePropagation();">
+              more</p>
             <a [routerLink]="['/booking']" [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
           </div>
         </article>
