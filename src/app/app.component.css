@@ -1,12 +1,17 @@
 header {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
   width: 100%;
   background: rgba(19, 108, 74, 0.89);
-  color: #ffffff;
-  padding: 0 20px;
+  color: #f2fffa;
+  padding: 18px;
 }
 
-header h1 {
-  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
+header a {
+  text-decoration: none;
+  color: #f2fffa;
+  letter-spacing: 0.05rem;
+  font-size: 24px;
+  font-weight: 900;
 }

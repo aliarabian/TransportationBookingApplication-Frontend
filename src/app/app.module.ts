@@ -23,6 +23,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlightCardModalComponent} from './flight-card-modal/flight-card-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { UserAccountMenuComponent } from './user-acount-menu/user-account-menu.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -40,6 +44,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     BookingResultComponent,
     BookingFormComponent,
     FlightCardModalComponent,
+    UserAccountMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,10 @@ import {MatExpansionModule} from "@angular/material/expansion";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

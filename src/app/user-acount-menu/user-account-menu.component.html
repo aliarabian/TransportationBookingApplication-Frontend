@@ -1,0 +1,13 @@
+<button id="menu" mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon [inline]="true">account_circle</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>airplane_ticket</mat-icon>
+    <span>Booked Tickets</span>
+  </button>
+  <button mat-menu-item type="button" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+</mat-menu>

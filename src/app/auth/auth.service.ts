@@ -5,15 +5,17 @@ import {LoginResponse} from "./login-response";
 import {ApiResponse} from "../api-response";
 import {tap} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn: boolean = false;
+  logginStatus: boolean = false
 
   constructor(private http: HttpClient,
               private router: Router) {
+    this.logginStatus = localStorage.getItem("loggedIn") != null;
   }
 
   login(loginRequest: LoginRequest) {
@@ -23,12 +25,24 @@ export class AuthService {
       )
       .subscribe(response => {
         localStorage.setItem("loggedIn", "true");
+        this.logginStatus = true;
         this.router.navigate(["home"]);
       });
   }
 
   isLoggedIn(): boolean {
-    return Boolean(localStorage.getItem("loggedIn"));
+    return localStorage.getItem("loggedIn") != null;
   }
 
+
+  clear() {
+    localStorage.clear();
+    this.logginStatus = false;
+  }
+
+  logout() {
+    this.clear();
+    this.router.navigate(["login"]);
+    this.logginStatus = false;
+  }
 }

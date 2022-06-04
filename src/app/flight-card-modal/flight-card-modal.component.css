@@ -66,7 +66,14 @@
 .flight-card-header span, .flight-card-header a {
   width: 49%;
 }
-
+.section-privileges {
+  font-weight: 650;
+  color: #313131;
+}
+.section-privileges li{
+  font-weight: 500;
+  color: #313131;
+}
 @media (min-width: 576px) {
 
   .flight-card-header {

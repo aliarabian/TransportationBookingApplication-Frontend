@@ -23,8 +23,14 @@
     <div class="details">
       <span><p>{{data.flight.departuresAt | date:'medium'}}</p></span>
       <p><strong>{{data.section.availableSeats}}</strong> seats available</p>
-      <ul *ngIf="data.section.privileges.length > 0" class="section-privileges">
-      </ul>
+      <div class="section-privileges" *ngIf="data.section.privileges.length > 0">
+        <h3>Section Privileges</h3>
+        <ul>
+          <li *ngFor="let privilege of data.section.privileges">
+            {{privilege.description}}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </article>
