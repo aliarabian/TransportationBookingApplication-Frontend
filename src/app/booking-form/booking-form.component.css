@@ -19,7 +19,6 @@ h3 {
   position: relative;
   display: flex;
   flex-direction: column;
-  /*box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);*/
   padding: 24px 24px 0;
   border: 2px solid rgba(102, 102, 102, 0.38);
   border-radius: 8px;
@@ -69,6 +68,7 @@ h3 {
   font-weight: 950;
   top: -12px;
   right: -12px;
+  color: #a72a2a;
 }
 
 #passenger-form-adder {

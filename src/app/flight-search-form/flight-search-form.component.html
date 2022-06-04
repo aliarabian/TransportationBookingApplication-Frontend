@@ -11,7 +11,10 @@
           name="departureTime"
           required
         />
-        <button type="submit" [disabled]="!searchFlightForm.valid">Search Flights</button>
+        <button type="submit" [disabled]="!searchFlightForm.valid">
+          <mat-icon>search</mat-icon>
+          <span>Search Flights</span>
+        </button>
       </div>
     </form>
   </div>

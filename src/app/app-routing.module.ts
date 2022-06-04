@@ -8,6 +8,9 @@ import {FlightsResolver} from "./flights-list/flights.resolver";
 import {BookingComponent} from "./booking/booking.component";
 import {BookingResultComponent} from "./booking-result/booking-result.component";
 import {BookingFormComponent} from "./booking-form/booking-form.component";
+import {UserAccountComponent} from "./user-account/user-account.component";
+import {UserBookedTicketsComponent} from "./user-booked-tickets/user-booked-tickets.component";
+import {UserTicketsResolver} from "./user-booked-tickets/user-tickets.resolver";
 
 
 const routes: Routes = [
@@ -26,6 +29,18 @@ const routes: Routes = [
       {
         path: 'tickets',
         component: BookingResultComponent
+      }
+    ]
+  },
+  {
+    path: 'user/account', component: UserAccountComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: "tickets",
+        // resolve: {tickets: UserTicketsResolver},
+        component: UserBookedTicketsComponent
       }
     ]
   },

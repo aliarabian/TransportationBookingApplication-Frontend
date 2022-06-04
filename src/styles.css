@@ -22,3 +22,12 @@ button:disabled {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+input{
+
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 18px;
+  letter-spacing: 0.05rem;
+  border: 1px solid #797979;
+}

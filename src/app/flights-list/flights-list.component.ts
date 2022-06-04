@@ -13,7 +13,7 @@ import {animate, AUTO_STYLE, state, style, transition, trigger} from "@angular/a
   animations: [
     trigger('collapsable', [
       state('false', style({
-        height: 0, width: 0, visibility: 'hidden', opacity: 0, margin:'-16px'
+        height: 0, width: 0, visibility: 'hidden', opacity: 0, margin: '-16px'
       })),
       state('true', style({
         height: AUTO_STYLE, visibility: AUTO_STYLE, opacity: 1
@@ -28,6 +28,7 @@ export class FlightsListComponent implements OnInit, OnChanges {
 
   @Input() flights?: Flight[];
   collapsed: boolean[][] = [];
+  filters: string[] = ['business class', 'economy class', 'first class'];
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
   }
@@ -45,7 +46,7 @@ export class FlightsListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.flights.isFirstChange()) {
+    this.collapsed = [];
       for (let i = 0; i < changes.flights.currentValue.length; i++) {
         let sectionCard: boolean[] = []
         for (let j = 0; j < changes.flights.currentValue[i].sections.length; j++) {
@@ -53,12 +54,23 @@ export class FlightsListComponent implements OnInit, OnChanges {
         }
         this.collapsed.push(sectionCard);
       }
-    }
   }
 
 
   onCollapse($event: MouseEvent, i: number, j: number) {
     $event.stopImmediatePropagation();
     this.collapsed[i][j] = !this.collapsed[i][j];
+  }
+
+  onFilterChange($event: Event) {
+    let target = $event.target as HTMLInputElement;
+    let filter = target.value;
+    filter = filter + " class";
+    if (!target.checked) {
+      let indexOf = this.filters.indexOf(filter);
+      this.filters.splice(indexOf, 1);
+      return;
+    }
+    this.filters.push(filter)
   }
 }

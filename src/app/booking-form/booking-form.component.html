@@ -41,7 +41,9 @@
                      min="{{ validPassportExpiryDate | date:'yyyy-MM-dd'}}"
                      formControlName="expiresAt"/>
             </div>
-            <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">x</button>
+            <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">
+              <mat-icon>delete</mat-icon>
+            </button>
           </div>
         </ng-container>
       </ng-container>

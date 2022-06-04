@@ -2,10 +2,10 @@
   <mat-icon [inline]="true">account_circle</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
+  <a routerLink="user/account/tickets" mat-menu-item>
     <mat-icon>airplane_ticket</mat-icon>
     <span>Booked Tickets</span>
-  </button>
+  </a>
   <button mat-menu-item type="button" (click)="logout()">
     <mat-icon>logout</mat-icon>
     <span>Logout</span>

@@ -27,6 +27,8 @@ import { UserAccountMenuComponent } from './user-acount-menu/user-account-menu.c
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import { UserBookedTicketsComponent } from './user-booked-tickets/user-booked-tickets.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import {MatButtonModule} from "@angular/material/button";
     BookingFormComponent,
     FlightCardModalComponent,
     UserAccountMenuComponent,
+    UserBookedTicketsComponent,
+    UserAccountComponent,
   ],
   imports: [
     BrowserModule,
