@@ -32,6 +32,7 @@
   background: #ffffff;
   letter-spacing: 0.05rem;
   color: rgb(102, 102, 102);
+  padding: 8px;
 }
 
 .flight-card-header a {
@@ -51,17 +52,21 @@
   font-weight: bold;
   background: #fafafa;
   color: #3f3f3f;
-  flex-grow: 1;
+  border-bottom: 2px solid #bdbdbd;
+  border-top: 2px solid #bdbdbd;
 }
-.collapsable{
-  flex: 1 0 auto;
+
+.flight-route p {
+  margin-bottom: 0;
+  margin-top: 8px;
 }
+
 .flight-route {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  line-height: 1;
+  line-height: 1.5;
 }
 
 .flight-card-footer {
@@ -71,7 +76,6 @@
   letter-spacing: 0.05rem;
   padding: 8px;
   font-weight: bold;
-  font-family: Georgia, sans-serif;
   color: #797979;
 }
 
@@ -86,6 +90,7 @@
   color: #fff;
   text-decoration: none;
   border-radius: 8px;
+  padding: 8px;
 }
 
 .flight-card-footer p:hover {
@@ -102,9 +107,9 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  box-shadow: 1px 1px 15px 0px rgba(130, 122, 122, 0.7);
-  -webkit-box-shadow: 1px 1px 2px 0px rgba(130, 122, 122, 0.7);
-  -moz-box-shadow: 1px 1px 15px 0px rgba(130, 122, 122, 0.7);
+  box-shadow: 1px 1px 15px 0 rgba(130, 122, 122, 0.7);
+  -webkit-box-shadow: 1px 1px 2px 0 rgba(130, 122, 122, 0.7);
+  -moz-box-shadow: 1px 1px 15px 0 rgba(130, 122, 122, 0.7);
   padding: 0;
   margin: 0;
   background: rgb(255, 255, 255);
@@ -142,6 +147,7 @@ div.card-wrapper {
   display: flex;
   width: 100%;
   margin-top: 48px;
+  flex-grow: 0;
 }
 
 .collapsable {
@@ -158,6 +164,7 @@ div.card-wrapper {
 @media screen and (min-width: 992px) {
   div.card-wrapper {
     width: 48%;
+    display: block;
   }
 
   #filter-component-checkboxes label:nth-child(2n) {
@@ -180,13 +187,14 @@ div.card-wrapper {
   .flight-card {
     margin-top: 20px;
     font-size: 14px;
+    flex-direction: column;
   }
 
   .flight-card-body {
+    position: relative;
     flex-direction: column;
     border-bottom: 2px solid #bdbdbd;
     border-top: 2px solid #bdbdbd;
-    /*padding: 16px;*/
   }
 
   .flight-route {
@@ -195,7 +203,7 @@ div.card-wrapper {
     justify-content: space-around;
     align-items: baseline;
     font-weight: 700;
-     font-size: 18px;
+    font-size: 18px;
     padding: 24px;
   }
 
@@ -226,6 +234,10 @@ div.card-wrapper {
     font-weight: 500;
     color: #f2fff8;
     text-decoration: none;
+  }
+
+  .collapsable {
+    overflow: hidden;
   }
 }
 

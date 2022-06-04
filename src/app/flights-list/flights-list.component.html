@@ -22,8 +22,9 @@
 
   </div>
   <div id="flights-container">
-    <ng-container *ngFor="let flight of flights">
-      <div class="card-wrapper" *ngFor="let section of flight.sections"
+    <ng-container *ngFor="let flight of flights; let i = index">
+      <div class="card-wrapper"
+           *ngFor="let section of flight.sections;let j = index"
            (click)="openModal(flight, section)">
         <article class="flight-card">
           <div class="flight-card-header">
@@ -43,7 +44,7 @@
               </svg></span>
               <p>{{flight.destination}}</p>
             </div>
-            <div class="collapsable">
+            <div class="collapsable" [@collapsable]="collapsed[i][j]">
               <span><p>{{flight.departuresAt | date:'medium'}}</p></span>
               <p><strong>{{section.availableSeats}}</strong> seats available</p>
               <span><p>{{flight.vehicleModelName}}</p></span>
@@ -58,8 +59,10 @@
             </div>
           </div>
           <div class="flight-card-footer">
-            <p class="flight-details-see-more" (click)="$event.stopImmediatePropagation();">
-              more</p>
+            <p class="flight-details-see-more"
+               (click)="onCollapse($event, i, j)">
+              {{(collapsed[i][j] ? 'less' : 'more')}}
+            </p>
             <a [routerLink]="['/booking']" [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
           </div>
         </article>
