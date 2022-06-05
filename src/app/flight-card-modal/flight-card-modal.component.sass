@@ -1,0 +1,127 @@
+.flight-card
+  display: flex
+  flex-direction: column
+  border-radius: 8px
+
+.flight-card-header
+  display: flex
+  justify-content: space-evenly
+  flex-wrap: wrap
+  align-items: baseline
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
+  font-size: 14px
+  letter-spacing: 0.05rem
+  padding: 4px 8px
+  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1)
+  color: #7a7a7a
+
+  a
+    text-decoration: none
+    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
+    color: inherit
+
+.flight-card-body
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.flight-route
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  font-size: 16px
+  font-weight: 700
+
+  p
+    letter-spacing: 0.02rem
+
+.flight-direction-icon
+  transform: rotate(180deg)
+  width: 16px
+  height: 16px
+
+.details
+  font-size: 16px
+  padding: 12px
+  font-weight: 700
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
+  color: #797979
+
+.flight-card-header
+  justify-content: space-between
+  text-align: center
+  padding: 18px
+  flex-wrap: wrap
+
+  span, a
+    width: 49%
+
+.section-privileges
+  font-weight: 650
+  color: #313131
+
+  li
+    font-weight: 500
+    color: #313131
+
+@media (min-width: 576px)
+  .flight-card-header
+    justify-content: flex-start
+    padding: 18px
+    flex-wrap: nowrap
+
+@media (min-width: 768px)
+
+@media screen and (min-width: 992px)
+  .flight-card
+    font-size: 20px
+
+  .flight-card-header
+    flex-direction: row
+    font-weight: 450
+    justify-content: space-evenly
+    align-items: baseline
+    letter-spacing: 0.05rem
+    font-size: 14px
+    padding: 0
+
+    span, a
+      width: auto
+      margin-right: 4px
+
+  .flight-card-body
+    flex-direction: column
+    justify-content: center
+
+  .terminal
+    padding: 16px
+
+  .flight-route
+    flex-direction: row
+    justify-content: space-around
+    align-items: baseline
+    border-bottom: 2px solid #aeaeae
+    font-size: 16px
+
+    span:nth-child(1)
+      border-bottom: 0
+
+  .details
+    display: flex
+    flex-flow: column
+    font-size: 18px
+    padding: 12px 48px 0
+    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
+    color: #797979
+    width: 100%
+
+    span
+      font-weight: 500
+
+  .flight-route p
+    letter-spacing: 0.05rem
+
+@media (min-width: 1200px)
+
+@media (min-width: 1400px)

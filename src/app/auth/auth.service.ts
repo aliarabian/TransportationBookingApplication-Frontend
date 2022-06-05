@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {LoginRequest} from "./login-request";
 import {LoginResponse} from "./login-response";
 import {ApiResponse} from "../api-response";
-import {tap} from "rxjs/operators";
+import {retry, tap} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {BehaviorSubject} from "rxjs";
 
@@ -21,7 +21,8 @@ export class AuthService {
   login(loginRequest: LoginRequest) {
     this.http.post<ApiResponse<LoginResponse>>("/auth/login", loginRequest)
       .pipe(
-        tap(response => console.log(response))
+        tap(response => console.log(response)),
+        retry(1)
       )
       .subscribe(response => {
         localStorage.setItem("loggedIn", "true");

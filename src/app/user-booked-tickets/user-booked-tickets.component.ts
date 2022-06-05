@@ -6,7 +6,7 @@ import {FlightTicket} from "../booking/flight-ticket";
 @Component({
   selector: 'app-user-booked-tickets',
   templateUrl: './user-booked-tickets.component.html',
-  styleUrls: ['./user-booked-tickets.component.css']
+  styleUrls: ['./user-booked-tickets.component.sass']
 })
 export class UserBookedTicketsComponent implements OnInit {
   tickets?: Observable<FlightTicket[]>

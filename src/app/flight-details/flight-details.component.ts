@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'app-flight-details',
   templateUrl: './flight-details.component.html',
-  styleUrls: ['./flight-details.component.css']
+  styleUrls: ['./flight-details.component.sass']
 })
 export class FlightDetailsComponent implements OnInit {
   @Input() flightDetails: Flight | undefined;

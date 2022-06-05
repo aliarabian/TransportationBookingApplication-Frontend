@@ -4,7 +4,7 @@ import {TerminalsService} from "./terminals.service";
 @Component({
   selector: 'app-cities-list',
   templateUrl: './terminals-list.component.html',
-  styleUrls: ['./terminals-list.component.css']
+  styleUrls: ['./terminals-list.component.sass']
 })
 export class TerminalsListComponent implements OnInit {
   terms: string[] = [];

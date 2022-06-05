@@ -7,7 +7,7 @@ import {Subscription} from "rxjs";
 @Component({
   selector: 'app-flight-search-form',
   templateUrl: './flight-search-form.component.html',
-  styleUrls: ['./flight-search-form.component.css']
+  styleUrls: ['./flight-search-form.component.sass']
 })
 export class FlightSearchFormComponent implements OnInit, OnDestroy {
   searchFlightForm: FormGroup = this.fb.group({

@@ -12,7 +12,7 @@ export interface DialogData {
 @Component({
   selector: 'app-flight-card-modal',
   templateUrl: './flight-card-modal.component.html',
-  styleUrls: ['./flight-card-modal.component.css']
+  styleUrls: ['./flight-card-modal.component.sass']
 })
 export class FlightCardModalComponent implements OnInit {
 

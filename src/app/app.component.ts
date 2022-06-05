@@ -5,7 +5,7 @@ import {AuthService} from "./auth/auth.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.sass']
 })
 export class AppComponent implements OnInit {
   title = 'TransportationBookingApplication-Frontend';
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.head("/flights");
+    // this.http.head("/flights");
   }
 
 }
