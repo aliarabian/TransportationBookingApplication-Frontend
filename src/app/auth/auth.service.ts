@@ -11,11 +11,11 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 export class AuthService {
-  logginStatus: boolean = false
+  loginStatus: boolean = false
 
   constructor(private http: HttpClient,
               private router: Router) {
-    this.logginStatus = localStorage.getItem("loggedIn") != null;
+    this.loginStatus = localStorage.getItem("loggedIn") != null;
   }
 
   login(loginRequest: LoginRequest) {
@@ -26,7 +26,7 @@ export class AuthService {
       )
       .subscribe(response => {
         localStorage.setItem("loggedIn", "true");
-        this.logginStatus = true;
+        this.loginStatus = true;
         this.router.navigate(["home"]);
       });
   }
@@ -38,12 +38,12 @@ export class AuthService {
 
   clear() {
     localStorage.clear();
-    this.logginStatus = false;
+    this.loginStatus = false;
   }
 
   logout() {
     this.clear();
     this.router.navigate(["login"]);
-    this.logginStatus = false;
+    this.loginStatus = false;
   }
 }

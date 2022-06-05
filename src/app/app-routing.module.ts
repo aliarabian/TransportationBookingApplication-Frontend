@@ -10,12 +10,14 @@ import {BookingResultComponent} from "./booking-result/booking-result.component"
 import {BookingFormComponent} from "./booking-form/booking-form.component";
 import {UserAccountComponent} from "./user-account/user-account.component";
 import {UserBookedTicketsComponent} from "./user-booked-tickets/user-booked-tickets.component";
-import {UserTicketsResolver} from "./user-booked-tickets/user-tickets.resolver";
 
 
 const routes: Routes = [
   {
     path: 'home', canActivate: [AuthGuard], resolve: {flightsData: FlightsResolver},
+    data: {
+      title: "Home"
+    },
     component: HomePageComponent
   },
   {
@@ -24,11 +26,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: BookingFormComponent
+        component: BookingFormComponent,
+        data: {
+          title: "Booking Flight Tickets"
+        }
       },
       {
         path: 'tickets',
-        component: BookingResultComponent
+        component: BookingResultComponent,
+        data: {
+          title: "Tickets"
+        }
       }
     ]
   },
@@ -39,12 +47,20 @@ const routes: Routes = [
     children: [
       {
         path: "tickets",
-        // resolve: {tickets: UserTicketsResolver},
-        component: UserBookedTicketsComponent
+        component: UserBookedTicketsComponent,
+        data: {
+          title: "Booked Tickets"
+        }
       }
     ]
   },
-  {path: 'registration', component: UserRegistrationComponent},
+  {
+    path: 'registration',
+    component: UserRegistrationComponent,
+    data: {
+      title: "User Registration"
+    }
+  },
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent}
 ]

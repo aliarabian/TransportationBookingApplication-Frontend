@@ -21,8 +21,7 @@ import {animate, AUTO_STYLE, state, style, transition, trigger} from "@angular/a
       transition('false => true', animate(1000 + 'ms ease-in-out')),
       transition('true => false', animate(1000 + 'ms ease-in-out'))
     ])
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  ]
 })
 export class FlightsListComponent implements OnInit, OnChanges {
 

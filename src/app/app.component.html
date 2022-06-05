@@ -1,5 +1,8 @@
 <header>
-  <a routerLink="/home">Jalal Airlines</a>
-  <app-user-acount-menu *ngIf="authService.logginStatus"></app-user-acount-menu>
+  <div>
+    <span class="logo"><mat-icon>flight</mat-icon></span>
+    <span>Jalal Airlines</span>
+  </div>
+  <app-user-acount-menu *ngIf="authService.loginStatus"></app-user-acount-menu>
 </header>
 <router-outlet></router-outlet>
