@@ -5,29 +5,62 @@
       <ng-container *ngFor="let passenger of passengers(); let i = index">
         <ng-container [formGroup]="passenger">
           <div class="form-group">
+            <label class="form-group-label">Passenger Number #{{i+1}}'s Information</label>
             <div class="passenger-info-input">
-              <label for="firstName">First Name</label>
-              <input id="firstName" formControlName="firstName" placeholder="Ali"/>
+              <label for="firstName"
+                     [ngClass]="{'error-label':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"
+              >First Name</label>
+              <input id="firstName" formControlName="firstName" placeholder="{{passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)
+? 'Field Required': 'Ali'}}"
+                     [ngClass]="{'error':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"/>
             </div>
             <div class="passenger-info-input">
-              <label for="lastName">Last Name</label>
-              <input id="lastName" formControlName="lastName" placeholder="Arabian"/>
+              <label for="lastName"
+                     [ngClass]="{'error-label':passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)}"
+              >Last Name</label>
+              <input id="lastName" formControlName="lastName"
+                     placeholder="{{passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)
+? 'Field Required': 'Arabian'}}"
+                     [ngClass]="{'error':passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)}"
+              />
             </div>
             <div class="passenger-info-input">
-              <label for="nationalId">National Id</label>
-              <input id="nationalId" formControlName="nationalId" placeholder="12345678914"/>
+              <label for="nationalId"
+                     [ngClass]="{'error-label':passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)}"
+              >National Id</label>
+              <input id="nationalId" formControlName="nationalId"
+                     placeholder="{{passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)
+? 'Field Required': '11 digits, e.g. 12345678901'}}"
+                     [ngClass]="{'error':passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)}"
+              />
             </div>
             <div class="passenger-info-input">
-              <label for="birthdate">Birthdate</label>
-              <input id="birthdate" type="date" min="1910-01-01" max="2022-01-01" formControlName="birthDate"/>
+              <label for="birthdate"
+                     [ngClass]="{'error-label':passenger.controls.birthDate.invalid && (passenger.controls.birthDate.dirty || passenger.controls.birthDate.touched)}"
+              >Birthdate</label>
+              <input id="birthdate" type="date" min="1910-01-01" max="2022-01-01" formControlName="birthDate"
+                     [ngClass]="{'error':passenger.controls.birthDate.invalid && (passenger.controls.birthDate.dirty || passenger.controls.birthDate.touched)}"
+              />
             </div>
             <div class="passenger-info-input">
-              <label for="passportNO">Passport NO</label>
-              <input id="passportNO" formControlName="passportNO" placeholder="23345347542"/>
+              <label for="passportNO"
+                     [ngClass]="{'error-label':passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)}"
+              >Passport NO</label>
+              <input id="passportNO" formControlName="passportNO"
+
+                     placeholder="{{passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)
+? 'Field Required: 10 digits, e.g. 12345678901': '10 digits, e.g. 12345678901'}}"
+                     [ngClass]="{'error':passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)}"
+              />
             </div>
             <div class="passenger-info-input">
-              <label for="issuedIn">Issuer Country</label>
-              <select id="issuedIn" formControlName="issuedIn" required>
+              <label for="issuedIn"
+                     [ngClass]="{'error-label':passenger.controls.issuedIn.invalid && (passenger.controls.issuedIn.dirty || passenger.controls.issuedIn.touched)}"
+              >Issuer Country</label>
+              <select id="issuedIn" formControlName="issuedIn"
+
+                      [ngClass]="{'error':passenger.controls.issuedIn.invalid && (passenger.controls.issuedIn.dirty || passenger.controls.issuedIn.touched)}"
+                      required>
                 <option value="" disabled selected>Select Passport Issuer Country</option>
 
                 <option *ngFor="let country of countries |async" value="{{country.code}}">
@@ -36,9 +69,12 @@
               </select>
             </div>
             <div class="passenger-info-input">
-              <label for="passportExpirationDate">Passport Expiration:</label>
+              <label for="passportExpirationDate"
+                     [ngClass]="{'error-label':passenger.controls.expiresAt.invalid && (passenger.controls.expiresAt.dirty || passenger.controls.expiresAt.touched)}"
+              >Passport Expiration:</label>
               <input id="passportExpirationDate" type="date"
                      min="{{ validPassportExpiryDate | date:'yyyy-MM-dd'}}"
+                     [ngClass]="{'error':passenger.controls.expiresAt.invalid && (passenger.controls.expiresAt.dirty || passenger.controls.expiresAt.touched)}"
                      formControlName="expiresAt"/>
             </div>
             <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">
@@ -47,13 +83,15 @@
           </div>
         </ng-container>
       </ng-container>
-      <button [disabled]="!passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button"
-              (click)="addPassengerForm()">+
-      </button>
+      <div class="form-actions">
+        <button [disabled]="!passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button"
+                (click)="addPassengerForm()">+
+        </button>
+        <button id="booking-btn" type="submit" (click)="onSubmit()"
+                [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
+          Tickets
+        </button>
+      </div>
     </article>
-    <button id="booking-btn" type="submit" (click)="onSubmit()"
-            [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
-      Tickets
-    </button>
   </div>
 </section>

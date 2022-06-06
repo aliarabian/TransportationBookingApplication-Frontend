@@ -17,7 +17,7 @@ h3
   display: flex
   flex-direction: column
   padding: 24px 24px 0
-  border: 2px solid rgba(102, 102, 102, 0.38)
+  border: 1px solid rgba(102, 102, 102, 0.38)
   border-radius: 8px
 
   button
@@ -27,10 +27,17 @@ h3
     width: 100%
 
 input, select
-  border: 1px solid #797979
-  border-radius: 8px
-  padding: 16px
+  border: none
+  border-bottom: 1px solid #797979
+  background: inherit
+  border-radius: 0
+  padding: 18px
   width: 100%
+
+  &:focus, &:active
+    border: none
+    border-bottom: 1px solid #797979
+    outline: none
 
 .form-group input, select
   font-size: 16px
@@ -41,16 +48,31 @@ input, select
   margin-bottom: 24px
   font-family: Cambria, Helvetica, Arial, sans-serif
   font-size: 14px
+  border-radius: 8px
 
   label
     position: absolute
-    top: -0.5rem
-    background: #ffffff
+    top: -14px
     left: 0.5rem
-    font-size: 14px
+    font-size: 12px
+    border-radius: 8px
+    padding: 2px
     letter-spacing: 0.07rem
     font-family: Verdana, sans-serif
     color: #797979
+.form-group-label
+  position: absolute
+  top: -14px
+  background: whitesmoke
+  left: 12px
+  font-size: 18px
+  border-radius: 8px
+  font-weight: 600
+  padding: 1px
+  letter-spacing: 0.07rem
+  font-family: Verdana, sans-serif
+  //color: #797979
+  color: #424242
 
 .form-group button
   position: absolute
@@ -69,14 +91,13 @@ input, select
   font-size: 16px
   font-weight: 700
   border: none
-  border-radius: 4px
-  padding: 4px 8px
-  max-width: 64px
+  border-radius: 8px
+  min-width: 15%
+  min-height: 100%
   width: 64px
-  height: 36px
-  margin-top: 24px
   background: rgba(121, 121, 121, 0.14)
   color: #5c8355
+  padding: 18px
 
   &:disabled
     color: #ffffff
@@ -104,6 +125,20 @@ input, select
   background: rgba(11, 179, 114, 0.89)
   margin-top: 20px
 
+.error
+  //border-bottom: 1px solid #9f3d3d
+  color: #a12b2b
+  box-shadow: rgb(147, 4, 4) 0px 1px 2px 0px, rgb(147, 4, 4) 0px 0px 0px 0px
+  border-radius: 8px
+  border-top: 0
+  &::placeholder
+    color: #9f3d3d
+
+
+.error-label
+  color: #9f3d3d !important
+  font-size: 14px !important
+  font-weight: 700
 @media screen and (min-width: 992px)
   #booking-container
     flex-direction: row
@@ -127,13 +162,19 @@ input, select
 
     &:nth-child(1)
       margin-top: 0
-
+  .form-actions
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-top: 20px
   #booking-btn
-    font-weight: 950
+    font-weight: 700
+    width: 80%
     font-size: 24px
-    padding: 16px
+    padding: 4px
     line-height: 2
-    margin-top: 48px
+    margin-top: 0
 
     &:disabled
       font-weight: 700
+
