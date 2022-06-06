@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ApiResponse} from "../api-response";
-import {FlightTicket} from "../booking/flight-ticket";
+import {FlightTicket} from "../booking/booking-result/flight-ticket";
 import {map} from "rxjs/operators";
 
 @Injectable({

@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BookingRequest} from "./booking-request";
-import {Observable, ReplaySubject} from "rxjs";
+import {BookingRequest} from "./booking-form/booking-request";
+import {Observable} from "rxjs";
 import {ApiResponse} from "../api-response";
-import {FlightTicket} from "./flight-ticket";
-import {map} from "rxjs/operators";
+import {FlightTicket} from "./booking-result/flight-ticket";
 
 @Injectable({
   providedIn: 'root'

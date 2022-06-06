@@ -82,7 +82,7 @@
                  (click)="onCollapse($event, i, j)">
                 {{(collapsed[i][j] ? 'less' : 'more')}}
               </p>
-              <a [routerLink]="['/booking']" [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
+              <a [routerLink]="['/booking']" (click)="$event.stopPropagation()" [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
             </div>
           </article>
         </div>

@@ -1,17 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Flight} from "../flights-list/flight";
-import {SeatingSection} from "../flights-list/seating-section";
+import {Flight} from "../../home/flights-list/flight";
+import {SeatingSection} from "../../home/flights-list/seating-section";
 import {Observable, Subscription, throwError} from "rxjs";
-import {Country} from "../booking/country";
-import {FlightsSearchService} from "../flights-list/flights-search.service";
+import {Country} from "./country";
+import {FlightsSearchService} from "../../home/flights-list/flights-search.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CountriesService} from "../booking/countries.service";
-import {BookingService} from "../booking/booking.service";
-import {BookingDetails} from "../booking/booking-details";
-import {PassengerDetails} from "../booking/passenger-details";
-import {BookingRequest} from "../booking/booking-request";
-import {FlightTicket} from "../booking/flight-ticket";
+import {CountriesService} from "./countries.service";
+import {BookingService} from "../booking.service";
+import {BookingDetails} from "./booking-details";
+import {PassengerDetails} from "./passenger-details";
+import {BookingRequest} from "./booking-request";
+import {FlightTicket} from "../booking-result/flight-ticket";
 import {catchError} from "rxjs/operators";
 
 @Component({

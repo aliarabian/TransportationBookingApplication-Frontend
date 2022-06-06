@@ -3,7 +3,7 @@ import {AuthService} from "./auth/auth.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {filter, map} from "rxjs/operators";
-import {FlightsSearchService} from "./flights-list/flights-search.service";
+import {FlightsSearchService} from "./home/flights-list/flights-search.service";
 
 @Component({
   selector: 'app-root',
@@ -13,8 +13,9 @@ import {FlightsSearchService} from "./flights-list/flights-search.service";
 export class AppComponent implements OnInit {
   title = 'TransportationBookingApplication-Frontend';
 
-  constructor(private router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute
-    , private titleService: Title, private flightService: FlightsSearchService) {
+  constructor(private router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute,
+              private titleService: Title,
+              private flightService: FlightsSearchService) {
   }
 
   ngOnInit() {

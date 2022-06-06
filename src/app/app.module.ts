@@ -6,21 +6,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthModule} from "./auth/auth.module";
 import {RouterModule} from "@angular/router";
-import {HomePageComponent} from './home-page/home-page.component';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http";
-import {FlightsListComponent} from './flights-list/flights-list.component';
+import {HttpClientModule} from "@angular/common/http";
 import {UserRegistrationComponent} from './user-registration/user-registration.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {FlightSearchFormComponent} from './flight-search-form/flight-search-form.component';
-import {TerminalsListComponent} from './terminals-list/terminals-list.component';
-import {SelectComponent} from './select/select.component';
-import {ClickOutsideDirective} from './click-outside.directive';
-import {BookingComponent} from './booking/booking.component';
-import {FlightDetailsComponent} from './flight-details/flight-details.component';
-import {BookingResultComponent} from './booking-result/booking-result.component';
-import {BookingFormComponent} from './booking-form/booking-form.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FlightCardModalComponent} from './flight-card-modal/flight-card-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {UserAccountMenuComponent} from './user-acount-menu/user-account-menu.component';
@@ -32,27 +21,18 @@ import {UserAccountComponent} from './user-account/user-account.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-import {MatFormField, MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
+import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {BookingModule} from "./booking/booking.module";
+import {HomeModule} from "./home/home.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    HomePageComponent,
-    FlightsListComponent,
-    UserRegistrationComponent,
-    FlightSearchFormComponent,
-    TerminalsListComponent,
-    SelectComponent,
-    ClickOutsideDirective,
-    BookingComponent,
-    FlightDetailsComponent,
-    BookingResultComponent,
-    BookingFormComponent,
-    FlightCardModalComponent,
     UserAccountMenuComponent,
     UserBookedTicketsComponent,
+    UserRegistrationComponent,
     UserAccountComponent,
   ],
   imports: [
@@ -60,6 +40,7 @@ import {MatInputModule} from "@angular/material/input";
     HttpClientModule,
     RouterModule,
     AuthModule,
+    HomeModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -75,6 +56,7 @@ import {MatInputModule} from "@angular/material/input";
     MatFormFieldModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,15 +1,15 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Flight} from "../flights-list/flight";
-import {FlightsSearchService} from "../flights-list/flights-search.service";
+import {Flight} from "./flights-list/flight";
+import {FlightsSearchService} from "./flights-list/flights-search.service";
 import {ActivatedRoute} from "@angular/router";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.sass']
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.sass']
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
   fetchedFlights: Flight[] | undefined;
   subscriptions?: Subscription;
 

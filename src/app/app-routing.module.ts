@@ -1,45 +1,29 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import {HomePageComponent} from "./home-page/home-page.component";
 import {AuthGuard} from "./auth/auth.guard";
 import {UserRegistrationComponent} from "./user-registration/user-registration.component";
-import {FlightsResolver} from "./flights-list/flights.resolver";
-import {BookingComponent} from "./booking/booking.component";
-import {BookingResultComponent} from "./booking-result/booking-result.component";
-import {BookingFormComponent} from "./booking-form/booking-form.component";
 import {UserAccountComponent} from "./user-account/user-account.component";
 import {UserBookedTicketsComponent} from "./user-booked-tickets/user-booked-tickets.component";
+import {FlightsResolver} from "./home/flights-list/flights.resolver";
+import {HomeComponent} from "./home/home.component";
 
 
 const routes: Routes = [
   {
-    path: 'home', canActivate: [AuthGuard],
+    path: 'booking',
+    canActivate: [AuthGuard],
+    loadChildren: () => import("./booking/booking.module").then(m => m.BookingModule)
+  },
+
+  {
+    path: 'home',
+    canActivate: [AuthGuard],
     resolve: {flightsData: FlightsResolver},
     data: {
       title: "Home"
     },
-    component: HomePageComponent
-  },
-  {
-    path: 'booking',
-    component: BookingComponent,
-    children: [
-      {
-        path: '',
-        component: BookingFormComponent,
-        data: {
-          title: "Booking Flight Tickets"
-        }
-      },
-      {
-        path: 'tickets',
-        component: BookingResultComponent,
-        data: {
-          title: "Tickets"
-        }
-      }
-    ]
+    component: HomeComponent
   },
   {
     path: 'user/account', component: UserAccountComponent,

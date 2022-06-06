@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FlightTicket} from "../booking/flight-ticket";
+import {FlightTicket} from "./flight-ticket";
 import {Router} from "@angular/router";
 
 @Component({
