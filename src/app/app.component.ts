@@ -3,6 +3,7 @@ import {AuthService} from "./auth/auth.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {filter, map} from "rxjs/operators";
+import {FlightsSearchService} from "./flights-list/flights-search.service";
 
 @Component({
   selector: 'app-root',
@@ -13,21 +14,10 @@ export class AppComponent implements OnInit {
   title = 'TransportationBookingApplication-Frontend';
 
   constructor(private router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute
-    , private titleService: Title) {
+    , private titleService: Title, private flightService: FlightsSearchService) {
   }
 
-
   ngOnInit() {
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd),
-    // ).subscribe(() => {
-    //   const rt = this.getChild(this.activatedRoute);
-    //   rt.data.subscribe((data: any) => {
-    //     console.log(data);
-    //     this.titleService.setTitle(data.title)
-    //   });
-    // });
-
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -50,12 +40,13 @@ export class AppComponent implements OnInit {
       });
   }
 
-  getChild(activatedRoute: ActivatedRoute): any {
-    if (activatedRoute.firstChild) {
-      return this.getChild(activatedRoute.firstChild);
-    } else {
-      return activatedRoute;
+  goHome() {
+    if (this.router.url !== '/home') {
+      console.log(this.router.url)
+      this.flightService.reload.next(false)
+      this.router.navigate(['home'])
+      return;
     }
-
+    this.flightService.reload.next(true);
   }
 }

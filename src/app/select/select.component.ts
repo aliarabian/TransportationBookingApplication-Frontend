@@ -67,7 +67,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   onCitySelection(selectedCity: string) {
     this.onClickToggleCitiesList();
     this.writeValue(selectedCity);
-    // this.onChange(selectedCity);
+    this.onChange(selectedCity);
   }
 
   clickedOutside() {

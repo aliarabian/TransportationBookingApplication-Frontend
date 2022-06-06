@@ -14,7 +14,8 @@ import {UserBookedTicketsComponent} from "./user-booked-tickets/user-booked-tick
 
 const routes: Routes = [
   {
-    path: 'home', canActivate: [AuthGuard], resolve: {flightsData: FlightsResolver},
+    path: 'home', canActivate: [AuthGuard],
+    resolve: {flightsData: FlightsResolver},
     data: {
       title: "Home"
     },
