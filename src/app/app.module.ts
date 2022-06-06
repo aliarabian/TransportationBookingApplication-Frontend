@@ -23,12 +23,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlightCardModalComponent} from './flight-card-modal/flight-card-modal.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatExpansionModule} from "@angular/material/expansion";
-import { UserAccountMenuComponent } from './user-acount-menu/user-account-menu.component';
+import {UserAccountMenuComponent} from './user-acount-menu/user-account-menu.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import { UserBookedTicketsComponent } from './user-booked-tickets/user-booked-tickets.component';
-import { UserAccountComponent } from './user-account/user-account.component';
+import {UserBookedTicketsComponent} from './user-booked-tickets/user-booked-tickets.component';
+import {UserAccountComponent} from './user-account/user-account.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatFormField, MatFormFieldControl, MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -62,7 +67,12 @@ import { UserAccountComponent } from './user-account/user-account.component';
     MatExpansionModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

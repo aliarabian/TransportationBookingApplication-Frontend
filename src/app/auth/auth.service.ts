@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {LoginRequest} from "./login-request";
 import {LoginResponse} from "./login-response";
 import {ApiResponse} from "../api-response";
-import {retry, tap} from "rxjs/operators";
 import {Router} from "@angular/router";
+import {catchError, retry, tap} from "rxjs/operators";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -12,6 +12,7 @@ import {BehaviorSubject} from "rxjs";
 })
 export class AuthService {
   loginStatus: boolean = false
+  authError: BehaviorSubject<HttpErrorResponse> = new BehaviorSubject<HttpErrorResponse>(new HttpErrorResponse({}));
 
   constructor(private http: HttpClient,
               private router: Router) {
@@ -22,7 +23,13 @@ export class AuthService {
     this.http.post<ApiResponse<LoginResponse>>("/auth/login", loginRequest)
       .pipe(
         tap(response => console.log(response)),
-        retry(1)
+        retry(1),
+        catchError((error: any) => {
+          let httpError = (error as HttpErrorResponse);
+          console.log(httpError)
+          this.authError.next(httpError);
+          return httpError.error;
+        })
       )
       .subscribe(response => {
         localStorage.setItem("loggedIn", "true");

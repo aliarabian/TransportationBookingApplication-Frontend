@@ -8,6 +8,7 @@ import {HTTP_INTERCEPTORS, HttpClientXsrfModule, HttpXsrfTokenExtractor} from "@
 import {UnauthorizedInterceptor} from "./interceptors/unauthorized.interceptor";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {HttpXsrfInterceptor} from "./interceptors/http-xsrf.interceptor";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import {HttpXsrfInterceptor} from "./interceptors/http-xsrf.interceptor";
     {provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true}
 
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientXsrfModule,
-    AuthRoutingModule,
-  ]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        HttpClientXsrfModule,
+        AuthRoutingModule,
+        MatFormFieldModule,
+    ]
 })
 export class AuthModule {
 }

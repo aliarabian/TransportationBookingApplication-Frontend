@@ -5,11 +5,34 @@
 <section id="login-form-container">
   <h2>Login</h2>
   <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <label for="username">username:</label>
-    <input id="username" type="text" name="username" placeholder="example@mail.com" formControlName="username" required>
-    <label for="password">password:</label>
-    <input id="password" type="password" name="password" placeholder="" formControlName="password" required>
+    <div class="alert" *ngIf="error">
+      <span>{{errorMessage}}</span>
+    </div>
+    <div class="form-input">
+      <label for="username">username</label>
+      <input id="username" type="text" name="username" placeholder="example@mail.com" formControlName="username"
+             required>
+    </div>
+    <div class="alert"
+         *ngIf="loginForm.controls.username.hasError('required') && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
+      <span>Username is required</span>
+    </div>
+    <div class="alert"
+         *ngIf="loginForm.controls.username.hasError('email') && (loginForm.controls.username.touched)">
+      <span>Invalid Email</span>
+    </div>
+    <div class="form-input">
+      <label for="password">password</label>
+      <input id="password" type="password" name="password" placeholder="" formControlName="password" required>
+    </div>
+    <div class="alert"
+         *ngIf="loginForm.controls.password.hasError('required') && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+      <span>Password is required</span>
+    </div>
     <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
-  <a routerLink="/registration">Register</a>
+  <div id="login-section-footer">
+    <span>Don't have an account? </span>
+    <a routerLink="/registration"> Register.</a>
+  </div>
 </section>
