@@ -1,17 +1,17 @@
 <div id="tickets-container">
   <article class="flight-card" *ngFor="let ticket of tickets | async">
     <div class="flight-card-header">
-      <span><p>TicketNO #{{ticket.ticketId}}</p></span>
-      <span><p>{{ticket.sectionTitle}}</p></span>
-      <span><p>Seat #<strong>{{ticket.seatNO}}</strong></p></span>
-      <span><p>{{ticket.departureDateTime | date:'full'}} </p></span>
+      <span><mat-icon>confirmation_number</mat-icon><p>TicketNO #{{ticket.ticketId}}</p></span>
+      <span><mat-icon>flight_class</mat-icon><p>{{ticket.sectionTitle}}</p></span>
+      <span><mat-icon>airline_seat_recline_extra</mat-icon><p>Seat #<strong>{{ticket.seatNO}}</strong></p></span>
+      <span><mat-icon>event</mat-icon><p>{{ticket.departureDateTime | date:'full'}} </p></span>
     </div>
     <div class="flight-card-body">
-      <div class="personal-details">
-        <span><p>{{ticket.passengerName}}</p></span>
-        <span><p>{{ticket.age}} years old</p></span>
-        <span><p>PassportNO: {{ticket.passportNO}}</p></span>
-      </div>
+        <div class="personal-details">
+          <span><p>{{ticket.passengerName}}</p></span>
+          <span><p>{{ticket.age + 1}} years old</p></span>
+          <span><p>PassportNO: {{ticket.passportNO}}</p></span>
+        </div>
       <div class="flight-route">
             <span class="terminal">
               <p>{{ticket.offset}}</p>

@@ -23,6 +23,7 @@ export class TerminalsListComponent implements OnInit {
 
   onClick(terminal: string) {
     console.log(terminal)
+
     this.citySelection.emit(terminal);
   }
 }

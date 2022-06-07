@@ -2,13 +2,18 @@
   width: 100%
   display: flex
   flex-direction: column
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
   justify-content: center
   align-items: center
   padding: 64px
 
 .personal-details
   display: flex
-  justify-content: space-evenly
+  justify-content: space-between
+  flex-direction: column
+  align-items: center
+  color: #9b9b9b
+  padding: 16px
   width: 100%
   border-bottom: 1px solid rgba(102, 102, 102, 0.38)
 
@@ -23,16 +28,14 @@
   justify-content: space-evenly
   flex-wrap: wrap
   align-items: baseline
-  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
   font-size: 14px
   letter-spacing: 0.05rem
   padding: 4px 8px
-  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1)
   color: #7a7a7a
+  border-bottom: 1px solid rgba(102, 102, 102, 0.38)
 
   a
     text-decoration: none
-    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif
     color: inherit
 
 .flight-card-body
@@ -55,6 +58,8 @@
   transform: rotate(180deg)
   width: 16px
   height: 16px
+.terminal
+  margin-top: 8px
 
 .details
   font-size: 16px
@@ -85,20 +90,22 @@
     display: flex
     flex-direction: column
     justify-content: center
-
   .flight-card
     font-size: 20px
-
+  .personal-details
+      flex-direction: row
+  mat-icon
+    display: inline
   .flight-card-header
     flex-direction: row
     font-weight: 450
-    justify-content: space-evenly
+    flex-wrap: wrap
+    justify-content: space-around
     align-items: baseline
     letter-spacing: 0.05rem
     font-size: 14px
 
     span, a
-      width: auto
       margin-right: 4px
 
   .flight-card-body
@@ -112,8 +119,8 @@
     flex-direction: row
     justify-content: space-around
     align-items: baseline
-    border-bottom: 2px solid #aeaeae
     font-size: 16px
+    padding: 20px
     width: 100%
 
     span:nth-child(1)

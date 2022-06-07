@@ -28,14 +28,21 @@ export class AuthService {
           let httpError = (error as HttpErrorResponse);
           console.log(httpError)
           this.authError.next(httpError);
+          this.loginStatus = false;
           return httpError.error;
         })
       )
-      .subscribe(response => {
-        localStorage.setItem("loggedIn", "true");
-        this.loginStatus = true;
-        this.router.navigate(["home"]);
+      .subscribe((response: any) => {
+        if (response && response.hasOwnProperty('data')) {
+          localStorage.setItem("loggedIn", "true");
+          localStorage.setItem("username", response.data.username);
+          localStorage.setItem("userId", response.data.userId);
+          this.loginStatus = true;
+          this.router.navigate(["home"]);
+        }
       });
+
+
   }
 
   isLoggedIn(): boolean {
