@@ -10,5 +10,12 @@
     required
     (click)="onClickToggleCitiesList()"
   />
-  <app-cities-list *ngIf="citiesListState" (citySelection)="onCitySelection($event)"></app-cities-list>
+
+  <ul *ngIf="citiesListState" class="cities">
+    <ng-container *ngFor="let terminal of terms |async">
+      <li (click)="onClick(terminal)">
+        {{terminal}}
+      </li>
+    </ng-container>
+  </ul>
 </div>

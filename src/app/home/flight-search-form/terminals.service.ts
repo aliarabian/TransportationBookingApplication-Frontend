@@ -8,10 +8,6 @@ import {ApiResponse} from "../../api-response";
   providedIn: 'root'
 })
 export class TerminalsService {
-  // terminals: Terminal[] = [{
-  //   city: {country: {code: "", id: 1231, name: 'Iran'}, name: "Tehran", id: 123123},
-  //   name: "Mehrabaad", id: 412342
-  // }]
 
   constructor(private http: HttpClient) {
   }

@@ -2,7 +2,9 @@ import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FlightsSearchService} from "../flights-list/flights-search.service";
 import {Flight} from "../flights-list/flight";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import {TerminalsService} from "./terminals.service";
+import {map, shareReplay} from "rxjs/operators";
 
 @Component({
   selector: 'app-flight-search-form',
@@ -15,12 +17,13 @@ export class FlightSearchFormComponent implements OnInit, OnDestroy {
     "flightDestination": ['', [Validators.required]],
     "flightDepartureTime": ['', [Validators.required]],
   });
-
+  inputDataList?: Observable<string[]>;
   @Output() searchResult = new EventEmitter<Flight[]>()
 
   subscription: Subscription | undefined;
 
-  constructor(private fb: FormBuilder, private flightsSearchService: FlightsSearchService) {
+  constructor(private fb: FormBuilder, private flightsSearchService: FlightsSearchService,
+              private terminalsService: TerminalsService) {
   }
 
   ngOnDestroy(): void {
@@ -29,6 +32,11 @@ export class FlightSearchFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
+    this.inputDataList = this.terminalsService.fetchTerminals()
+      .pipe(
+        map(response => [...new Set(response.data.map(terminal => terminal.city.name))]),
+        shareReplay(1)
+      )
   }
 
   onSubmit(): void {

@@ -4,7 +4,6 @@ import {FlightsListComponent} from "./flights-list/flights-list.component";
 import {FlightDetailsComponent} from "./flight-details/flight-details.component";
 import {FlightCardModalComponent} from "./flight-card-modal/flight-card-modal.component";
 import {ClickOutsideDirective} from "./click-outside.directive";
-import {TerminalsListComponent} from "./terminals-list/terminals-list.component";
 import {SelectComponent} from "./select/select.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
@@ -32,7 +31,6 @@ import {HomeRoutingModule} from "./home-routing.module";
     FlightDetailsComponent,
     FlightCardModalComponent,
     ClickOutsideDirective,
-    TerminalsListComponent,
     SelectComponent,
   ]
 })

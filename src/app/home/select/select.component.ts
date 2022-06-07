@@ -1,5 +1,6 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-select',
@@ -18,6 +19,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   citiesListState: boolean = false;
   touched = false;
   disabled = false;
+  @Input() terms?: Observable<string[]>;
   @Input() placeholder?: string;
   onChange = (_: any) => {
   };
@@ -64,15 +66,16 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
     this.onChange(this.terminal.value)
   }
 
-  onCitySelection(selectedCity: string) {
-    this.onClickToggleCitiesList();
-    this.writeValue(selectedCity);
-    this.onChange(selectedCity);
-  }
-
   clickedOutside() {
     if (this.citiesListState)
       this.citiesListState = false;
+  }
+
+  onClick(terminal: string) {
+    this.onClickToggleCitiesList();
+    this.writeValue(terminal);
+    this.onChange(terminal);
+
   }
 }
 
