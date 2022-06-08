@@ -11,7 +11,6 @@ import {BookingService} from "../booking.service";
 import {BookingDetails} from "./booking-details";
 import {PassengerDetails} from "./passenger-details";
 import {BookingRequest} from "./booking-request";
-import {FlightTicket} from "../booking-result/flight-ticket";
 import {catchError} from "rxjs/operators";
 
 @Component({
@@ -21,13 +20,13 @@ import {catchError} from "rxjs/operators";
 })
 export class BookingFormComponent implements OnInit, OnDestroy {
 
-
   passengersForm: FormArray = this.fb.array([])
   flight: Flight | undefined;
   selectedSection: SeatingSection | undefined;
   subscriptions: Subscription[] = [];
   countries?: Observable<Country[]>;
   validPassportExpiryDate?: Date;
+  private _bookingError: boolean = false;
 
   constructor(private fb: FormBuilder, private router: Router, private flightService: FlightsSearchService, private activateRoute: ActivatedRoute,
               private countriesService: CountriesService, private bookingService: BookingService) {
@@ -52,8 +51,12 @@ export class BookingFormComponent implements OnInit, OnDestroy {
     this.subscriptions.push(flightObservable);
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach(subs => subs.unsubscribe());
+  set bookingError(value: boolean) {
+    this._bookingError = value;
+  }
+
+  get bookingError(): boolean {
+    return this._bookingError;
   }
 
   addPassengerForm(): void {
@@ -80,6 +83,7 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    this.bookingError = false;
     let bookingRequest = this.createBookingRequest();
     this.bookingService.bookTickets(bookingRequest)
       .pipe(
@@ -92,6 +96,9 @@ export class BookingFormComponent implements OnInit, OnDestroy {
         response => {
           this.passengersForm.reset();
           this.router.navigate(['tickets'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
+        }, error => {
+          this.passengersForm.reset();
+          this._bookingError = true;
         });
   }
 
@@ -101,5 +108,9 @@ export class BookingFormComponent implements OnInit, OnDestroy {
       passenger.value.passportNO, passenger.value.expiresAt, passenger.value.issuedIn)));
     return new BookingRequest(924427, this.flight!.id,
       this.selectedSection?.id!, bookingDetails);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(subs => subs.unsubscribe());
   }
 }

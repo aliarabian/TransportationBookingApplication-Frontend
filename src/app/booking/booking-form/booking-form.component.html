@@ -5,7 +5,7 @@
       <ng-container *ngFor="let passenger of passengers(); let i = index">
         <ng-container [formGroup]="passenger">
           <div class="form-group">
-            <label class="form-group-label">Passenger Number #{{i+1}}'s Information</label>
+            <label class="form-group-label">Passenger Number #{{i + 1}}'s Information</label>
             <div class="passenger-info-input">
               <label for="firstName"
                      [ngClass]="{'error-label':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"
@@ -85,6 +85,7 @@
       </ng-container>
       <div class="form-actions">
         <button [disabled]="!passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button"
+                [class.alert]="bookingError"
                 (click)="addPassengerForm()">+
         </button>
         <button id="booking-btn" type="submit" (click)="onSubmit()"
@@ -95,3 +96,6 @@
     </article>
   </div>
 </section>
+<div *ngIf="bookingError" class="alert">
+  <p>Booking Failed</p>
+</div>
