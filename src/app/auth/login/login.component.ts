@@ -9,7 +9,7 @@ import {MatFormFieldControl} from "@angular/material/form-field";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.sass']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   registered: boolean = false;

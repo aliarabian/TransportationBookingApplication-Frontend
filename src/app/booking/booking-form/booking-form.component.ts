@@ -16,7 +16,7 @@ import {catchError} from "rxjs/operators";
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
-  styleUrls: ['./booking-form.component.sass']
+  styleUrls: ['./booking-form.component.scss']
 })
 export class BookingFormComponent implements OnInit, OnDestroy {
 

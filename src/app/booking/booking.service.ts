@@ -14,7 +14,7 @@ export class BookingService {
   }
 
   bookTickets(bookingRequest: BookingRequest): Observable<ApiResponse<FlightTicket[]>> {
-    const bookingURL = `http://localhost:8080/flights/${bookingRequest.transportationId}/bookings`;
+    const bookingURL = `/flights/${bookingRequest.transportationId}/bookings`;
     return this.http.post<ApiResponse<FlightTicket[]>>(bookingURL, bookingRequest);
   }
 

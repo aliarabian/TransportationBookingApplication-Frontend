@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-booking-result',
   templateUrl: './booking-result.component.html',
-  styleUrls: ['./booking-result.component.sass']
+  styleUrls: ['./booking-result.component.scss']
 })
 export class BookingResultComponent implements OnInit {
   tickets?: FlightTicket[];

@@ -9,7 +9,7 @@ import {map, shareReplay} from "rxjs/operators";
 @Component({
   selector: 'app-flight-search-form',
   templateUrl: './flight-search-form.component.html',
-  styleUrls: ['./flight-search-form.component.sass']
+  styleUrls: ['./flight-search-form.component.scss']
 })
 export class FlightSearchFormComponent implements OnInit, OnDestroy {
   searchFlightForm: FormGroup = this.fb.group({

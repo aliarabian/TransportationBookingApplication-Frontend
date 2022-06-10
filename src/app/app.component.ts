@@ -8,7 +8,7 @@ import {FlightsSearchService} from "./home/flights-list/flights-search.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'TransportationBookingApplication-Frontend';

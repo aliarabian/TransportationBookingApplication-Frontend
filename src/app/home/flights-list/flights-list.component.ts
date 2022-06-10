@@ -9,7 +9,7 @@ import {animate, AUTO_STYLE, state, style, transition, trigger} from "@angular/a
 @Component({
   selector: 'app-flights-list',
   templateUrl: './flights-list.component.html',
-  styleUrls: ['./flights-list.component.sass'],
+  styleUrls: ['./flights-list.component.scss'],
   animations: [
     trigger('collapsable', [
       state('false', style({

@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.sass'],
+  styleUrls: ['./select.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
