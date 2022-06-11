@@ -1,42 +1,48 @@
 <h3 *ngIf="flights!.length == 0"> No Flights Available</h3>
 <article id="filterable-flight-list" *ngIf="flights!.length > 0">
-  <div id="filter-component">
-    <div class="filter-header">
-      <p>Filter Results:</p>
+  <div id="filter-wrapper">
+    <div id="filter-component">
+      <div class="filter-header">
+        <p>Filter Results</p>
+      </div>
+      <div id="filter-component-checkboxes">
+        <div>
+          <label for="economy-class">
+            <input type="checkbox"
+                   name="economy"
+                   id="economy-class"
+                   value="economy"
+                   (change)="onFilterChange($event)"
+                   checked/>
+            Economy Class
+          </label>
+        </div>
+        <div>
+          <label for="business-class">
+            <input type="checkbox"
+                   name="business"
+                   id="business-class"
+                   value="business"
+                   (change)="onFilterChange($event)"
+                   checked
+            />
+            Business Class
+          </label>
+        </div>
+        <div>
+          <label for="first-class">
+            <input type="checkbox"
+                   name="first"
+                   id="first-class"
+                   value="first"
+                   (change)="onFilterChange($event)"
+                   checked/>
+            First Class
+          </label>
+        </div>
+      </div>
+
     </div>
-    <div id="filter-component-checkboxes">
-      <label for="economy-class">
-        <input type="checkbox"
-               name="economy"
-               id="economy-class"
-               value="economy"
-               (change)="onFilterChange($event)"
-               checked/>
-        Economy Class
-      </label>
-
-      <label for="business-class">
-        <input type="checkbox"
-               name="business"
-               id="business-class"
-               value="business"
-               (change)="onFilterChange($event)"
-               checked
-        />
-        Business Class
-      </label>
-
-      <label for="first-class">
-        <input type="checkbox"
-               name="first"
-               id="first-class"
-               value="first"
-               (change)="onFilterChange($event)"
-               checked/>
-        First Class
-      </label>
-    </div>
-
   </div>
   <div id="flights-container">
     <ng-container *ngFor="let flight of flights; let i = index">
@@ -45,26 +51,21 @@
 
              (click)="openModal(flight, section)">
           <article class="flight-card">
-            <div class="flight-card-header">
-              <p>FlightNO #{{flight.id}}</p>
-              <p>{{section.title}}</p>
-              <a href="#">Homa Airlines</a>
-            </div>
-            <div class="flight-card-body">
-              <div class="flight-route">
+            <div class="flight-card-content">
+              <div>
+                <a href="#">Homa Airlines</a>
                 <p>{{flight.offset}}</p>
-<!--                <mat-icon>flight</mat-icon>-->
-                <span class="flight-direction-icon"><svg viewBox="0 0 24 24" width="1rem"
-                                                         height="1rem"
-                                                         fill="currentColor">
-                <path
-                  d="M.601 12.008c0 .929.297 1.545 1.003 1.857.392.172.802.226 1.46.22l.362-.009 5.656-.24.26.368.326.493.42.659.87 1.41 1.573 2.626 1.678 2.855a2.204 2.204 0 0 0 1.858 1.155.9.9 0 0 0 .878-1.198l-3.018-8.582c-.008-.021-.002-.03.006-.03l6.447-.29.79 2.114.035.13c.257.593.77.862 1.287.761.61-.12 1.008-.711.889-1.322l-.005-.09.009-5.947c.05-.488-.338-1.007-.9-1.12-.546-.107-1.029.189-1.246.665l-.832 2.22-6.446-.29a.013.013 0 0 1-.011-.017l3.179-8.595a.9.9 0 0 0-.92-1.209l-.161.014c-.69.02-1.352.4-1.754 1.013L12.426 4.8l-1.21 2.02-.8 1.308-.54.86-.45.693-.238.347-.107.149-5.602-.264h-.623l-.16.007-.206.016c-1.287.127-1.889.767-1.889 2.072Z"
-                  fill-rule="evenodd"></path>
-              </svg></span>
+                <mat-icon>flight</mat-icon>
                 <p>{{flight.destination}}</p>
               </div>
-              <div class="collapsable" [@collapsable]="collapsed[i][j]">
+              <div>
+                <p>{{section.title}}</p>
                 <span><p>{{flight.departuresAt | date:'medium'}}</p></span>
+              </div>
+            </div>
+            <div>
+              <div class="collapsable" [@collapsable]="collapsed[i][j]">
+                <p><strong>FlightNO #{{flight.id}}</strong></p>
                 <p><strong>{{section.availableSeats}}</strong> seats available</p>
                 <span><p>{{flight.vehicleModelName}}</p></span>
                 <div class="section-privileges" *ngIf="section.privileges.length > 0">
@@ -82,7 +83,8 @@
                  (click)="onCollapse($event, i, j)">
                 {{(collapsed[i][j] ? 'less' : 'more')}}
               </p>
-              <a [routerLink]="['/booking']" (click)="$event.stopPropagation()" [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
+              <a [routerLink]="['/booking']" (click)="$event.stopPropagation()"
+                 [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
             </div>
           </article>
         </div>
