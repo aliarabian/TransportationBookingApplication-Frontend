@@ -1,68 +1,97 @@
+@use "src/styles/colors";
+@use "src/styles/mixins";
+
 section {
+  @include mixins.flex-cards(column);
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  border: 1px solid #858585;
-  border-radius: 5px;
-  padding: 32px;
-  max-width: 500px;
-}
-
-h2 {
-  text-align: center;
+  //$shadows :1px 1px 4px colors.$grey-100, -1px -1px 4px colors.$grey-100;
+  //@include mixins.box-shadow($shadows);
+  border-radius: 4px;
+  //max-width: 576px;
+  padding: 48px;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flex-cards(column);
   justify-content: space-around;
   align-items: center;
 }
 
-input {
-  padding: 12px;
+%input-sizing {
+
+  padding: 18px;
   margin-bottom: 12px;
-  border: 1px solid #a8a8a8;
-  border-radius: 8px;
+  border-radius: 4px;
   margin-top: 12px;
-  width: 100%;
 }
 
 .form-input {
   position: relative;
   width: 75%;
 
+  input {
+    @extend %input-sizing;
+    border: 1px solid colors.$grey-400;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+
+    &:focus {
+      outline: 1px solid colors.$grey-300;
+    }
+  }
+
   label {
     position: absolute;
     top: 0;
-    background: whitesmoke;
+    background: colors.$grey-0;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 8px;
     left: 8px;
     z-index: 110;
-    font-size: 14px;
+    font-size: 12px;
+    text-transform: capitalize;
     letter-spacing: 0.05rem;
     font-family: Verdana, sans-serif;
-    color: #797979;
+    color: colors.$grey-700;
   }
 }
 
 button {
-  background: rgba(19, 108, 74, 0.89);
-  color: #ffffff;
-  border-radius: 8px;
-  padding: 14px;
-  width: 75%;
+  @extend %input-sizing;
+  background: colors.$grey-600;
+  color: colors.$grey-0;
   font-size: 20px;
-  margin-bottom: 16px;
   outline: none;
   border: none;
-  margin-top: 16px;
+  width: 75%;
 
+  &:disabled {
+    background: colors.$grey-300;
+    color: colors.$grey-0;
+  }
 }
 
 #login-section-footer {
-  text-align: center;
+  width: 75%;
+  align-self: center;
+  margin-top: 14px;
+  color: colors.$grey-300;
+
+  a {
+    color: colors.$grey-500;
+    letter-spacing: 0.05rem;
+
+    &:hover {
+      color: colors.$grey-900;
+      font-weight: 700;
+    }
+  }
 }
 
 .alert {

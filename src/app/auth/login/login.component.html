@@ -3,7 +3,6 @@
 </div>
 
 <section id="login-form-container">
-  <h2>Login</h2>
   <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="alert" *ngIf="error">
       <span>{{errorMessage}}</span>
@@ -32,7 +31,9 @@
     <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
   </form>
   <div id="login-section-footer">
-    <span>Don't have an account? </span>
-    <a routerLink="/registration"> Register.</a>
+    <div>
+      <span>Don't have an account? </span>
+      <a routerLink="/registration"> Register</a>
+    </div>
   </div>
 </section>

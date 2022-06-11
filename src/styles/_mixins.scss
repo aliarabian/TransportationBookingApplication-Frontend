@@ -1,0 +1,21 @@
+@mixin box-sizing($sizing: border-box) {
+  box-sizing: $sizing;
+  -moz-box-sizing: $sizing;
+  -webkit-box-sizing: $sizing;
+}
+
+@mixin box-shadow($shadows...) {
+  box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+}
+
+@mixin flex-cards($dir : row) {
+  display: flex;
+  flex-direction: $dir;
+}
+
+@mixin flex-layout($justification: center, $align:baseline ) {
+  justify-content: $justification;
+  align-content: $align;
+}

@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AuthRoutingModule} from './auth-routing.module';
 import {LoginComponent} from './login/login.component';
-import {HTTP_INTERCEPTORS, HttpClientXsrfModule, HttpXsrfTokenExtractor} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientXsrfModule} from "@angular/common/http";
 import {UnauthorizedInterceptor} from "./interceptors/unauthorized.interceptor";
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {HttpXsrfInterceptor} from "./interceptors/http-xsrf.interceptor";

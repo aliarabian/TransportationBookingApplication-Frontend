@@ -4,7 +4,7 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AuthGuard} from "./auth/auth.guard";
 import {UserRegistrationComponent} from "./user-registration/user-registration.component";
 import {UserAccountComponent} from "./user-account/user-account.component";
-import {UserBookedTicketsComponent} from "./user-booked-tickets/user-booked-tickets.component";
+import {UserBookedTicketsComponent} from "./user-account/user-booked-tickets/user-booked-tickets.component";
 import {FlightsResolver} from "./home/flights-list/flights.resolver";
 import {HomeComponent} from "./home/home.component";
 
@@ -26,7 +26,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'user/account', component: UserAccountComponent,
+    path: 'user/account',
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [

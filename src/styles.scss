@@ -1,36 +1,13 @@
-@use "variables";
-@import "normalize.css";
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@use "src/styles/variables";
+@use "src/styles/mixins";
+@use "src/styles/colors";
+@import "styles/normalize.css";
 @import "~material-icons/iconfont/material-icons.css";
 
 * {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  @include mixins.box-sizing(border-box);
 }
 
-body {
-  background: whitesmoke;
+body{
+  background: colors.$grey-0;
 }
-
-button:disabled {
-  background: #797979 !important;
-  border: none !important;
-}
-
-html {
-  height: 100%;
-}
-
-
-
-.alert {
-  background-color: #eeb6b6;
-  color: variables.$alert-primary-color;
-  font-weight: 450;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  padding: 4px 4px 4px 12px;
-}
-
-

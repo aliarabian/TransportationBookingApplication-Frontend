@@ -12,28 +12,22 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {UserAccountMenuComponent} from './user-acount-menu/user-account-menu.component';
 import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
-import {UserBookedTicketsComponent} from './user-booked-tickets/user-booked-tickets.component';
-import {UserAccountComponent} from './user-account/user-account.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {BookingModule} from "./booking/booking.module";
 import {HomeModule} from "./home/home.module";
+import {UserAccountModule} from "./user-account/user-account.module";
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    UserAccountMenuComponent,
-    UserBookedTicketsComponent,
     UserRegistrationComponent,
-    UserAccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +47,8 @@ import {HomeModule} from "./home/home.module";
     MatDividerModule,
     MatProgressBarModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    UserAccountModule
   ],
   providers: [],
   exports: [],

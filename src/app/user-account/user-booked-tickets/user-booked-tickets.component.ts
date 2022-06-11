@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserTicketsService} from "./user-tickets.service";
 import {Observable} from "rxjs";
-import {FlightTicket} from "../booking/booking-result/flight-ticket";
+import {FlightTicket} from "../../booking/booking-result/flight-ticket";
 
 @Component({
   selector: 'app-user-booked-tickets',
