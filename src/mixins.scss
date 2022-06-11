@@ -1,6 +1,9 @@
-@mixin flex-cards($dir : row, $justification: center, $align:baseline) {
+@mixin flex-cards($dir : row) {
   display: flex;
   flex-direction: $dir;
+}
+
+@mixin flex-layout($justification: center, $align:baseline ) {
   justify-content: $justification;
   align-content: $align;
 }

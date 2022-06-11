@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     ).subscribe();
 
     this.authenticationService.authError.subscribe(error => {
-      this.error = error.status == 401;
+      this.error = error.status == 401 || error.status == 400;
       if (error.status == 401) {
         this.loginForm.reset();
       }

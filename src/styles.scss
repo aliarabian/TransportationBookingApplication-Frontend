@@ -1,5 +1,5 @@
-@use "normalize.css";
 @use "variables";
+@import "normalize.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~material-icons/iconfont/material-icons.css";
 
@@ -22,22 +22,11 @@ html {
   height: 100%;
 }
 
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
 
-input {
-  padding: 8px;
-  border-radius: 8px;
-  font-size: 18px;
-  letter-spacing: 0.05rem;
-}
 
 .alert {
   background-color: #eeb6b6;
-  color: #9f3d3d;
+  color: variables.$alert-primary-color;
   font-weight: 450;
   border-radius: 4px;
   margin-bottom: 8px;
