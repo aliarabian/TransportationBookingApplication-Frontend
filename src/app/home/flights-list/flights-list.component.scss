@@ -2,10 +2,9 @@
 @use "src/styles/mixins";
 
 #filterable-flight-list {
-  @include mixins.flex-cards(column);
+  @include mixins.flex(column);
   width: 80%;
   margin: 0 auto;
-  //border: 1px solid colors.$grey-900;
 }
 
 #filter-wrapper {
@@ -20,7 +19,7 @@
 }
 
 .flight-card-header {
-  @include mixins.flex-cards();
+  @include mixins.flex();
   background: colors.$grey-100;
   color: colors.$grey-600;
   align-items: baseline;
@@ -41,7 +40,7 @@
 }
 
 .flight-card-content {
-  @include mixins.flex-cards(column);
+  @include mixins.flex(column);
   justify-content: space-between;
   align-items: center;
   padding: 8px;
@@ -73,7 +72,7 @@
 }
 
 .flight-card-footer {
-  @include mixins.flex-cards();
+  @include mixins.flex();
   align-items: baseline;
   justify-content: space-around;
   border-top: 2px solid colors.$grey-100;
@@ -90,6 +89,10 @@
   button {
     background: transparent;
     text-decoration: underline;
+    &:hover{
+      font-weight: 700;
+      cursor: grabbing;
+    }
   }
 
 }
@@ -101,6 +104,7 @@
 @media screen and (min-width: 992px) {
   #filterable-flight-list {
     width: 50%;
+    min-width: 768px;
   }
   .card-wrapper {
     width: 100%;

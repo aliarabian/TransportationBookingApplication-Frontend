@@ -4,13 +4,14 @@
 article {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 #flight-search-form {
   display: flex;
   flex-direction: column;
   padding: 24px;
-  margin: 16px;
+  width: 100%;
 }
 
 .flight-search-form-section {
@@ -66,13 +67,33 @@ app-select {
   margin-top: 12px;
 }
 
+
+@media screen and (min-width: 576px) {
+  .flight-search-form-section {
+    flex-direction: row;
+
+    .form-input, button {
+      width: 20%;
+    }
+
+    app-select {
+      width: 25%;
+    }
+
+    button {
+      position: relative;
+      padding: 16px;
+      top: 5px
+    }
+  }
+}
+
 @media screen and (min-width: 992px) {
   .flight-search-form-section {
-    @include mixins.flex-cards();
+    @include mixins.flex();
     align-items: baseline;
     width: 100%;
     justify-content: flex-start;
-    padding: 14px;
 
     .form-input {
       margin-right: 16px;
@@ -82,6 +103,7 @@ app-select {
     button {
       width: 20%;
       align-self: center;
+      top: 0
     }
   }
 

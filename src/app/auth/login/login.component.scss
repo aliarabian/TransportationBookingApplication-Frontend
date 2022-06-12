@@ -2,7 +2,7 @@
 @use "src/styles/mixins";
 
 section {
-  @include mixins.flex-cards(column);
+  @include mixins.flex(column);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -16,7 +16,7 @@ section {
 }
 
 form {
-  @include mixins.flex-cards(column);
+  @include mixins.flex(column);
   justify-content: space-around;
   align-items: center;
 }

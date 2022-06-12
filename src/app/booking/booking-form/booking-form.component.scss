@@ -193,7 +193,7 @@ input, select {
   }
 
   .form-actions {
-    @include flex-cards(row);
+    @include flex(row);
     @include flex-layout(space-between, center);
     margin-top: 20px;
   }

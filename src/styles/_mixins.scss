@@ -12,7 +12,7 @@
   -moz-box-shadow: $shadows;
 }
 
-@mixin flex-cards($dir : row) {
+@mixin flex($dir : row) {
   display: flex;
   flex-direction: $dir;
 }
