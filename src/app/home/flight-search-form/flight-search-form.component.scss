@@ -1,3 +1,11 @@
+@use "src/styles/mixins";
+@use "src/styles/colors";
+
+article {
+  display: flex;
+  justify-content: center;
+}
+
 #flight-search-form {
   display: flex;
   flex-direction: column;
@@ -13,23 +21,34 @@
   justify-content: space-around;
   align-items: baseline;
 
-  input {
+  .form-input {
     width: 100%;
-    border-radius: 8px;
-    padding: 12px;
-    margin-top: 8px;
-    border: 2px #7a7a7a solid;
+
+    margin-top: 12px;
+
+    label {
+      top: -8px;
+    }
+
+    input {
+      width: 100%;
+
+      &:focus {
+        @include mixins.input-focus-outline();
+      }
+    }
   }
 
   button {
     display: flex;
     justify-content: center;
     width: 100%;
-    background: rgb(64, 128, 106);
-    color: #fff;
-    padding: 8px;
+    background: colors.$grey-600;
+    color: colors.$grey-0;
+    padding: 16px;
     margin-top: 8px;
-    border-radius: 8px;
+    align-self: baseline;
+    letter-spacing: 0.05rem;
 
     span {
       letter-spacing: 0.1rem;
@@ -44,54 +63,35 @@
 
 app-select {
   width: 100%;
-  margin-top: 8px;
-}
-
-.flight-search-form-section input[type="datetime-local"] {
-  padding: 0.1rem var(--padding-left-right-default);
-}
-
-button {
-  font-size: 18px;
-  border-radius: 8px;
-  align-self: baseline;
-  letter-spacing: 0.05rem;
-  border: 1px solid #797979;
+  margin-top: 12px;
 }
 
 @media screen and (min-width: 992px) {
   .flight-search-form-section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include mixins.flex-cards();
+    align-items: baseline;
     width: 100%;
-    justify-content: space-around;
+    justify-content: flex-start;
     padding: 14px;
 
-    input {
-      width: 20%;
-      padding: 12px;
-    }
-
-    input[type='date'] {
-      font-size: 16px;
+    .form-input {
+      margin-right: 16px;
+      width: 40%;
     }
 
     button {
-      width: 15%;
-      padding: 12px;
+      width: 20%;
       align-self: center;
-      background: rgb(64, 128, 106);
-      color: #fff;
     }
   }
 
   app-select {
-    width: 30%;
+    width: 20%;
+    margin-right: 16px;
   }
 }
 
 .flight-search-form-section button:disabled {
-  background: #797979;
-  border: none;
+  background: colors.$grey-300;
+  color: colors.$grey-0;
 }

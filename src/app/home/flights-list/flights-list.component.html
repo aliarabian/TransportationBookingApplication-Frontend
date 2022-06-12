@@ -48,20 +48,21 @@
     <ng-container *ngFor="let flight of flights; let i = index">
       <ng-container *ngFor="let section of flight.sections;let j = index">
         <div *ngIf="filters.includes(section.title.toLowerCase())" class="card-wrapper"
-
              (click)="openModal(flight, section)">
           <article class="flight-card">
+            <div class="flight-card-header">
+              <a href="#">
+                Homa Airlines</a>
+              <p>
+                <mat-icon>flight_class</mat-icon>
+                {{section.title}}
+              </p>
+            </div>
             <div class="flight-card-content">
-              <div>
-                <a href="#">Homa Airlines</a>
-                <p>{{flight.offset}}</p>
-                <mat-icon>flight</mat-icon>
-                <p>{{flight.destination}}</p>
-              </div>
-              <div>
-                <p>{{section.title}}</p>
-                <span><p>{{flight.departuresAt | date:'medium'}}</p></span>
-              </div>
+              <p>{{flight.offset}}</p>
+              <mat-icon>flight</mat-icon>
+              <p>{{flight.destination}}</p>
+              <span>{{flight.departuresAt | date:'medium'}}</span>
             </div>
             <div>
               <div class="collapsable" [@collapsable]="collapsed[i][j]">
@@ -79,10 +80,10 @@
               </div>
             </div>
             <div class="flight-card-footer">
-              <p class="flight-details-see-more"
-                 (click)="onCollapse($event, i, j)">
+              <button class="flight-details-see-more"
+                      (click)="onCollapse($event, i, j)">
                 {{(collapsed[i][j] ? 'less' : 'more')}}
-              </p>
+              </button>
               <a [routerLink]="['/booking']" (click)="$event.stopPropagation()"
                  [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
             </div>

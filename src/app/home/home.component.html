@@ -1,3 +1,5 @@
-<app-flight-search-form (searchResult)="onSearchComplete($event)">
-</app-flight-search-form>
-<app-flights-list [flights]="fetchedFlights"></app-flights-list>
+<div>
+  <app-flight-search-form (searchResult)="onSearchComplete($event)">
+  </app-flight-search-form>
+  <app-flights-list [flights]="fetchedFlights"></app-flights-list>
+</div>

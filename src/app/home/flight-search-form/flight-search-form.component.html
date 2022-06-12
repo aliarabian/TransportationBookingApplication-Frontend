@@ -5,13 +5,18 @@
         <app-select formControlName="flightOffset" [terms]="inputDataList" [placeholder]="'Offset'"></app-select>
         <app-select formControlName="flightDestination" [terms]="inputDataList"
                     [placeholder]="'Destination'"></app-select>
-        <input
-          id="flight-departure-time"
-          formControlName="flightDepartureTime"
-          type="date"
-          name="departureTime"
-          required
-        />
+        <div class="form-input">
+          <label for="flight-departure-time">
+            Departures At
+          </label>
+          <input
+            id="flight-departure-time"
+            formControlName="flightDepartureTime"
+            type="date"
+            name="departureTime"
+            required
+          />
+        </div>
         <button type="submit" [disabled]="!searchFlightForm.valid">
           <mat-icon>search</mat-icon>
           <span>Search</span>

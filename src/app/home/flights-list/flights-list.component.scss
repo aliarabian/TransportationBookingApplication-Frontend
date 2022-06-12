@@ -2,149 +2,60 @@
 @use "src/styles/mixins";
 
 #filterable-flight-list {
-  display: flex;
-  flex-direction: column;
-  margin: 0 64px;
+  @include mixins.flex-cards(column);
+  width: 80%;
+  margin: 0 auto;
+  //border: 1px solid colors.$grey-900;
 }
 
-#filter-component {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  border: 2px solid #b9b9b9;
-  background: colors.$grey-0;
-  color: rgb(42, 42, 42);
+#filter-wrapper {
+  padding: 24px;
+  border-bottom: 1px solid colors.$grey-300;
+}
+
+.card-wrapper {
+  margin-top: 24px;
+  @include mixins.box-shadow(rgba(149, 157, 165, 0.2) 0px 8px 24px);
   border-radius: 8px;
 }
 
-#filter-component-checkboxes {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 16px;
-
-  label {
-    color: #595959;
-    font-size: 14px;
-  }
-
-  input {
-    width: 24px;
-    height: 24px;
-
-    &:checked {
-      accent-color: wheat;
-    }
-  }
-}
-
-.filter-header {
-  width: 100%;
-  font-weight: 600;
-  color: #242424;
-  padding: 8px;
-  background: #e3e3e3;
-  letter-spacing: 0.05rem;
-  font-size: 16px;
-}
-
-#flights-container {
-  display: flex;
-  flex-flow: column wrap;
-  width: 100%;
-}
-
-div.card-wrapper {
-  background: colors.$grey-100;
-  border: 2px solid colors.$grey-100;
-  border-radius: 16px;
-}
-
-.flight-card {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
 .flight-card-header {
-  display: flex;
-  justify-content: space-around;
+  @include mixins.flex-cards();
+  background: colors.$grey-100;
+  color: colors.$grey-600;
   align-items: baseline;
-  letter-spacing: 0.05rem;
-  padding: 8px;
-
+  justify-content: space-evenly;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
   a {
     text-decoration: none;
+
+    &:visited {
+      color: inherit;
+    }
 
     &:hover {
-      text-decoration: underline;
+      color: colors.$grey-900;
     }
   }
 }
 
-.flight-card-content, .flight-card-footer {
-
-  background: colors.$grey-0;
-}
-
-.flight-card-body {
+.flight-card-content {
   @include mixins.flex-cards(column);
-  @include mixins.flex-layout(space-between, center);
-  font-weight: bold;
-}
-
-.flight-route {
-  p {
-    margin-bottom: 0;
-    margin-top: 8px;
-  }
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  line-height: 1;
-}
-
-.flight-card-footer {
-  display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  letter-spacing: 0.05rem;
-  padding: 8px 64px;
-  font-weight: bold;
+  align-items: center;
+  padding: 8px;
 
-  p {
-    letter-spacing: 0.05rem;
-    font-size: 20px;
-    text-decoration: underline;
+  p{
+    font-weight: 600;
   }
-
-  a {
-    background: colors.$grey-600;
-    color: colors.$grey-0;
-    text-decoration: none;
-    border-radius: 8px;
-    padding: 8px;
+  span{
+    color: colors.$grey-400;
+    font-weight: 600;
   }
-
-  p:hover {
-    color: rgb(72, 72, 72);
-    cursor: grabbing;
+  mat-icon{
+    margin-bottom: 20px;
   }
-}
-
-.flight-card-content mat-icon {
-  transform: rotate(90deg);
-}
-
-
-div.card-wrapper {
-  display: flex;
-  width: 100%;
-  margin-top: 48px;
-  flex-grow: 0;
 }
 
 .collapsable {
@@ -157,79 +68,55 @@ div.card-wrapper {
   font-size: 14px;
 }
 
+.flight-card-content mat-icon {
+  transform: rotate(90deg) translateX(8px);
+}
+
+.flight-card-footer {
+  @include mixins.flex-cards();
+  align-items: baseline;
+  justify-content: space-around;
+  border-top: 2px solid colors.$grey-100;
+  padding: 4px;
+
+  a {
+    background: colors.$grey-600;
+    color: colors.$grey-0;
+    padding: 12px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  button {
+    background: transparent;
+    text-decoration: underline;
+  }
+
+}
+
 .filter {
   display: none;
 }
 
 @media screen and (min-width: 992px) {
   #filterable-flight-list {
+    width: 50%;
+  }
+  .card-wrapper {
+    width: 100%;
+    border-bottom: 1px solid colors.$grey-100;
+  }
+  .flight-card-content {
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-  }
-  #filter-wrapper {
-    width: 40%;
-  }
-  #filter-component {
-    max-height: 400px;
-    border-radius: 16px;
+    align-items: baseline;
+    justify-content: space-around;
+    padding: 8px;
+
   }
 
-  .filter-header {
-    width: 100%;
-  }
-
-  .filter-header {
-    padding: 18px;
-  }
-
-  #filter-component-checkboxes {
-
-    display: flex;
-    flex-direction: column;
-  }
-
-
-  #flights-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  div.card-wrapper {
-    width: 46%;
-    margin-top: 0;
-    display: block;
-
-    .flight-card {
-      font-size: 14px;
-      flex-direction: column;
-    }
-
-    .flight-card-content {
-      display: flex;
-      padding: 48px;
-      flex-direction: column;
-      div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-
-    .flight-card-footer {
-      letter-spacing: 0.05rem;
-      font-weight: 400;
-      font-size: 14px;
-      padding: 16px 64px;
-    }
-
-    .flight-card-footer a {
-      padding: 16px;
-      letter-spacing: 0.05rem;
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-    }
+  .flight-card-header {
+    align-items: baseline;
+    justify-content: space-around;
   }
   .collapsable {
     overflow: hidden;

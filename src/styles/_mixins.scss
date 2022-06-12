@@ -1,3 +1,5 @@
+@use "colors";
+
 @mixin box-sizing($sizing: border-box) {
   box-sizing: $sizing;
   -moz-box-sizing: $sizing;
@@ -18,4 +20,8 @@
 @mixin flex-layout($justification: center, $align:baseline ) {
   justify-content: $justification;
   align-content: $align;
+}
+
+@mixin input-focus-outline() {
+  outline: 1px solid colors.$grey-300;
 }

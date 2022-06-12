@@ -1,21 +1,22 @@
 <div (clickOutside)="clickedOutside()">
-  <input
-    id="flight-offset"
-    [formControl]="terminal"
-    type="text"
-    name="offset"
-    autocomplete="off"
-    placeholder="{{placeholder}}"
-    (input)="onInput()"
-    required
-    (click)="onClickToggleCitiesList()"
-  />
-
-  <ul *ngIf="citiesListState" class="cities">
-    <ng-container *ngFor="let terminal of terms |async">
-      <li (click)="onClick(terminal)">
-        {{terminal}}
-      </li>
-    </ng-container>
-  </ul>
+  <div class="form-input">
+    <label>{{placeholder}}</label>
+    <input
+      id="flight-offset"
+      [formControl]="terminal"
+      type="text"
+      name="offset"
+      autocomplete="off"
+      (input)="onInput()"
+      required
+      (click)="onClickToggleCitiesList()"
+    />
+    <ul *ngIf="citiesListState" class="cities">
+      <ng-container *ngFor="let terminal of terms |async">
+        <li (click)="onClick(terminal)">
+          {{terminal}}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
 </div>

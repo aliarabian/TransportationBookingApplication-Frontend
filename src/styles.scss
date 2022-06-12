@@ -8,6 +8,39 @@
   @include mixins.box-sizing(border-box);
 }
 
-body{
+body {
   background: colors.$grey-0;
+
+  input, select, button, a {
+    border-radius: 4px;
+    padding: 18px;
+    font-size: 16px;
+    border: none;
+  }
+
+  .form-input {
+
+    position: relative;
+
+    label {
+      position: absolute;
+      top: 0;
+      background: colors.$grey-0;
+      padding-left: 4px;
+      padding-right: 4px;
+      border-radius: 8px;
+      left: 2px;
+      z-index: 110;
+      font-size: 12px;
+      text-transform: capitalize;
+      letter-spacing: 0.05rem;
+      font-family: Verdana, sans-serif;
+      color: colors.$grey-700;
+    }
+  }
+
+  input {
+    outline: none;
+  }
 }
+
