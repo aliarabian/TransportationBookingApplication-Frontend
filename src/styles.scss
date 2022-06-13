@@ -39,6 +39,17 @@ body {
     }
   }
 
+  button {
+    background: colors.$grey-700;
+    color: colors.$grey-0;
+
+    &:disabled {
+      background: colors.$grey-300;
+
+    }
+
+  }
+
   input {
     outline: none;
   }

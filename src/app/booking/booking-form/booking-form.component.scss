@@ -27,7 +27,7 @@ h3 {
   border-radius: 8px;
 
   button {
-    border: 1px solid #797979;
+    background: colors.$grey-0;
     border-radius: 8px;
     padding: 16px;
     width: 100%;
@@ -102,16 +102,17 @@ input, select {
   font-size: 16px;
   font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   min-width: 15%;
   min-height: 100%;
   width: 64px;
-  background: rgba(121, 121, 121, 0.14);
-  color: #5c8355;
+  background: colors.$grey-700;
+  color: colors.$grey-0;
   padding: 18px;
   margin-top: 18px;
+
   &:disabled {
-    color: #ffffff;
+    background: colors.$grey-300;
   }
 }
 
@@ -126,18 +127,8 @@ input, select {
     box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
   }
 
-  padding: 20px;
-  line-height: 1.2;
-  font-size: 20px;
-  letter-spacing: 0.05em;
-  border-radius: 4px;
-  border: none;
-  color: #ffffff;
   width: 100%;
   align-self: center;
-  font-weight: 600;
-  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0 0 17px 0 rgba(0, 0, 0, 0.1);
-  background: rgba(11, 179, 114, 0.89);
   margin-top: 20px;
 }
 
@@ -176,7 +167,7 @@ input, select {
     margin-top: 0;
   }
 
-  #passenger-form-adder{
+  #passenger-form-adder {
     margin-top: 0;
   }
   app-flight-details {
@@ -203,11 +194,7 @@ input, select {
   }
 
   #booking-btn {
-    font-weight: 700;
     width: 80%;
-    font-size: 24px;
-    padding: 4px;
-    line-height: 2;
     margin-top: 0;
 
     &:disabled {

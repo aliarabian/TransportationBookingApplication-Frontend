@@ -59,6 +59,7 @@
   button {
     background: transparent;
     text-decoration: underline;
+    color: colors.$grey-700;
 
     &:hover {
       font-weight: 700;
