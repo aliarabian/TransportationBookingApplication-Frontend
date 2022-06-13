@@ -1,6 +1,6 @@
 @use "src/styles/colors";
-@use "src/styles/variables";
 @use "src/styles/mixins";
+@use "src/styles/base";
 
 .flight-card {
   display: flex;

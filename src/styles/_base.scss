@@ -1,0 +1,50 @@
+@use "colors";
+@use "mixins";
+
+.card-header {
+  @include mixins.flex();
+  background: colors.$grey-100;
+  color: colors.$grey-600;
+  align-items: baseline;
+  justify-content: space-evenly;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+
+  mat-icon {
+    vertical-align: -11.5%;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover {
+      color: colors.$grey-900;
+    }
+  }
+}
+
+.card-content {
+
+  @include mixins.flex(column);
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+
+  p {
+    font-weight: 600;
+  }
+
+  span {
+    color: colors.$grey-400;
+    font-weight: 600;
+  }
+
+  mat-icon {
+    margin-bottom: 20px;
+    transform: rotate(90deg);
+  }
+}

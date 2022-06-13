@@ -1,6 +1,6 @@
 @use "src/styles/colors";
 @use "src/styles/mixins";
-@use "src/styles/variables";
+@use "src/styles/base";
 
 #filterable-flight-list {
   @include mixins.flex(column);
@@ -63,7 +63,7 @@
 
     &:hover {
       font-weight: 700;
-      cursor: grabbing;
+      cursor: pointer;
     }
   }
 
