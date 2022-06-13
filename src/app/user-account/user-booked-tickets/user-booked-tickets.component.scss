@@ -1,100 +1,116 @@
+@use "src/styles/colors";
+
+p {
+  margin-bottom: 0;
+}
+
 #tickets-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  margin-top: 24px;
+  padding: 8px;
+  //justify-content: ;
+  h1 {
+    background: colors.$grey-100;
+    color: colors.$grey-900;
+    padding: 8px;
+    border-radius: 4px;
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+article {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 64px;
-}
 
-.personal-details {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  color: #9b9b9b;
-  padding: 16px;
-  width: 100%;
-  border-bottom: 1px solid rgba(102, 102, 102, 0.38);
-}
+  margin: 0 auto;
 
-.flight-card {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid rgba(102, 102, 102, 0.38);
-  border-radius: 8px;
-}
+  span > mat-icon {
+    vertical-align: -30.5%;
+    margin-right: 4px;
+  }
 
-.flight-card-header {
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: baseline;
-  font-size: 14px;
-  letter-spacing: 0.05rem;
-  padding: 4px 8px;
-  color: #7a7a7a;
-  border-bottom: 1px solid rgba(102, 102, 102, 0.38);
+  mat-expansion-panel {
+    mat-panel-description {
+      display: flex;
+      flex-direction: column;
 
-  a {
-    text-decoration: none;
-    color: inherit;
+
+      span {
+        padding: 4px;
+      }
+
+      & span:nth-child(2n) {
+        color: colors.$grey-500
+      }
+
+      & span:nth-child(2n+1) {
+        background: colors.$grey-500;
+        color: colors.$grey-0;
+      }
+    }
+
+  }
+
+  mat-expansion-panel-header {
+    font-size: 12px;
+    font-weight: 550;
+
+    span {
+      margin-right: 12px;
+    }
+
+    mat-panel-title {
+      display: inline-flex;
+      align-items: center;
+      column-gap: 12px;
+
+
+      mat-icon {
+        transform: rotate(90deg);
+      }
+
+      mat-panel-description {
+        column-gap: 24px;
+      }
+    }
+
   }
 }
 
-.flight-card-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.flight-route {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 700;
+@media (min-width: 768px) {
+  #tickets-container {
 
-  p {
-    letter-spacing: 0.02rem;
+    h1 {
+      align-self: center;
+      width: 80%;
+    }
   }
-}
-
-.flight-direction-icon {
-  transform: rotate(180deg);
-  width: 16px;
-  height: 16px;
-}
-
-.terminal {
-  margin-top: 8px;
-}
-
-.details {
-  font-size: 16px;
-  padding: 12px;
-  font-weight: 700;
-  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-  color: #797979;
-}
-
-.flight-card-header {
-  justify-content: space-between;
-  text-align: center;
-  padding: 18px;
-  flex-wrap: wrap;
-
-  span, a {
-    width: 49%;
+  .hide {
+    display: inherit !important;
   }
-}
+  article {
+    mat-expansion-panel {
+      mat-panel-description {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 8px;
+        & span:nth-child(2n) {
+          color: inherit;
+        }
 
-@media (min-width: 576px) {
-  .flight-card-header {
-    justify-content: flex-start;
-    padding: 18px;
-    flex-wrap: nowrap;
+        & span:nth-child(2n+1) {
+          background: inherit;
+          color: inherit;
+        }
+      }
+
+    }
   }
 }
 
@@ -102,81 +118,13 @@
 }
 
 @media screen and (min-width: 992px) {
-  #tickets-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .flight-card {
-    font-size: 20px;
-  }
-
-  .personal-details {
-    flex-direction: row;
-  }
-
-  mat-icon {
-    display: inline;
-  }
-
-  .flight-card-header {
-    flex-direction: row;
-    font-weight: 450;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: baseline;
-    letter-spacing: 0.05rem;
-    font-size: 14px;
-
-    span, a {
-      margin-right: 4px;
+  mat-expansion-panel-header {
+    mat-panel-title {
+      font-size: 14px;
     }
   }
-
-  .flight-card-body {
-    flex-direction: column;
-    align-items: baseline;
-  }
-
-  .terminal {
-    padding: 16px;
-  }
-
-  .flight-route {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: baseline;
-    font-size: 16px;
-    padding: 20px;
-    width: 100%;
-
-    span:nth-child(1) {
-      border-bottom: 0;
-    }
-  }
-
-  .details {
-    display: flex;
-    flex-flow: column;
-    font-size: 18px;
-    padding: 12px 48px 0;
-    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
-    color: #797979;
-    width: 100%;
-
-    span {
-      font-weight: 500;
-    }
-  }
-
-  .flight-route p {
-    letter-spacing: 0.05rem;
+  article {
+    width: 80%;
   }
 }
 
-@media (min-width: 1200px) {
-}
-
-@media (min-width: 1400px) {
-}

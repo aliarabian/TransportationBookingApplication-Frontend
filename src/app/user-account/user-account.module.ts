@@ -7,6 +7,8 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {UserAccountComponent} from "./user-account.component";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatDividerModule} from "@angular/material/divider";
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {UserAccountComponent} from "./user-account.component";
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatExpansionModule,
+    MatDividerModule
   ],
   exports: [
     UserAccountMenuComponent,

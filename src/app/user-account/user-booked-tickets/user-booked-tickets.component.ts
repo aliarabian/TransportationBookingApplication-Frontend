@@ -11,6 +11,8 @@ import {FlightTicket} from "../../booking/booking-result/flight-ticket";
 export class UserBookedTicketsComponent implements OnInit {
   tickets?: Observable<FlightTicket[]>
 
+  panelOpenState = false;
+
   constructor(private ticketsService: UserTicketsService) {
   }
 
