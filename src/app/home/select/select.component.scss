@@ -2,8 +2,7 @@
 @use "src/styles/mixins";
 
 div {
-  display: flex;
-  flex-direction: column;
+  @include mixins.flex(column);
   position: relative;
   margin: 0;
 }

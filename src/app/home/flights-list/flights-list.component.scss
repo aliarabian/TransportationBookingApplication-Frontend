@@ -1,5 +1,6 @@
 @use "src/styles/colors";
 @use "src/styles/mixins";
+@use "src/styles/variables";
 
 #filterable-flight-list {
   @include mixins.flex(column);
@@ -19,42 +20,11 @@
 }
 
 .flight-card-header {
-  @include mixins.flex();
-  background: colors.$grey-100;
-  color: colors.$grey-600;
-  align-items: baseline;
-  justify-content: space-evenly;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-  a {
-    text-decoration: none;
-
-    &:visited {
-      color: inherit;
-    }
-
-    &:hover {
-      color: colors.$grey-900;
-    }
-  }
+  @extend .card-header;
 }
 
 .flight-card-content {
-  @include mixins.flex(column);
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-
-  p{
-    font-weight: 600;
-  }
-  span{
-    color: colors.$grey-400;
-    font-weight: 600;
-  }
-  mat-icon{
-    margin-bottom: 20px;
-  }
+  @extend .card-content;
 }
 
 .collapsable {
@@ -89,7 +59,8 @@
   button {
     background: transparent;
     text-decoration: underline;
-    &:hover{
+
+    &:hover {
       font-weight: 700;
       cursor: grabbing;
     }
@@ -112,15 +83,13 @@
   }
   .flight-card-content {
     flex-direction: row;
-    align-items: baseline;
-    justify-content: space-around;
+    @include mixins.flex-layout(space-around, baseline);
     padding: 8px;
 
   }
 
   .flight-card-header {
-    align-items: baseline;
-    justify-content: space-around;
+    @include mixins.flex-layout(space-around, baseline);
   }
   .collapsable {
     overflow: hidden;

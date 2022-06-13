@@ -17,11 +17,15 @@
   flex-direction: $dir;
 }
 
-@mixin flex-layout($justification: center, $align:baseline ) {
+@mixin flex-layout($justification: center, $align:baseline) {
   justify-content: $justification;
-  align-content: $align;
+  align-items: $align;
 }
 
 @mixin input-focus-outline() {
   outline: 1px solid colors.$grey-300;
+}
+
+@mixin border($side : null, $size, $style, $color){
+
 }

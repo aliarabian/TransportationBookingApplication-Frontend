@@ -1,4 +1,7 @@
-div{
-  display: flex;
-  flex-direction: column;
+@use "src/styles/mixins";
+
+div {
+  @include mixins.flex(column);
+
+
 }
