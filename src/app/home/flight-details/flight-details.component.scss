@@ -1,5 +1,6 @@
 @use "src/styles/colors";
 @use "src/styles/variables";
+@use "src/styles/mixins";
 
 .flight-card {
   display: flex;
@@ -25,7 +26,6 @@
     align-items: center;
     flex-wrap: wrap;
     font-size: 14px;
-    border-bottom: 1px solid colors.$grey-100;
   }
 
   .section-privileges {
@@ -39,8 +39,8 @@
   column-gap: 24px;
   font-size: 14px;
   padding: 8px;
-  border-bottom: 1px solid colors.$grey-100;
   margin-bottom: 8px;
+  @include mixins.border(bottom, 1px, solid, colors.$grey-100);
 }
 
 @media (min-width: 576px) {

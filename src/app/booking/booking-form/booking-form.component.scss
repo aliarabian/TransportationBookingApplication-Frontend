@@ -1,3 +1,4 @@
+@use "src/styles/colors";
 @import "src/styles/mixins";
 
 #booking-container {
@@ -77,15 +78,10 @@ input, select {
   top: -14px;
   background: whitesmoke;
   left: 12px;
-  font-size: 18px;
+  font-size: 12px;
   border-radius: 8px;
-  font-weight: 600;
-  padding: 1px;
-  letter-spacing: 0.07rem;
-  font-family: Verdana, sans-serif;
-
-  //color: #797979
-  color: #424242;
+  font-weight: 550;
+  color: colors.$grey-800;
 }
 
 .form-group button {
@@ -113,7 +109,7 @@ input, select {
   background: rgba(121, 121, 121, 0.14);
   color: #5c8355;
   padding: 18px;
-
+  margin-top: 18px;
   &:disabled {
     color: #ffffff;
   }
@@ -169,12 +165,20 @@ input, select {
     padding: 64px;
   }
 
+  .form-group-label {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+  }
   #passengers-form-wrapper {
     width: 48%;
     align-items: flex-start;
     margin-top: 0;
   }
 
+  #passenger-form-adder{
+    margin-top: 0;
+  }
   app-flight-details {
     width: 48%;
     max-width: 576px;

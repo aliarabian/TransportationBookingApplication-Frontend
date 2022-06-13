@@ -26,6 +26,10 @@
   outline: 1px solid colors.$grey-300;
 }
 
-@mixin border($side : null, $size, $style, $color){
-
+@mixin border($side : null, $size, $style, $color) {
+  @if $side != null {
+    border-#{$side}: $size $style $color;
+  } @else {
+    border: $size $style $color;
+  }
 }
