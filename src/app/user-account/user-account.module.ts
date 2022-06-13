@@ -24,6 +24,7 @@ import {MatDividerModule} from "@angular/material/divider";
   ],
   exports: [
     UserAccountMenuComponent,
+    UserBookedTicketsComponent,
     // UserAccountMenuComponent
   ],
   declarations: [

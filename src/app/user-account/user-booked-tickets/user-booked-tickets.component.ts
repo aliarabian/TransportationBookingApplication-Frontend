@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserTicketsService} from "./user-tickets.service";
 import {Observable} from "rxjs";
 import {FlightTicket} from "../../booking/booking-result/flight-ticket";
@@ -9,7 +9,7 @@ import {FlightTicket} from "../../booking/booking-result/flight-ticket";
   styleUrls: ['./user-booked-tickets.component.scss']
 })
 export class UserBookedTicketsComponent implements OnInit {
-  tickets?: Observable<FlightTicket[]>
+  @Input() tickets?: Observable<FlightTicket[]>
 
   panelOpenState = false;
 

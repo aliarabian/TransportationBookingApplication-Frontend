@@ -7,6 +7,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HomeModule} from "../home/home.module";
 import {BookingComponent} from "./booking.component";
 import {MatIconModule} from "@angular/material/icon";
+import {UserAccountModule} from "../user-account/user-account.module";
 
 @NgModule(
   {
@@ -16,13 +17,14 @@ import {MatIconModule} from "@angular/material/icon";
       BookingResultComponent
 
     ],
-    imports: [
-      CommonModule,
-      BookingRoutingModule,
-      HomeModule,
-      ReactiveFormsModule,
-      MatIconModule,
-    ],
+      imports: [
+          CommonModule,
+          BookingRoutingModule,
+          HomeModule,
+          ReactiveFormsModule,
+          MatIconModule,
+          UserAccountModule,
+      ],
     providers: []
   }
 )

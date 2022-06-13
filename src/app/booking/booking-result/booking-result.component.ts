@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FlightTicket} from "./flight-ticket";
 import {Router} from "@angular/router";
+import {Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-booking-result',
@@ -20,4 +21,7 @@ export class BookingResultComponent implements OnInit {
     }
   }
 
+  tickets$(): Observable<FlightTicket[]> {
+    return of(this.tickets!);
+  }
 }
