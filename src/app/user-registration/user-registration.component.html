@@ -1,20 +1,51 @@
 <section>
-  <h4>Registration</h4>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <div>
-      <input name="username" type="text" formControlName="username" placeholder="username" required>
+    <div class="form-input">
+      <label for="username">username</label>
+      <input id="username" type="text" name="username" placeholder="{{registrationForm.controls.username.invalid && (registrationForm.controls.username.dirty || registrationForm.controls.username.touched)
+? 'Field Required': 'example@email.com'}}" formControlName="username"
+             required>
     </div>
-    <div>
-      <input name="password" type="password" formControlName="password" placeholder="password" required>
+    <!--    <div class="alert"-->
+    <!--         *ngIf="registrationForm.controls.username.hasError('required') && (registrationForm.controls.username.dirty || registrationForm.controls.username.touched)">-->
+    <!--      <span>Username is required</span>-->
+    <!--    </div>-->
+    <!--    <div class="alert"-->
+    <!--         *ngIf="registrationForm.controls.username.hasError('email') && (registrationForm.controls.username.touched)">-->
+    <!--      <span>Invalid Email</span>-->
+    <!--    </div>-->
+    <div class="form-input">
+      <label for="password">password</label>
+      <input id="password" type="password" name="password" placeholder="{{registrationForm.controls.password.invalid && (registrationForm.controls.password.dirty || registrationForm.controls.password.touched)
+? 'Field Required': 'password'}}" formControlName="password" required>
     </div>
-    <div>
-      <input name="nationalId" type="text" formControlName="nationalId" placeholder="national ID" required>
+    <div class="form-input">
+      <label for="firstName"
+             [ngClass]="{'error-label':registrationForm.controls.firstName.invalid && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)}"
+      >First Name</label>
+      <input id="firstName" formControlName="firstName" placeholder="{{registrationForm.controls.firstName.invalid && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)
+? 'Field Required': 'Ali'}}"
+             [ngClass]="{'error':registrationForm.controls.firstName.invalid && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)}"/>
     </div>
-    <div>
-      <input name="firstName" type="text" formControlName="firstName" placeholder="first name" required>
+    <div class="form-input">
+      <label for="lastName"
+             [ngClass]="{'error-label':registrationForm.controls.lastName.invalid && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)}"
+      >Last Name</label>
+      <input id="lastName" formControlName="lastName"
+             placeholder="{{registrationForm.controls.lastName.invalid && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)
+? 'Field Required': 'Arabian'}}"
+             [ngClass]="{'error':registrationForm.controls.lastName.invalid && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)}"
+      />
     </div>
-    <div>
-      <input name="lastName" type="text" formControlName="lastName" placeholder="last name" required>
+    <div class="form-input">
+      <label for="nationalId"
+             [ngClass]="{'error-label':registrationForm.controls.nationalId.invalid && (registrationForm.controls.nationalId.dirty || registrationForm.controls.nationalId.touched)}"
+      >National Id</label>
+      <input id="nationalId" formControlName="nationalId"
+             placeholder="{{registrationForm.controls.nationalId.invalid && (registrationForm.controls.nationalId.dirty || registrationForm.controls.nationalId.touched)
+? 'Field Required': '11 digits, e.g. 12345678901'}}"
+             [ngClass]="{'error':registrationForm.controls.nationalId.invalid && (registrationForm.controls.nationalId.dirty || registrationForm.controls.nationalId.touched)}"
+      />
     </div>
     <button type="submit" [disabled]="!registrationForm.valid">Register</button>
   </form>

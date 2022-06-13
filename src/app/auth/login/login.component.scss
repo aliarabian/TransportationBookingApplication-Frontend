@@ -8,10 +8,7 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  //$shadows :1px 1px 4px colors.$grey-100, -1px -1px 4px colors.$grey-100;
-  //@include mixins.box-shadow($shadows);
   border-radius: 4px;
-  //max-width: 576px;
   padding: 48px;
 }
 

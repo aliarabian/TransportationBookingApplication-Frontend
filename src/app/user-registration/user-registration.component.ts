@@ -17,7 +17,7 @@ export class UserRegistrationComponent implements OnInit {
     password: ['', [Validators.minLength(5), Validators.required]],
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    nationalId: ['', [Validators.minLength(11)]]
+    nationalId: ['', [Validators.minLength(11), Validators.required]]
   });
 
   constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService, private router: Router) {
