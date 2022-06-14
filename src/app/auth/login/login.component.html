@@ -11,15 +11,15 @@
       <label for="username" [ngClass]="{'error-label':isInvalid('username')}">username</label>
       <input id="username" [ngClass]="{'error-input':isInvalid('username')}" type="text" name="username"
              placeholder="example@mail.com" formControlName="username" required>
+      <span class="error-text" *ngIf="hasError('username', 'required')">Username is required</span>
+      <span class="error-text" *ngIf="hasError('username', 'email')"> Invalid Email</span>
     </div>
-    <span class="error-text" *ngIf="hasError('username', 'required')">Username is required</span>
-    <span class="error-text" *ngIf="hasError('username', 'email')"> Invalid Email</span>
     <div class="form-input">
       <label for="password" [ngClass]="{'error-label': isInvalid('password')}">password</label>
       <input id="password" [ngClass]="{'error-input':isInvalid('password')}" type="password" name="password"
              placeholder="" formControlName="password" required>
+      <span class="error-text" *ngIf="hasError('password', 'required')">Password is required</span>
     </div>
-    <span class="error-text" *ngIf="hasError('password', 'required')">Password is required</span>
     <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
     <div id="login-section-footer">
       <div>

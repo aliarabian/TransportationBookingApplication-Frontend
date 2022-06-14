@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Flight} from "../../home/flights-list/flight";
 import {SeatingSection} from "../../home/flights-list/seating-section";
 import {Observable, Subscription, throwError} from "rxjs";
@@ -110,6 +110,18 @@ export class BookingFormComponent implements OnInit, OnDestroy {
       this.selectedSection?.id!, bookingDetails);
   }
 
+  hasError(formGroup: FormGroup, formControlName: string, errorTitle: string): boolean {
+    return formGroup.controls[formControlName].hasError(errorTitle) &&
+      this.isTouched(formGroup, formControlName);
+  }
+
+  isInvalid(formGroup: FormGroup, formControlName: string): boolean {
+    return formGroup.controls[formControlName].invalid && this.isTouched(formGroup, formControlName);
+  }
+
+  private isTouched(formGroup: FormGroup, formControlName: string): boolean {
+    return formGroup.controls[formControlName].touched;
+  }
   ngOnDestroy(): void {
     this.subscriptions.forEach(subs => subs.unsubscribe());
   }

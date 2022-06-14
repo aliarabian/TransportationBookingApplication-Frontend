@@ -21,7 +21,7 @@ h3 {
 .form-group {
   position: relative;
   display: flex;
-  row-gap: 48px;
+  row-gap: 24px;
   flex-direction: column;
   padding: 24px 24px;
   @include mixins.box-shadow(rgba(149, 157, 165, 0.2) 0px 8px 24px);

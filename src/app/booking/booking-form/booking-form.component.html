@@ -8,58 +8,62 @@
             <label class="form-group-label">Passenger Number #{{i + 1}}'s Information</label>
             <div class="form-input">
               <label for="firstName"
-                     [ngClass]="{'error-label':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"
+                     [ngClass]="{'error-label':isInvalid(passenger, 'firstName')} "
               >First Name</label>
-              <input id="firstName" formControlName="firstName" placeholder="{{passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)
-? 'Field Required': 'Ali'}}"
-                     [ngClass]="{'error':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"/>
+              <input id="firstName" formControlName="firstName"
+                     [ngClass]="{'error-input':isInvalid(passenger, 'firstName')}"
+              />
+              <span class="error-text" *ngIf="hasError(passenger, 'firstName', 'required')">Field is required</span>
             </div>
             <div class="form-input">
               <label for="lastName"
-                     [ngClass]="{'error-label':passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)}"
+                     [ngClass]="{'error-label':isInvalid(passenger, 'lastName')}"
               >Last Name</label>
               <input id="lastName" formControlName="lastName"
-                     placeholder="{{passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)
-? 'Field Required': 'Arabian'}}"
-                     [ngClass]="{'error':passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)}"
+                     [ngClass]="{'error-input':isInvalid(passenger, 'lastName')}"
               />
+              <span class="error-text" *ngIf="hasError(passenger, 'lastName', 'required')">Field is required</span>
             </div>
             <div class="form-input">
               <label for="nationalId"
-                     [ngClass]="{'error-label':passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)}"
+                     [ngClass]="{'error-label':hasError(passenger, 'nationalId', 'pattern') || hasError(passenger, 'nationalId', 'required')}"
               >National Id</label>
               <input id="nationalId" formControlName="nationalId"
-                     placeholder="{{passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)
-? 'Field Required': '11 digits, e.g. 12345678901'}}"
-                     [ngClass]="{'error':passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)}"
+                     [ngClass]="{'error-input':hasError(passenger, 'nationalId', 'pattern') || hasError(passenger, 'nationalId', 'required')}"
               />
+              <span class="error-text" *ngIf="hasError(passenger, 'nationalId', 'required')">Field is required</span>
+              <span class="error-text"
+                    *ngIf="hasError(passenger, 'nationalId', 'pattern')">Field's value be an 11 digit number</span>
             </div>
             <div class="form-input">
               <label for="birthdate"
-                     [ngClass]="{'error-label':passenger.controls.birthDate.invalid && (passenger.controls.birthDate.dirty || passenger.controls.birthDate.touched)}"
+                     [ngClass]="{'error-label':isInvalid(passenger, 'birthDate')}"
               >Birthdate</label>
               <input id="birthdate" type="date" min="1910-01-01" max="2022-01-01" formControlName="birthDate"
-                     [ngClass]="{'error':passenger.controls.birthDate.invalid && (passenger.controls.birthDate.dirty || passenger.controls.birthDate.touched)}"
+                     [ngClass]="{'error-input':isInvalid(passenger, 'birthDate')}"
               />
+              <span class="error-text" *ngIf="hasError(passenger, 'birthDate', 'required')">Field is required</span>
             </div>
             <div class="form-input">
               <label for="passportNO"
-                     [ngClass]="{'error-label':passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)}"
+                     [ngClass]="{'error-label':hasError(passenger, 'passportNO', 'required') || hasError(passenger, 'passportNO', 'pattern')}"
               >Passport NO</label>
               <input id="passportNO" formControlName="passportNO"
 
-                     placeholder="{{passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)
-? 'Field Required: 10 digits, e.g. 12345678901': '10 digits, e.g. 12345678901'}}"
-                     [ngClass]="{'error':passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)}"
+                     placeholder="10 digits, e.g. 12345678901"
+                     [ngClass]="{'error-input':hasError(passenger, 'passportNO', 'required') || hasError(passenger, 'passportNO', 'pattern')}"
               />
+              <span class="error-text" *ngIf="hasError(passenger, 'passportNO', 'required')">Field is required</span>
+              <span class="error-text"
+                    *ngIf="hasError(passenger, 'passportNO', 'pattern')">Field's length must a 10 digit number</span>
             </div>
             <div class="form-input">
               <label for="issuedIn"
-                     [ngClass]="{'error-label':passenger.controls.issuedIn.invalid && (passenger.controls.issuedIn.dirty || passenger.controls.issuedIn.touched)}"
+                     [ngClass]="{'error-label':isInvalid(passenger, 'issuedIn')}"
               >Issuer Country</label>
               <select id="issuedIn" formControlName="issuedIn"
 
-                      [ngClass]="{'error':passenger.controls.issuedIn.invalid && (passenger.controls.issuedIn.dirty || passenger.controls.issuedIn.touched)}"
+                      [ngClass]="{'error-input':isInvalid(passenger, 'issuedIn')}"
                       required>
                 <option value="" disabled selected>Select Passport Issuer Country</option>
 
@@ -67,15 +71,17 @@
                   {{country.name}}
                 </option>
               </select>
+              <span class="error-text" *ngIf="hasError(passenger, 'issuedIn', 'required')">Field is required</span>
             </div>
             <div class="form-input">
               <label for="passportExpirationDate"
-                     [ngClass]="{'error-label':passenger.controls.expiresAt.invalid && (passenger.controls.expiresAt.dirty || passenger.controls.expiresAt.touched)}"
+                     [ngClass]="{'error-label':isInvalid(passenger, 'expiresAt')}"
               >Passport Expiration:</label>
               <input id="passportExpirationDate" type="date"
                      min="{{ validPassportExpiryDate | date:'yyyy-MM-dd'}}"
-                     [ngClass]="{'error':passenger.controls.expiresAt.invalid && (passenger.controls.expiresAt.dirty || passenger.controls.expiresAt.touched)}"
+                     [ngClass]="{'error-input':isInvalid(passenger, 'expiresAt')}"
                      formControlName="expiresAt"/>
+              <span class="error-text" *ngIf="hasError(passenger, 'expiresAt', 'required')">Field is required</span>
             </div>
             <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">
               <mat-icon>delete</mat-icon>
