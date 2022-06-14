@@ -91,7 +91,6 @@
       </ng-container>
       <div class="form-actions">
         <button [disabled]="!passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button"
-                [class.alert]="bookingError"
                 (click)="addPassengerForm()">+
         </button>
         <button id="booking-btn" type="submit" (click)="onSubmit()"
@@ -102,6 +101,3 @@
     </article>
   </div>
 </section>
-<div *ngIf="bookingError" class="alert">
-  <p>Booking Failed</p>
-</div>

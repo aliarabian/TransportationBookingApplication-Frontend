@@ -8,23 +8,29 @@ import {HomeModule} from "../home/home.module";
 import {BookingComponent} from "./booking.component";
 import {MatIconModule} from "@angular/material/icon";
 import {UserAccountModule} from "../user-account/user-account.module";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import { BookingFailedModalComponent } from './booking-failed-modal/booking-failed-modal.component';
 
 @NgModule(
   {
     declarations: [
       BookingComponent,
       BookingFormComponent,
-      BookingResultComponent
+      BookingResultComponent,
+      BookingFailedModalComponent
 
     ],
-      imports: [
-          CommonModule,
-          BookingRoutingModule,
-          HomeModule,
-          ReactiveFormsModule,
-          MatIconModule,
-          UserAccountModule,
-      ],
+    imports: [
+      CommonModule,
+      BookingRoutingModule,
+      HomeModule,
+      ReactiveFormsModule,
+      MatIconModule,
+      UserAccountModule,
+      MatDialogModule,
+      MatButtonModule,
+    ],
     providers: []
   }
 )

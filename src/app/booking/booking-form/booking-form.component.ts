@@ -12,6 +12,8 @@ import {BookingDetails} from "./booking-details";
 import {PassengerDetails} from "./passenger-details";
 import {BookingRequest} from "./booking-request";
 import {catchError} from "rxjs/operators";
+import {MatDialog} from "@angular/material/dialog";
+import {BookingFailedModalComponent} from "../booking-failed-modal/booking-failed-modal.component";
 
 @Component({
   selector: 'app-booking-form',
@@ -26,10 +28,9 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   countries?: Observable<Country[]>;
   validPassportExpiryDate?: Date;
-  private _bookingError: boolean = false;
 
   constructor(private fb: FormBuilder, private router: Router, private flightService: FlightsSearchService, private activateRoute: ActivatedRoute,
-              private countriesService: CountriesService, private bookingService: BookingService) {
+              private countriesService: CountriesService, private bookingService: BookingService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -49,14 +50,6 @@ export class BookingFormComponent implements OnInit, OnDestroy {
         this.selectedSection = this.flight.sections.find(section => section.id === sectionId);
       });
     this.subscriptions.push(flightObservable);
-  }
-
-  set bookingError(value: boolean) {
-    this._bookingError = value;
-  }
-
-  get bookingError(): boolean {
-    return this._bookingError;
   }
 
   addPassengerForm(): void {
@@ -83,7 +76,6 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.bookingError = false;
     let bookingRequest = this.createBookingRequest();
     this.bookingService.bookTickets(bookingRequest)
       .pipe(
@@ -98,7 +90,7 @@ export class BookingFormComponent implements OnInit, OnDestroy {
           this.router.navigate(['tickets'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
         }, error => {
           this.passengersForm.reset();
-          this._bookingError = true;
+          this.dialog.open(BookingFailedModalComponent)
         });
   }
 
@@ -122,6 +114,7 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   private isTouched(formGroup: FormGroup, formControlName: string): boolean {
     return formGroup.controls[formControlName].touched;
   }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(subs => subs.unsubscribe());
   }

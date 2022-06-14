@@ -51,7 +51,7 @@
              (click)="openModal(flight, section)">
           <article class="flight-card">
             <div class="flight-card-header">
-              <a href="#">
+              <a href="#" (click)="$event.stopPropagation()">
                 Homa Airlines</a>
               <p>
                 <mat-icon>flight_class</mat-icon>
