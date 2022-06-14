@@ -1,43 +1,55 @@
 <section>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="form-input">
-      <label for="username">username</label>
-      <input id="username" type="text" name="username" placeholder="{{registrationForm.controls.username.invalid && (registrationForm.controls.username.dirty || registrationForm.controls.username.touched)
-? 'Field Required': 'example@email.com'}}" formControlName="username"
+      <label for="username"
+             [ngClass]="{'error-label':hasError(registrationForm, 'username', 'required') || hasError(registrationForm, 'username', 'email') }"
+      >username</label>
+      <input id="username" type="text" name="username" placeholder="example@email.com" formControlName="username"
+             [ngClass]="{'error-input':hasError(registrationForm, 'username', 'required') || hasError(registrationForm, 'username', 'email') }"
              required>
+      <span class="error-text" *ngIf="hasError(registrationForm, 'username', 'required')">Field is required</span>
+      <span class="error-text"
+            *ngIf="hasError(registrationForm, 'username', 'email')">Invalid Email</span>
     </div>
     <div class="form-input">
-      <label for="password">password</label>
-      <input id="password" type="password" name="password" placeholder="{{registrationForm.controls.password.invalid && (registrationForm.controls.password.dirty || registrationForm.controls.password.touched)
-? 'Field Required': 'password'}}" formControlName="password" required>
+      <label for="password"
+             [ngClass]="{'error-label': hasError(registrationForm, 'password', 'required')|| hasError(registrationForm, 'password', 'minlength') }"
+      >password</label>
+      <input id="password" type="password" name="password" placeholder="password"
+             [ngClass]="{'error-input': hasError(registrationForm, 'password', 'required')|| hasError(registrationForm, 'password', 'minlength')}"
+             formControlName="password" required>
+      <span class="error-text" *ngIf="hasError(registrationForm, 'password', 'required')">Field is required</span>
+      <span class="error-text"
+            *ngIf="hasError(registrationForm, 'password', 'minlength')">Password must contain at least 5 characters</span>
     </div>
     <div class="form-input">
       <label for="firstName"
-             [ngClass]="{'error-label':registrationForm.controls.firstName.invalid && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)}"
+             [ngClass]="{'error-label':isInvalid(registrationForm, 'firstName')}"
       >First Name</label>
-      <input id="firstName" formControlName="firstName" placeholder="{{registrationForm.controls.firstName.invalid && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)
-? 'Field Required': 'Ali'}}"
-             [ngClass]="{'error':registrationForm.controls.firstName.invalid && (registrationForm.controls.firstName.dirty || registrationForm.controls.firstName.touched)}"/>
+      <input id="firstName" formControlName="firstName"
+             [ngClass]="{'error-input':isInvalid(registrationForm, 'firstName')}"
+      />
+      <span class="error-text" *ngIf="hasError(registrationForm, 'firstName', 'required')">Field is required</span>
     </div>
     <div class="form-input">
       <label for="lastName"
-             [ngClass]="{'error-label':registrationForm.controls.lastName.invalid && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)}"
+             [ngClass]="{'error-label':isInvalid(registrationForm, 'lastName')}"
       >Last Name</label>
       <input id="lastName" formControlName="lastName"
-             placeholder="{{registrationForm.controls.lastName.invalid && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)
-? 'Field Required': 'Arabian'}}"
-             [ngClass]="{'error':registrationForm.controls.lastName.invalid && (registrationForm.controls.lastName.dirty || registrationForm.controls.lastName.touched)}"
+             [ngClass]="{'error-input':isInvalid(registrationForm, 'lastName')}"
       />
+      <span class="error-text" *ngIf="hasError(registrationForm, 'lastName', 'required')">Field is required</span>
     </div>
     <div class="form-input">
       <label for="nationalId"
-             [ngClass]="{'error-label':registrationForm.controls.nationalId.invalid && (registrationForm.controls.nationalId.dirty || registrationForm.controls.nationalId.touched)}"
+             [ngClass]="{'error-label':hasError(registrationForm, 'nationalId', 'pattern') || hasError(registrationForm, 'nationalId', 'required')}"
       >National Id</label>
       <input id="nationalId" formControlName="nationalId"
-             placeholder="{{registrationForm.controls.nationalId.invalid && (registrationForm.controls.nationalId.dirty || registrationForm.controls.nationalId.touched)
-? 'Field Required': '11 digits, e.g. 12345678901'}}"
-             [ngClass]="{'error':registrationForm.controls.nationalId.invalid && (registrationForm.controls.nationalId.dirty || registrationForm.controls.nationalId.touched)}"
+             [ngClass]="{'error-input':hasError(registrationForm, 'nationalId', 'pattern') || hasError(registrationForm, 'nationalId', 'required')}"
       />
+      <span class="error-text" *ngIf="hasError(registrationForm, 'nationalId', 'required')">Field is required</span>
+      <span class="error-text"
+            *ngIf="hasError(registrationForm, 'nationalId', 'pattern')">Field's value be an 11 digit number</span>
     </div>
     <button type="submit" [disabled]="!registrationForm.valid">Register</button>
   </form>

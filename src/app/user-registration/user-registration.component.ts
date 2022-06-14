@@ -17,7 +17,7 @@ export class UserRegistrationComponent implements OnInit {
     password: ['', [Validators.minLength(5), Validators.required]],
     firstName: ['', [Validators.required]],
     lastName: ['', [Validators.required]],
-    nationalId: ['', [Validators.minLength(11), Validators.required]]
+    nationalId: ['', [Validators.pattern("[0-9]{11}"), Validators.required]]
   });
 
   constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService, private router: Router) {
@@ -44,4 +44,18 @@ export class UserRegistrationComponent implements OnInit {
         this.router.navigate(['login', {registrationSuccess: true}])
       });
   }
+
+  hasError(formGroup: FormGroup, formControlName: string, errorTitle: string): boolean {
+    return formGroup.controls[formControlName].hasError(errorTitle) &&
+      this.isTouched(formGroup, formControlName);
+  }
+
+  isInvalid(formGroup: FormGroup, formControlName: string): boolean {
+    return formGroup.controls[formControlName].invalid && this.isTouched(formGroup, formControlName);
+  }
+
+  private isTouched(formGroup: FormGroup, formControlName: string): boolean {
+    return formGroup.controls[formControlName].touched;
+  }
+
 }
