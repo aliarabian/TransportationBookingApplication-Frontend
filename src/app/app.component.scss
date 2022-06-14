@@ -9,6 +9,7 @@ header {
   background: colors.$grey-700;
   padding: 18px;
   color: colors.$grey-0;
+
   a {
     text-decoration: none;
     letter-spacing: 0.05rem;
@@ -27,7 +28,7 @@ header {
     letter-spacing: 0.1rem;
 
     &:hover {
-      cursor: grabbing;
+      cursor: pointer;
     }
 
     .logo {
@@ -36,6 +37,7 @@ header {
       box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.5);
       margin-right: 8px;
     }
+
     mat-icon {
       transform: rotate(-45deg);
     }

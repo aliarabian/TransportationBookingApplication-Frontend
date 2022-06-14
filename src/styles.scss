@@ -11,6 +11,23 @@
 body {
   background: colors.$grey-0;
 
+  .error-text {
+    font-size: 12px;
+    color: colors.$grey-900;
+    font-weight: 600;
+    margin-bottom: 12px;
+    padding-left: 12px;
+  }
+
+  .error-input {
+    border: 2px solid colors.$grey-900 !important;
+  }
+
+  .error-label {
+    font-weight: 600;
+    color: colors.$grey-900;
+  }
+
   input, select, button, a {
     border-radius: 4px;
     padding: 18px;
@@ -29,7 +46,7 @@ body {
       padding-left: 4px;
       padding-right: 4px;
       border-radius: 8px;
-      left: 2px;
+      left: 8px;
       z-index: 110;
       font-size: 12px;
       text-transform: capitalize;
@@ -45,9 +62,7 @@ body {
 
     &:disabled {
       background: colors.$grey-300;
-
     }
-
   }
 
   input {

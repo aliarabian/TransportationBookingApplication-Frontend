@@ -4,36 +4,28 @@
 
 <section id="login-form-container">
   <form id="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="alert" *ngIf="error">
+    <div class="error-text" *ngIf="error">
       <span>{{errorMessage}}</span>
     </div>
     <div class="form-input">
-      <label for="username">username</label>
-      <input id="username" type="text" name="username" placeholder="example@mail.com" formControlName="username"
-             required>
+      <label for="username" [ngClass]="{'error-label':isInvalid('username')}">username</label>
+      <input id="username" [ngClass]="{'error-input':isInvalid('username')}" type="text" name="username"
+             placeholder="example@mail.com" formControlName="username" required>
     </div>
-    <div class="alert"
-         *ngIf="loginForm.controls.username.hasError('required') && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
-      <span>Username is required</span>
-    </div>
-    <div class="alert"
-         *ngIf="loginForm.controls.username.hasError('email') && (loginForm.controls.username.touched)">
-      <span>Invalid Email</span>
-    </div>
+    <span class="error-text" *ngIf="hasError('username', 'required')">Username is required</span>
+    <span class="error-text" *ngIf="hasError('username', 'email')"> Invalid Email</span>
     <div class="form-input">
-      <label for="password">password</label>
-      <input id="password" type="password" name="password" placeholder="" formControlName="password" required>
+      <label for="password" [ngClass]="{'error-label': isInvalid('password')}">password</label>
+      <input id="password" [ngClass]="{'error-input':isInvalid('password')}" type="password" name="password"
+             placeholder="" formControlName="password" required>
     </div>
-    <div class="alert"
-         *ngIf="loginForm.controls.password.hasError('required') && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
-      <span>Password is required</span>
-    </div>
+    <span class="error-text" *ngIf="hasError('password', 'required')">Password is required</span>
     <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
-  </form>
-  <div id="login-section-footer">
-    <div>
-      <span>Don't have an account? </span>
-      <a routerLink="/registration"> Register</a>
+    <div id="login-section-footer">
+      <div>
+        <span>Don't have an account? </span>
+        <a routerLink="/registration"> Register</a>
+      </div>
     </div>
-  </div>
+  </form>
 </section>

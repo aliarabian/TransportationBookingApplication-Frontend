@@ -42,9 +42,8 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.authError.subscribe(error => {
       this.error = error.status == 401 || error.status == 400;
-      if (error.status == 401) {
+      if (this.error)
         this.loginForm.reset();
-      }
     });
 
   }
@@ -55,10 +54,25 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authenticationService.authError.next(new HttpErrorResponse({}));
+    console.log(this.loginForm.value.username);
+    console.log(this.loginForm.value.password);
+    console.log(this.loginForm.value)
     this.authenticationService.login({
       username: this.loginForm.value.username,
       password: this.loginForm.value.password
     })
   }
 
+  hasError(formControlName: string, errorTitle: string): boolean {
+    return this.loginForm.controls[formControlName].hasError(errorTitle) &&
+      (this.loginForm.controls[formControlName].dirty ||
+        this.loginForm.controls[formControlName].touched);
+  }
+
+  isInvalid(formControlName: string): boolean {
+    return this.loginForm.controls[formControlName].invalid &&
+      (this.loginForm.controls[formControlName].dirty ||
+        this.loginForm.controls[formControlName].touched);
+    ;
+  }
 }

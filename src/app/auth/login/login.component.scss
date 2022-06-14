@@ -10,16 +10,20 @@ section {
   width: 100%;
   border-radius: 4px;
   padding: 48px;
+  align-items: center;
+
+  form, .form-input, button{
+    width: 100%;
+  }
 }
 
 form {
   @include mixins.flex(column);
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
 }
 
 %input-sizing {
-
   padding: 18px;
   margin-bottom: 12px;
   border-radius: 4px;
@@ -28,7 +32,6 @@ form {
 
 .form-input {
   position: relative;
-  width: 75%;
 
   input {
     @extend %input-sizing;
@@ -50,7 +53,6 @@ button {
   font-size: 20px;
   outline: none;
   border: none;
-  width: 75%;
 
   &:disabled {
     background: colors.$grey-300;
@@ -60,7 +62,6 @@ button {
 
 #login-section-footer {
   width: 75%;
-  align-self: center;
   margin-top: 14px;
   color: colors.$grey-300;
 
@@ -73,10 +74,6 @@ button {
       font-weight: 700;
     }
   }
-}
-
-.alert {
-  width: 75%;
 }
 
 @media screen and (min-width: 992px) {
