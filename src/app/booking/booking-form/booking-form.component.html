@@ -6,7 +6,7 @@
         <ng-container [formGroup]="passenger">
           <div class="form-group">
             <label class="form-group-label">Passenger Number #{{i + 1}}'s Information</label>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="firstName"
                      [ngClass]="{'error-label':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"
               >First Name</label>
@@ -14,7 +14,7 @@
 ? 'Field Required': 'Ali'}}"
                      [ngClass]="{'error':passenger.controls.firstName.invalid && (passenger.controls.firstName.dirty || passenger.controls.firstName.touched)}"/>
             </div>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="lastName"
                      [ngClass]="{'error-label':passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)}"
               >Last Name</label>
@@ -24,7 +24,7 @@
                      [ngClass]="{'error':passenger.controls.lastName.invalid && (passenger.controls.lastName.dirty || passenger.controls.lastName.touched)}"
               />
             </div>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="nationalId"
                      [ngClass]="{'error-label':passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)}"
               >National Id</label>
@@ -34,7 +34,7 @@
                      [ngClass]="{'error':passenger.controls.nationalId.invalid && (passenger.controls.nationalId.dirty || passenger.controls.nationalId.touched)}"
               />
             </div>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="birthdate"
                      [ngClass]="{'error-label':passenger.controls.birthDate.invalid && (passenger.controls.birthDate.dirty || passenger.controls.birthDate.touched)}"
               >Birthdate</label>
@@ -42,7 +42,7 @@
                      [ngClass]="{'error':passenger.controls.birthDate.invalid && (passenger.controls.birthDate.dirty || passenger.controls.birthDate.touched)}"
               />
             </div>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="passportNO"
                      [ngClass]="{'error-label':passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)}"
               >Passport NO</label>
@@ -53,7 +53,7 @@
                      [ngClass]="{'error':passenger.controls.passportNO.invalid && (passenger.controls.passportNO.dirty || passenger.controls.passportNO.touched)}"
               />
             </div>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="issuedIn"
                      [ngClass]="{'error-label':passenger.controls.issuedIn.invalid && (passenger.controls.issuedIn.dirty || passenger.controls.issuedIn.touched)}"
               >Issuer Country</label>
@@ -68,7 +68,7 @@
                 </option>
               </select>
             </div>
-            <div class="passenger-info-input">
+            <div class="form-input">
               <label for="passportExpirationDate"
                      [ngClass]="{'error-label':passenger.controls.expiresAt.invalid && (passenger.controls.expiresAt.dirty || passenger.controls.expiresAt.touched)}"
               >Passport Expiration:</label>

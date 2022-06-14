@@ -15,6 +15,7 @@ div {
   input {
     width: 100%;
     font-size: 16px;
+    border: 1px solid colors.$grey-400;
 
     &:focus {
       @include mixins.input-focus-outline();

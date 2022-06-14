@@ -33,10 +33,6 @@ article {
 
     input {
       width: 100%;
-
-      &:focus {
-        @include mixins.input-focus-outline();
-      }
     }
   }
 
@@ -103,7 +99,7 @@ app-select {
     button {
       width: 20%;
       align-self: center;
-      top: 0
+      top: 0;
     }
   }
 

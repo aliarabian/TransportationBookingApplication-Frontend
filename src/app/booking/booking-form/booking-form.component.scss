@@ -1,5 +1,5 @@
 @use "src/styles/colors";
-@import "src/styles/mixins";
+@use "src/styles/mixins";
 
 #booking-container {
   display: flex;
@@ -21,10 +21,18 @@ h3 {
 .form-group {
   position: relative;
   display: flex;
+  row-gap: 48px;
   flex-direction: column;
-  padding: 24px 24px 0;
-  border: 1px solid rgba(102, 102, 102, 0.38);
-  border-radius: 8px;
+  padding: 24px 24px;
+  @include mixins.box-shadow(rgba(149, 157, 165, 0.2) 0px 8px 24px);
+  border-radius: 4px;
+  margin-bottom: 24px;
+
+  .form-input {
+    label {
+      top: -12px;
+    }
+  }
 
   button {
     background: colors.$grey-0;
@@ -34,54 +42,23 @@ h3 {
   }
 }
 
-input, select {
-  border: none;
-  border-bottom: 1px solid #797979;
-  background: inherit;
-  border-radius: 0;
-  padding: 18px;
-  width: 100%;
-
-  &:focus, &:active {
-    border: none;
-    border-bottom: 1px solid #797979;
-    outline: none;
-  }
-}
 
 .form-group input, select {
-  font-size: 16px;
-  letter-spacing: 0.05rem;
-}
-
-.passenger-info-input {
-  position: relative;
-  margin-bottom: 24px;
   font-size: 14px;
-  border-radius: 8px;
-
-  label {
-    position: absolute;
-    top: -14px;
-    left: 0.5rem;
-    font-size: 12px;
-    border-radius: 8px;
-    padding: 2px;
-    letter-spacing: 0.07rem;
-    font-family: Verdana, sans-serif;
-    color: #797979;
-  }
+  letter-spacing: 0.05rem;
+  width: 100%;
 }
+
 
 .form-group-label {
   position: absolute;
   top: -14px;
-  background: whitesmoke;
+  background: colors.$grey-0;
   left: 12px;
-  font-size: 12px;
+  font-size: 10px;
   border-radius: 8px;
-  font-weight: 550;
-  color: colors.$grey-800;
+  font-weight: 600;
+  color: colors.$grey-900;
 }
 
 .form-group button {
@@ -132,23 +109,6 @@ input, select {
   margin-top: 20px;
 }
 
-.error {
-  color: #a12b2b;
-  box-shadow: rgb(147, 4, 4) 0 1px 2px 0, rgb(147, 4, 4) 0 0 0 0;
-  border-radius: 8px;
-  border-top: 0;
-
-  &::placeholder {
-    color: #9f3d3d;
-  }
-}
-
-.error-label {
-  color: #9f3d3d !important;
-  font-size: 14px !important;
-  font-weight: 700;
-}
-
 @media screen and (min-width: 992px) {
   #booking-container {
     flex-direction: row;
@@ -157,8 +117,8 @@ input, select {
   }
 
   .form-group-label {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 14px;
+    //font-weight: 700;
     letter-spacing: 0.05rem;
   }
   #passengers-form-wrapper {
@@ -175,9 +135,6 @@ input, select {
     max-width: 576px;
   }
 
-  .passenger-info-input {
-    margin-right: 14px;
-  }
 
   .form-group {
     margin-top: 24px;
@@ -188,8 +145,8 @@ input, select {
   }
 
   .form-actions {
-    @include flex(row);
-    @include flex-layout(space-between, center);
+    @include mixins.flex(row);
+    @include mixins.flex-layout(space-between, center);
     margin-top: 20px;
   }
 

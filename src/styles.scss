@@ -39,6 +39,14 @@ body {
 
     position: relative;
 
+    input, select {
+      border: 1px solid colors.$grey-400;
+
+      &:focus {
+        @include mixins.input-focus-outline();
+      }
+    }
+
     label {
       position: absolute;
       top: 0;

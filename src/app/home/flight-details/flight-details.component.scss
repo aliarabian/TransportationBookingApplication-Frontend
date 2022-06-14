@@ -5,8 +5,8 @@
 .flight-card {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgba(102, 102, 102, 0.38);
-  border-radius: 8px;
+  //border-radius: 4px;
+  @include mixins.box-shadow(rgba(149, 157, 165, 0.2) 0px 8px 24px);
 }
 
 .flight-card-header {
