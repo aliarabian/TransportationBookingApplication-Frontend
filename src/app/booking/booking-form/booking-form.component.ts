@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Flight} from "../../home/flights-list/flight";
 import {SeatingSection} from "../../home/flights-list/seating-section";
 import {Observable, Subscription, throwError} from "rxjs";
@@ -117,5 +117,14 @@ export class BookingFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(subs => subs.unsubscribe());
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  canDeactivate() {
+    return !this.passengersForm.valid;
+  }
+
+  openAlertDialog() {
+    return confirm("Do you want to leave before completing your booking request?");
   }
 }

@@ -4,6 +4,7 @@ import {BookingComponent} from "./booking.component";
 import {BookingFormComponent} from "./booking-form/booking-form.component";
 import {BookingResultComponent} from "./booking-result/booking-result.component";
 import {AuthGuard} from "../auth/auth.guard";
+import {CanDeactivateGuard} from "./can-deactivate.guard";
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
       {
         path: '',
         component: BookingFormComponent,
+        canDeactivate: [CanDeactivateGuard],
         data: {
           title: "Booking Flight Tickets"
         }
