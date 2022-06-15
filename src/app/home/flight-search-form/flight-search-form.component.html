@@ -1,8 +1,8 @@
 <article>
     <form id="flight-search-form" [formGroup]="searchFlightForm" (ngSubmit)="onSubmit()">
       <div class="flight-search-form-section">
-        <app-select formControlName="flightOffset" [terms]="inputDataList" [placeholder]="'Offset'"></app-select>
-        <app-select formControlName="flightDestination" [terms]="inputDataList"
+        <app-select formControlName="flightOffset" [terms$]="inputDataList" [placeholder]="'Offset'"></app-select>
+        <app-select formControlName="flightDestination" [terms$]="inputDataList"
                     [placeholder]="'Destination'"></app-select>
         <div class="form-input">
           <label for="flight-departure-time">

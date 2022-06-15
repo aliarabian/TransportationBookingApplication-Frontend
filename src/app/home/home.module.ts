@@ -11,8 +11,19 @@ import {RouterModule} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {HomeComponent} from "./home.component";
 import {HomeRoutingModule} from "./home-routing.module";
+import {FilterPipe} from './select/filter.pipe';
 
 @NgModule({
+  declarations: [
+    FilterPipe,
+    HomeComponent,
+    FlightSearchFormComponent,
+    FlightsListComponent,
+    FlightDetailsComponent,
+    FlightCardModalComponent,
+    ClickOutsideDirective,
+    SelectComponent,
+  ],
   imports: [
     ReactiveFormsModule,
     CommonModule,
@@ -21,18 +32,9 @@ import {HomeRoutingModule} from "./home-routing.module";
     MatIconModule
   ],
   exports: [
-    FlightDetailsComponent
+    FlightDetailsComponent,
   ],
 
-  declarations: [
-    HomeComponent,
-    FlightSearchFormComponent,
-    FlightsListComponent,
-    FlightDetailsComponent,
-    FlightCardModalComponent,
-    ClickOutsideDirective,
-    SelectComponent,
-  ]
 })
 export class HomeModule {
 
