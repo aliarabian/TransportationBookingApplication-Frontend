@@ -7,6 +7,9 @@ h1 {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -15,6 +18,10 @@ section {
   border-radius: 4px;
   padding: 48px;
   margin-top: 48px;
+
+  & .error-text:first-child {
+    font-size: 20px;
+  }
 }
 
 form {
@@ -39,7 +46,6 @@ form {
     //left:8px;
   }
 }
-
 
 
 @media screen and (min-width: 992px) {

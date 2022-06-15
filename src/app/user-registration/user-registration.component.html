@@ -1,4 +1,7 @@
 <section>
+  <div *ngIf="errorText">
+    <span class="error-text">{{errorText}},<a href="/login">Login.</a></span>
+  </div>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="form-input">
       <label for="username"

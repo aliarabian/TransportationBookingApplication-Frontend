@@ -59,7 +59,7 @@ export class UserRegistrationComponent implements OnInit {
           console.log(error.error);
         }
         if (error.status === 409) {
-          this.errorText = "User Exists";
+          this.errorText = "You already have an account";
         }
       });
   }
