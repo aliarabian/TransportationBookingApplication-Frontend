@@ -34,11 +34,7 @@ export class LoginComponent implements OnInit {
     ) {
       this.router.navigate(['/home'])
     }
-    this.route.paramMap.pipe(
-      tap(params => {
-        this.registered = Boolean(params.get('registrationSuccess')!);
-      })
-    ).subscribe();
+    this.route.paramMap.subscribe();
 
     this.authenticationService.authError.subscribe(error => {
       this.error = error.status == 401 || error.status == 400;
@@ -54,9 +50,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authenticationService.authError.next(new HttpErrorResponse({}));
-    console.log(this.loginForm.value.username);
-    console.log(this.loginForm.value.password);
-    console.log(this.loginForm.value)
     this.authenticationService.login({
       username: this.loginForm.value.username,
       password: this.loginForm.value.password

@@ -35,23 +35,14 @@ article {
   }
 
   button {
-    display: flex;
-    justify-content: center;
     width: 100%;
     background: colors.$grey-600;
     color: colors.$grey-0;
-    padding: 16px;
-    margin-top: 8px;
-    align-self: baseline;
     letter-spacing: 0.05rem;
-
-    span {
-      letter-spacing: 0.1rem;
-    }
-
+    text-align: center;
+    margin-top: 12px;
     mat-icon {
-      align-self: center;
-      margin-right: 8px;
+      vertical-align: -30%;
     }
   }
 }
@@ -65,18 +56,13 @@ app-select {
 @media screen and (min-width: 576px) {
   .flight-search-form-section {
     flex-direction: row;
+
     .form-input, button {
       width: 20%;
     }
 
     app-select {
       width: 25%;
-    }
-
-    button {
-      position: relative;
-      padding: 16px;
-      top: 5px
     }
   }
 }
@@ -94,8 +80,6 @@ app-select {
 
     button {
       width: 20%;
-      align-self: center;
-      top: 0;
     }
   }
 

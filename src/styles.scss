@@ -8,6 +8,10 @@
   @include mixins.box-sizing(border-box);
 }
 
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: colors.$grey-700;
+}
+
 body {
   background: colors.$grey-0;
 

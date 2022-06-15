@@ -1,10 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {RegistrationDto} from "./registration-dto";
 import {ApiResponse} from "../api-response";
 import {AuthService} from "../auth/auth.service";
 import {Router} from "@angular/router";
+import {catchError} from "rxjs/operators";
+import {throwError} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {
+  UserRegistrationResultModalComponent
+} from "../user-registration-result-modal/user-registration-result-modal.component";
 
 @Component({
   selector: 'app-user-registration',
@@ -19,8 +25,10 @@ export class UserRegistrationComponent implements OnInit {
     lastName: ['', [Validators.required]],
     nationalId: ['', [Validators.pattern("[0-9]{11}"), Validators.required]]
   });
+  errorText?: string;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService, private router: Router,
+              private dialog: MatDialog) {
     if (authService.isLoggedIn()) {
       this.router.navigate(['home'])
     }
@@ -39,9 +47,20 @@ export class UserRegistrationComponent implements OnInit {
         nationalId: this.registrationForm.value.nationalId
       }
     this.http.post<ApiResponse<any>>("/users", userData)
+      .pipe(catchError(err => throwError(err)))
       .subscribe((response: ApiResponse<any>) => {
-        console.log(response)
-        this.router.navigate(['login', {registrationSuccess: true}])
+        const registrationResultOpenModal = this.dialog.open(UserRegistrationResultModalComponent);
+        setTimeout(() => {
+          registrationResultOpenModal.close();
+          this.router.navigate(['login'])
+        }, 1000);
+      }, (error: HttpErrorResponse) => {
+        if (error.status === 400) {
+          console.log(error.error);
+        }
+        if (error.status === 409) {
+          this.errorText = "User Exists";
+        }
       });
   }
 
