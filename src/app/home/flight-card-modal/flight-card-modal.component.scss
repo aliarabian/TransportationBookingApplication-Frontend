@@ -1,4 +1,5 @@
-@import "src/styles/variables";
+@use "src/styles/variables" as *;
+@use "src/styles/colors";
 
 .flight-card {
   display: flex;
@@ -14,14 +15,18 @@
   font-family: $font-families;
   font-size: 14px;
   letter-spacing: 0.05rem;
+  background: colors.$grey-300;
   padding: 4px 8px;
-  box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
-  color: #7a7a7a;
+  color: colors.$grey-0;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 
   a {
     text-decoration: none;
-    font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
     color: inherit;
+  }
+  p{
+    margin-bottom: 0;
   }
 }
 
@@ -54,7 +59,6 @@
   font-size: 16px;
   padding: 12px;
   font-weight: 700;
-  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
   color: #797979;
 }
 
@@ -82,7 +86,6 @@
 @media (min-width: 576px) {
   .flight-card-header {
     justify-content: flex-start;
-    padding: 18px;
     flex-wrap: nowrap;
   }
 }
@@ -100,11 +103,9 @@
     align-items: baseline;
     letter-spacing: 0.05rem;
     font-size: 14px;
-    padding: 0;
 
     span, a {
       width: auto;
-      margin-right: 4px;
     }
   }
 

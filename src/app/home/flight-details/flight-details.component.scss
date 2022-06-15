@@ -5,7 +5,6 @@
 .flight-card {
   display: flex;
   flex-direction: column;
-  //border-radius: 4px;
   @include mixins.box-shadow(rgba(149, 157, 165, 0.2) 0px 8px 24px);
 }
 
@@ -28,10 +27,6 @@
     font-size: 14px;
   }
 
-  .section-privileges {
-    align-self: flex-start;
-    padding-left: 12px;
-  }
 }
 
 .flight-details {
@@ -53,8 +48,15 @@
   .flight-card {
     font-size: 18px;
   }
-
-
+  .section-privileges {
+    align-self: flex-start;
+    margin-left: 16%;
+  }
+  .flight-card-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   .flight-card-header {
     flex-direction: row;
     font-weight: 450;
@@ -72,13 +74,8 @@
       border-bottom: none;
 
       .mat-icon {
-
         transform: rotate(90deg) translateX(4px);
       }
-    }
-
-    .section-privileges {
-      margin-left: 24px;
     }
   }
 }
