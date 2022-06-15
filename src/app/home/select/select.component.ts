@@ -1,7 +1,6 @@
 import {Component, forwardRef, Input, OnInit} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
-import {filter, mergeAll, toArray} from "rxjs/operators";
 
 @Component({
   selector: 'app-select',
@@ -64,6 +63,9 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   onInput() {
+    if(!this.citiesListState){
+      this.onClickToggleCitiesList();
+    }
     this.onChange(this.terminal.value)
   }
 

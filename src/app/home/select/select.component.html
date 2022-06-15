@@ -9,6 +9,7 @@
       name="offset"
       autocomplete="off"
       (input)="onInput()"
+      [ngClass]="{'clear-border':citiesListState}"
       required
       (click)="onClickToggleCitiesList()"
     />
