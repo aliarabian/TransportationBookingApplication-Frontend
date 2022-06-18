@@ -47,8 +47,9 @@
   <div id="flights-container">
     <ng-container *ngFor="let flight of flights; let i = index">
       <ng-container *ngFor="let section of flight.sections;let j = index">
-        <div *ngIf="filters.includes(section.title.toLowerCase())" class="card-wrapper"
-             (click)="openModal(flight, section)">
+        <div
+          [@filter]="filters.includes(section.title.toLowerCase())" class="card-wrapper"
+          (click)="openModal(flight, section)">
           <article class="flight-card">
             <div class="flight-card-header">
               <a href="#" (click)="$event.stopPropagation()">

@@ -20,7 +20,18 @@ import {animate, AUTO_STYLE, state, style, transition, trigger} from "@angular/a
       })),
       transition('false => true', animate(1000 + 'ms ease-in-out')),
       transition('true => false', animate(1000 + 'ms ease-in-out'))
-    ])
+    ]),
+    trigger('filter', [
+        state('false', style({
+          margin: 0, width: 0, height: 0, opacity: 0, transform: "translateX(-100px)"
+        })),
+        state('true', style({
+          display: AUTO_STYLE, opacity: 1, transform: "translateX(0)"
+        })),
+        transition('false => true', animate(1000 + 'ms ease-in-out')),
+        transition('true => false', animate(1000 + 'ms ease-in-out'))
+      ]
+    )
   ]
 })
 export class FlightsListComponent implements OnInit, OnChanges {
@@ -46,13 +57,13 @@ export class FlightsListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.collapsed = [];
-      for (let i = 0; i < changes.flights.currentValue.length; i++) {
-        let sectionCard: boolean[] = []
-        for (let j = 0; j < changes.flights.currentValue[i].sections.length; j++) {
-          sectionCard.push(false);
-        }
-        this.collapsed.push(sectionCard);
+    for (let i = 0; i < changes.flights.currentValue.length; i++) {
+      let sectionCard: boolean[] = []
+      for (let j = 0; j < changes.flights.currentValue[i].sections.length; j++) {
+        sectionCard.push(false);
       }
+      this.collapsed.push(sectionCard);
+    }
   }
 
 
