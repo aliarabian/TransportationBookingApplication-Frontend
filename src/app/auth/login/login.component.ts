@@ -1,18 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {tap} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
-import {MatFormFieldControl} from "@angular/material/form-field";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  registered: boolean = false;
+export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup = this.formBuilder.group({
       username: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]
@@ -21,12 +19,18 @@ export class LoginComponent implements OnInit {
   );
   errorMessage: string = "Wrong Username or Password"
   error: boolean = false;
+  private subscription?: Subscription;
 
   constructor(private formBuilder: FormBuilder,
               private authenticationService: AuthService,
               private route: ActivatedRoute,
               private router: Router
   ) {
+  }
+
+  ngOnDestroy(): void {
+    this.authenticationService.authError.next(new HttpErrorResponse({}))
+    this.subscription?.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class LoginComponent implements OnInit {
     }
     this.route.paramMap.subscribe();
 
-    this.authenticationService.authError.subscribe(error => {
+    this.subscription = this.authenticationService.authError.subscribe(error => {
       this.error = error.status == 401 || error.status == 400;
       if (this.error)
         this.loginForm.reset();
@@ -66,6 +70,5 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls[formControlName].invalid &&
       (this.loginForm.controls[formControlName].dirty ||
         this.loginForm.controls[formControlName].touched);
-    ;
   }
 }
