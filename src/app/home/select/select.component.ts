@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, forwardRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 
@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
     {
       provide: NG_VALUE_ACCESSOR,
       multi: true,
-      useExisting: forwardRef(() => SelectComponent)
+      useExisting: SelectComponent
     }
   ]
 })
@@ -63,7 +63,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   onInput() {
-    if(!this.citiesListState){
+    if (!this.citiesListState) {
       this.onClickToggleCitiesList();
     }
     this.onChange(this.terminal.value)

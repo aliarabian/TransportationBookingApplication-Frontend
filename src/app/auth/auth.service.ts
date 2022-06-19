@@ -42,13 +42,11 @@ export class AuthService {
         }
       });
 
-
   }
 
   isLoggedIn(): boolean {
     return localStorage.getItem("loggedIn") != null;
   }
-
 
   clear() {
     localStorage.clear();
@@ -56,6 +54,8 @@ export class AuthService {
   }
 
   logout() {
+    this.http.post("/auth/logout", {})
+      .subscribe();
     this.clear();
     this.router.navigate(["login"]);
     this.loginStatus = false;

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Flight} from "./flight";
 import {HttpClient} from "@angular/common/http";
 import {SeatingSection} from "./seating-section";
@@ -13,23 +13,23 @@ import {animate, AUTO_STYLE, state, style, transition, trigger} from "@angular/a
   animations: [
     trigger('collapsable', [
       state('false', style({
-        height: 0, width: 0, visibility: 'hidden', opacity: 0, margin: '-16px'
+        height: 0, width: 0, opacity: 0, margin: '-16px'
       })),
       state('true', style({
-        height: AUTO_STYLE, visibility: AUTO_STYLE, opacity: 1
+        opacity: 1
       })),
       transition('false => true', animate(1000 + 'ms ease-in-out')),
       transition('true => false', animate(1000 + 'ms ease-in-out'))
     ]),
     trigger('filter', [
         state('false', style({
-          margin: 0, width: 0, height: 0, opacity: 0, transform: "translateX(-100px)"
+          margin: 0, height: 0, opacity: 0, transform: "translateX(-100px)"
         })),
         state('true', style({
           display: AUTO_STYLE, opacity: 1, transform: "translateX(0)"
         })),
         transition('false => true', animate(1000 + 'ms ease-in-out')),
-        transition('true => false', animate(1000 + 'ms ease-in-out'))
+        transition('true => false', animate(500 + 'ms ease-in'))
       ]
     )
   ]
