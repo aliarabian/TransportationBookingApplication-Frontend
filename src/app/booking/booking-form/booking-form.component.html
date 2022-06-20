@@ -6,94 +6,74 @@
         <ng-container [formGroup]="passenger">
           <div class="form-group">
             <label class="form-group-label">Passenger Number #{{i + 1}}'s Information</label>
-            <div class="form-input">
-              <label for="firstName"
-                     [ngClass]="{'error-label':isInvalid(passenger, 'firstName')} "
-              >First Name</label>
-              <input id="firstName" formControlName="firstName"
-                     [ngClass]="{'error-input':isInvalid(passenger, 'firstName')}"
-              />
-              <span class="error-text" *ngIf="hasError(passenger, 'firstName', 'required')">Field is required</span>
-            </div>
-            <div class="form-input">
-              <label for="lastName"
-                     [ngClass]="{'error-label':isInvalid(passenger, 'lastName')}"
-              >Last Name</label>
-              <input id="lastName" formControlName="lastName"
-                     [ngClass]="{'error-input':isInvalid(passenger, 'lastName')}"
-              />
-              <span class="error-text" *ngIf="hasError(passenger, 'lastName', 'required')">Field is required</span>
-            </div>
-            <div class="form-input">
-              <label for="nationalId"
-                     [ngClass]="{'error-label':hasError(passenger, 'nationalId', 'pattern') || hasError(passenger, 'nationalId', 'required')}"
-              >National Id</label>
-              <input id="nationalId" formControlName="nationalId"
+            <mat-form-field appearance="outline">
+              <mat-label for="firstName">First Name</mat-label>
+              <input matInput id="firstName" formControlName="firstName"/>
+              <mat-error *ngIf="hasError(passenger, 'firstName', 'required')">
+                Field is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label for="lastName">Last Name</mat-label>
+              <input matInput id="lastName" formControlName="lastName"/>
+              <mat-error *ngIf="hasError(passenger, 'lastName', 'required')">Field is required
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>National Id</mat-label>
+              <input matInput id="nationalId" formControlName="nationalId"
                      [ngClass]="{'error-input':hasError(passenger, 'nationalId', 'pattern') || hasError(passenger, 'nationalId', 'required')}"
               />
-              <span class="error-text" *ngIf="hasError(passenger, 'nationalId', 'required')">Field is required</span>
-              <span class="error-text"
-                    *ngIf="hasError(passenger, 'nationalId', 'pattern')">Field's value be an 11 digit number</span>
-            </div>
-            <div class="form-input">
-              <label for="birthdate"
-                     [ngClass]="{'error-label':isInvalid(passenger, 'birthDate')}"
-              >Birthdate</label>
-              <input id="birthdate" type="date" min="1910-01-01" max="2022-01-01" formControlName="birthDate"
-                     [ngClass]="{'error-input':isInvalid(passenger, 'birthDate')}"
-              />
-              <span class="error-text" *ngIf="hasError(passenger, 'birthDate', 'required')">Field is required</span>
-            </div>
-            <div class="form-input">
-              <label for="passportNO"
-                     [ngClass]="{'error-label':hasError(passenger, 'passportNO', 'required') || hasError(passenger, 'passportNO', 'pattern')}"
-              >Passport NO</label>
-              <input id="passportNO" formControlName="passportNO"
-
+              <mat-error *ngIf="hasError(passenger, 'nationalId', 'required')">Field is required</mat-error>
+              <mat-error *ngIf="hasError(passenger, 'nationalId', 'pattern')">Field's value be an 11 digit number
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>
+                Birthdate
+              </mat-label>
+              <input matInput id="birthdate" type="date" min="1910-01-01" max="2022-01-01" formControlName="birthDate"/>
+              <mat-error *ngIf="hasError(passenger, 'birthDate', 'required')">Field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Passport NO</mat-label>
+              <input matInput id="passportNO" formControlName="passportNO"
                      placeholder="10 digits, e.g. 12345678901"
-                     [ngClass]="{'error-input':hasError(passenger, 'passportNO', 'required') || hasError(passenger, 'passportNO', 'pattern')}"
               />
-              <span class="error-text" *ngIf="hasError(passenger, 'passportNO', 'required')">Field is required</span>
-              <span class="error-text"
-                    *ngIf="hasError(passenger, 'passportNO', 'pattern')">Field's length must a 10 digit number</span>
-            </div>
-            <div class="form-input">
-              <label for="issuedIn"
-                     [ngClass]="{'error-label':isInvalid(passenger, 'issuedIn')}"
-              >Issuer Country</label>
-              <select id="issuedIn" formControlName="issuedIn"
-
-                      [ngClass]="{'error-input':isInvalid(passenger, 'issuedIn')}"
-                      required>
-                <option value="" disabled selected>Select Passport Issuer Country</option>
-
-                <option *ngFor="let country of countries |async" value="{{country.code}}">
+              <mat-error *ngIf="hasError(passenger, 'passportNO', 'required')">Field is required
+              </mat-error>
+              <mat-error *ngIf="hasError(passenger, 'passportNO', 'pattern')">Field's length must a 10 digit number
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Issuer Country</mat-label>
+              <mat-select id="issuedIn" formControlName="issuedIn" required>
+                <mat-option value="" disabled selected>Select Passport Issuer Country</mat-option>
+                <mat-option *ngFor="let country of countries |async" value="{{country.code}}">
                   {{country.name}}
-                </option>
-              </select>
-              <span class="error-text" *ngIf="hasError(passenger, 'issuedIn', 'required')">Field is required</span>
-            </div>
-            <div class="form-input">
-              <label for="passportExpirationDate"
-                     [ngClass]="{'error-label':isInvalid(passenger, 'expiresAt')}"
-              >Passport Expiration:</label>
-              <input id="passportExpirationDate" type="date"
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError(passenger, 'issuedIn', 'required')">Field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Passport Expiration</mat-label>
+              <input matInput id="passportExpirationDate" type="date"
                      min="{{ validPassportExpiryDate | date:'yyyy-MM-dd'}}"
-                     [ngClass]="{'error-input':isInvalid(passenger, 'expiresAt')}"
                      formControlName="expiresAt"/>
-              <span class="error-text" *ngIf="hasError(passenger, 'expiresAt', 'required')">Field is required</span>
-            </div>
-            <button *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">
+              <mat-error *ngIf="hasError(passenger, 'expiresAt', 'required')">Field is required</mat-error>
+            </mat-form-field>
+            <button mat-mini-fab *ngIf="passengersForm.length > 1" type="button" (click)="removeForm(i)">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
         </ng-container>
       </ng-container>
       <div class="form-actions">
-        <button [disabled]="!passengersForm.at(passengersForm.length -1).valid" id="passenger-form-adder" type="button"
+        <button mat-flat-button [disabled]="!passengersForm.at(passengersForm.length -1).valid"
+                id="passenger-form-adder" type="button"
                 (click)="addPassengerForm()">+
         </button>
-        <button id="booking-btn" type="submit" (click)="onSubmit()"
+        <button mat-raised-button id="booking-btn" type="submit" (click)="onSubmit()"
                 [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
           Tickets
         </button>

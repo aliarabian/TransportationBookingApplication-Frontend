@@ -27,62 +27,13 @@ body {
     padding-bottom: 14px;
   }
 
-  .error-input {
-    border: 2px solid colors.$grey-900 !important;
-  }
 
-  .error-label {
-    font-weight: 600;
-    color: colors.$grey-900;
-  }
-
-  input, select, button, a {
+  a {
     border-radius: 4px;
     padding: 18px;
     font-size: 16px;
     border: none;
   }
 
-  .form-input {
-
-    position: relative;
-
-    input, select {
-      border: 1px solid colors.$grey-400;
-
-      &:focus {
-        @include mixins.input-focus-outline();
-      }
-    }
-
-    label {
-      position: absolute;
-      top: 0;
-      background: colors.$grey-0;
-      padding-left: 4px;
-      padding-right: 4px;
-      border-radius: 8px;
-      left: 8px;
-      z-index: 110;
-      font-size: 12px;
-      text-transform: capitalize;
-      letter-spacing: 0.05rem;
-      font-family: Verdana, sans-serif;
-      color: colors.$grey-700;
-    }
-  }
-
-  button {
-    background: colors.$grey-700;
-    color: colors.$grey-0;
-
-    &:disabled {
-      background: colors.$grey-300;
-    }
-  }
-
-  input {
-    outline: none;
-  }
 }
 

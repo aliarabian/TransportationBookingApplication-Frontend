@@ -52,6 +52,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     return this.loginForm.controls.username as FormControl;
   }
 
+  get password() {
+    return this.loginForm.controls.password as FormControl;
+  }
+
   onSubmit() {
     this.authenticationService.authError.next(new HttpErrorResponse({}));
     this.authenticationService.login({

@@ -3,25 +3,27 @@
     <div class="error-text" *ngIf="error">
       <span>{{errorMessage}}</span>
     </div>
-    <div class="form-input">
-      <label for="username" [ngClass]="{'error-label':isInvalid('username')}">username</label>
-      <input id="username" [ngClass]="{'error-input':isInvalid('username')}" type="text" name="username"
-             placeholder="example@mail.com" formControlName="username" required>
-      <span class="error-text" *ngIf="hasError('username', 'required')">Username is required</span>
-      <span class="error-text" *ngIf="hasError('username', 'email')"> Invalid Email</span>
-    </div>
-    <div class="form-input">
-      <label for="password" [ngClass]="{'error-label': isInvalid('password')}">password</label>
-      <input id="password" [ngClass]="{'error-input':isInvalid('password')}" type="password" name="password"
-             placeholder="" formControlName="password" required>
-      <span class="error-text" *ngIf="hasError('password', 'required')">Password is required</span>
-    </div>
-    <button type="submit" name="submit" [disabled]="!loginForm.valid">Login</button>
-    <div id="login-section-footer">
-      <div>
-        <span>Don't have an account? </span>
-        <a routerLink="/registration"> Register</a>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="ali@example.com" [formControl]="username" required>
+      <mat-error *ngIf="hasError('username', 'required')">Username is required</mat-error>
+      <mat-error *ngIf="hasError('username', 'email')"> Invalid Email</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input matInput id="password" type="password" name="password"
+             placeholder="" [formControl]="password" required>
+      <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+    </mat-form-field>
+    <div id="form-footer-wrapper">
+      <button mat-flat-button type="submit" [disabled]="!loginForm.valid">Login</button>
+      <div id="login-section-footer">
+        <div>
+          <span>Don't have an account? </span>
+          <a routerLink="/registration"> Register</a>
+        </div>
       </div>
     </div>
+
   </form>
 </section>

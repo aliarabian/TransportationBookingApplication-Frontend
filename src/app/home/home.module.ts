@@ -12,6 +12,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {HomeComponent} from "./home.component";
 import {HomeRoutingModule} from "./home-routing.module";
 import {FilterPipe} from './select/filter.pipe';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import {FilterPipe} from './select/filter.pipe';
     CommonModule,
     RouterModule,
     HomeRoutingModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   exports: [
     FlightDetailsComponent,

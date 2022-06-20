@@ -12,7 +12,7 @@ section {
   padding: 48px;
   align-items: center;
 
-  form, .form-input, button{
+  form {
     width: 100%;
   }
 }
@@ -23,47 +23,38 @@ form {
   align-items: flex-start;
 }
 
-%input-sizing {
-  padding: 18px;
-  margin-bottom: 12px;
-  border-radius: 4px;
-  margin-top: 12px;
+
+mat-form-field {
+  position: relative;
+  width: 100%;
+
 }
 
-.form-input {
-  position: relative;
-
-  input {
-    @extend %input-sizing;
-    border: 1px solid colors.$grey-400;
-    width: 100%;
-    outline: none;
-    font-size: 16px;
-
-    &:focus {
-      @include mixins.input-focus-outline();
-    }
-  }
+input[matInput] {
+  width: 100%;
 }
 
 button {
-  @extend %input-sizing;
   background: colors.$grey-600;
   color: colors.$grey-0;
-  font-size: 20px;
-  outline: none;
-  border: none;
+  width: 50%;
+  padding: 8px;
+  font-size: 16px;
+}
 
-  &:disabled {
-    background: colors.$grey-300;
-    color: colors.$grey-0;
-  }
+#form-footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 24px;
+  align-items: baseline;
+  width: 100%;
 }
 
 #login-section-footer {
   width: 75%;
   margin-top: 14px;
   color: colors.$grey-300;
+  text-align: center;
 
   a {
     color: colors.$grey-500;

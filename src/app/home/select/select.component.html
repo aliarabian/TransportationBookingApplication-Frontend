@@ -1,24 +1,24 @@
 <div (clickOutside)="clickedOutside()">
-  <div class="form-input">
-    <label>{{placeholder}}</label>
-    <input
-      #iv
-      id="flight-offset"
-      [formControl]="terminal"
-      type="text"
-      name="offset"
-      autocomplete="off"
-      (input)="onInput()"
-      [ngClass]="{'clear-border':citiesListState}"
-      required
-      (click)="onClickToggleCitiesList()"
+
+  <mat-form-field appearance="outline"
+                  (click)="onClickToggleCitiesList()">
+    <mat-label>{{placeholder}}</mat-label>
+    <input matInput
+           #iv
+           id="flight-offset"
+           [formControl]="terminal"
+           type="text"
+           name="offset"
+           autocomplete="off"
+           (input)="onInput()"
+           required
     />
-    <ul *ngIf="citiesListState" class="cities">
-      <ng-container *ngFor="let terminal of terms$ | async | filter:iv.value">
-        <li (click)="onClick(terminal)">
-          {{terminal}}
-        </li>
-      </ng-container>
-    </ul>
-  </div>
+  </mat-form-field>
+  <ul *ngIf="citiesListState" class="cities">
+    <ng-container *ngFor="let terminal of terms$ | async | filter:iv.value">
+      <li (click)="onClick(terminal)">
+        {{terminal}}
+      </li>
+    </ng-container>
+  </ul>
 </div>

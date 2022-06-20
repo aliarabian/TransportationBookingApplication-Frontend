@@ -21,10 +21,10 @@ h3 {
 .form-group {
   position: relative;
   display: flex;
-  row-gap: 24px;
   flex-direction: column;
   padding: 24px 24px;
-  @include mixins.box-shadow(rgba(149, 157, 165, 0.2) 0px 8px 24px);
+  $shadows: 1px 1px 4px 0px rgba(194, 194, 194, 0.3), -1px -1px 4px 0px rgba(194, 194, 194, 0.3);
+  @include mixins.box-shadow($shadows);
   border-radius: 4px;
   margin-bottom: 24px;
 
@@ -34,19 +34,6 @@ h3 {
     }
   }
 
-  button {
-    background: colors.$grey-0;
-    border-radius: 8px;
-    padding: 16px;
-    width: 100%;
-  }
-}
-
-
-.form-group input, select {
-  font-size: 14px;
-  letter-spacing: 0.05rem;
-  width: 100%;
 }
 
 
@@ -54,8 +41,10 @@ h3 {
   position: absolute;
   top: -14px;
   background: colors.$grey-0;
+  padding-left: 4px;
+  padding-right: 4px;
   left: 12px;
-  font-size: 10px;
+  font-size: 12px;
   border-radius: 8px;
   font-weight: 600;
   color: colors.$grey-900;
@@ -64,32 +53,31 @@ h3 {
 .form-group button {
   position: absolute;
   border: none;
-  padding: 2px 4px;
-  border-radius: 50%;
+  //padding: 2px 4px;
+  //border-radius: 50%;
+  background: colors.$grey-0;
+  color: colors.$grey-700;
   max-width: 36px;
   max-height: 36px;
   font-size: 14px;
   font-weight: 950;
   top: -12px;
   right: -12px;
-  color: #a72a2a;
 }
 
 #passenger-form-adder {
-  font-size: 16px;
   font-weight: 700;
   border: none;
-  border-radius: 4px;
-  min-width: 15%;
+  min-width: 10%;
   min-height: 100%;
-  width: 64px;
+  width: 48px;
+  font-size: 20px;
   background: colors.$grey-700;
   color: colors.$grey-0;
-  padding: 18px;
-  margin-top: 18px;
+  padding: 8px;
 
   &:disabled {
-    background: colors.$grey-300;
+    background: colors.$grey-200;
   }
 }
 
@@ -97,14 +85,20 @@ h3 {
   display: flex;
   flex-direction: column;
   margin-top: 32px;
+  row-gap: 16px;
 }
 
 #booking-btn {
   &:disabled {
     box-shadow: 5px 3px 5px -4px rgba(0, 0, 0, 0.1), 0px 0px 17px 0px rgba(0, 0, 0, 0.1);
+    background: colors.$grey-200;
   }
 
+  background: colors.$grey-700;
+  padding: 8px;
+  font-size: 20px;
   width: 100%;
+  color: colors.$grey-0;
   align-self: center;
   margin-top: 20px;
 }
@@ -117,14 +111,18 @@ h3 {
   }
 
   .form-group-label {
-    font-size: 14px;
-    //font-weight: 700;
+    font-size: 16px;
     letter-spacing: 0.05rem;
   }
   #passengers-form-wrapper {
     width: 48%;
     align-items: flex-start;
     margin-top: 0;
+
+    article {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   #passenger-form-adder {

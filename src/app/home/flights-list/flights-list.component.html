@@ -81,11 +81,11 @@
               </div>
             </div>
             <div class="flight-card-footer">
-              <button class="flight-details-see-more"
+              <button mat-button class="flight-details-see-more"
                       (click)="onCollapse($event, i, j)">
                 {{(collapsed[i][j] ? 'less' : 'more')}}
               </button>
-              <a [routerLink]="['/booking']" (click)="$event.stopPropagation()"
+              <a mat-stroked-button [routerLink]="['/booking']" (click)="$event.stopPropagation()"
                  [queryParams]="{flightId: flight.id, sectionId:section.id}">Book Ticket</a>
             </div>
           </article>

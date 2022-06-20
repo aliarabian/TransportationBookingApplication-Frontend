@@ -10,7 +10,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {UserAccountModule} from "../user-account/user-account.module";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
-import { BookingFailedModalComponent } from './booking-failed-modal/booking-failed-modal.component';
+import {BookingFailedModalComponent} from './booking-failed-modal/booking-failed-modal.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule(
   {
@@ -30,6 +33,9 @@ import { BookingFailedModalComponent } from './booking-failed-modal/booking-fail
       UserAccountModule,
       MatDialogModule,
       MatButtonModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatSelectModule
     ],
     providers: []
   }

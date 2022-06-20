@@ -19,8 +19,17 @@ section {
   padding: 48px;
   margin-top: 48px;
 
-  & .error-text:first-child {
-    font-size: 20px;
+  button {
+    padding: 8px;
+    background: colors.$grey-700;
+    color: colors.$grey-0;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.05rem;
+    &:disabled {
+      background: colors.$grey-200;
+      color: colors.$grey-0;
+    }
   }
 }
 
@@ -28,23 +37,6 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  row-gap: 20px;
-}
-
-.form-input {
-  input {
-    border: 1px solid colors.$grey-400;
-    width: 100%;
-
-    &:focus {
-      @include mixins.input-focus-outline();
-    }
-  }
-
-  label {
-    top: -8px;
-    //left:8px;
-  }
 }
 
 

@@ -3,57 +3,43 @@
     <span class="error-text">{{errorText}},<a href="/login">Login.</a></span>
   </div>
   <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <div class="form-input">
-      <label for="username"
-             [ngClass]="{'error-label':hasError(registrationForm, 'username', 'required') || hasError(registrationForm, 'username', 'email') }"
-      >username</label>
-      <input id="username" type="text" name="username" placeholder="example@email.com" formControlName="username"
-             [ngClass]="{'error-input':hasError(registrationForm, 'username', 'required') || hasError(registrationForm, 'username', 'email') }"
+    <mat-form-field appearance="outline">
+      <mat-label>username</mat-label>
+      <input matInput id="username" type="text" name="username" placeholder="example@email.com"
+             formControlName="username"
              required>
-      <span class="error-text" *ngIf="hasError(registrationForm, 'username', 'required')">Field is required</span>
-      <span class="error-text"
-            *ngIf="hasError(registrationForm, 'username', 'email')">Invalid Email</span>
-    </div>
-    <div class="form-input">
-      <label for="password"
-             [ngClass]="{'error-label': hasError(registrationForm, 'password', 'required')|| hasError(registrationForm, 'password', 'minlength') }"
-      >password</label>
-      <input id="password" type="password" name="password" placeholder="password"
-             [ngClass]="{'error-input': hasError(registrationForm, 'password', 'required')|| hasError(registrationForm, 'password', 'minlength')}"
+      <mat-error *ngIf="hasError(registrationForm, 'username', 'required')">Field is required</mat-error>
+      <mat-error *ngIf="hasError(registrationForm, 'username', 'email')">Invalid Email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>password</mat-label>
+      <input matInput id="password" type="password" name="password" placeholder="password"
              formControlName="password" required>
-      <span class="error-text" *ngIf="hasError(registrationForm, 'password', 'required')">Field is required</span>
-      <span class="error-text"
-            *ngIf="hasError(registrationForm, 'password', 'minlength')">Password must contain at least 5 characters</span>
-    </div>
-    <div class="form-input">
-      <label for="firstName"
-             [ngClass]="{'error-label':isInvalid(registrationForm, 'firstName')}"
-      >First Name</label>
-      <input id="firstName" formControlName="firstName"
+      <mat-error *ngIf="hasError(registrationForm, 'password', 'required')">Field is required</mat-error>
+      <mat-error *ngIf="hasError(registrationForm, 'password', 'minlength')">Password must contain at least 5
+        characters
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput id="firstName" formControlName="firstName"
              [ngClass]="{'error-input':isInvalid(registrationForm, 'firstName')}"
       />
-      <span class="error-text" *ngIf="hasError(registrationForm, 'firstName', 'required')">Field is required</span>
-    </div>
-    <div class="form-input">
-      <label for="lastName"
-             [ngClass]="{'error-label':isInvalid(registrationForm, 'lastName')}"
-      >Last Name</label>
-      <input id="lastName" formControlName="lastName"
-             [ngClass]="{'error-input':isInvalid(registrationForm, 'lastName')}"
-      />
-      <span class="error-text" *ngIf="hasError(registrationForm, 'lastName', 'required')">Field is required</span>
-    </div>
-    <div class="form-input">
-      <label for="nationalId"
-             [ngClass]="{'error-label':hasError(registrationForm, 'nationalId', 'pattern') || hasError(registrationForm, 'nationalId', 'required')}"
-      >National Id</label>
-      <input id="nationalId" formControlName="nationalId"
-             [ngClass]="{'error-input':hasError(registrationForm, 'nationalId', 'pattern') || hasError(registrationForm, 'nationalId', 'required')}"
-      />
-      <span class="error-text" *ngIf="hasError(registrationForm, 'nationalId', 'required')">Field is required</span>
-      <span class="error-text"
-            *ngIf="hasError(registrationForm, 'nationalId', 'pattern')">Field's value be an 11 digit number</span>
-    </div>
-    <button type="submit" [disabled]="!registrationForm.valid">Register</button>
+      <mat-error *ngIf="hasError(registrationForm, 'firstName', 'required')">Field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput id="lastName" formControlName="lastName"/>
+      <mat-error *ngIf="hasError(registrationForm, 'lastName', 'required')">Field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label for="nationalId">National Id</mat-label>
+      <input matInput id="nationalId" formControlName="nationalId"/>
+      <mat-error *ngIf="hasError(registrationForm, 'nationalId', 'required')">Field is required</mat-error>
+      <mat-error *ngIf="hasError(registrationForm, 'nationalId', 'pattern')">Field's value be an 11 digit number
+      </mat-error>
+    </mat-form-field>
+    <button mat-flat-button type="submit" [disabled]="!registrationForm.valid">Register</button>
   </form>
 </section>
