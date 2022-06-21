@@ -1,8 +1,10 @@
-<header>
-  <button (click)="goHome()" tabindex="-1">
-    <span class="logo"><mat-icon>flight</mat-icon></span>
-    <span>Jalal Airlines</span>
-  </button>
-  <app-user-acount-menu *ngIf="authService.loginStatus"></app-user-acount-menu>
-</header>
-<router-outlet></router-outlet>
+<div id="content-wrapper">
+  <header>
+    <button (click)="goHome()" tabindex="-1">
+      <span class="logo"><mat-icon>flight</mat-icon></span>
+      <span>Jalal Airlines</span>
+    </button>
+    <app-user-acount-menu *ngIf="authService.loginStatus"></app-user-acount-menu>
+  </header>
+  <router-outlet></router-outlet>
+</div>

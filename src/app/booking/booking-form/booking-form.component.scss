@@ -106,8 +106,9 @@ h3 {
 @media screen and (min-width: 992px) {
   #booking-container {
     flex-direction: row;
-    justify-content: space-evenly;
-    padding: 64px;
+    justify-content: space-between;
+    column-gap: 48px;
+    padding: 64px 0 0;
   }
 
   .form-group-label {

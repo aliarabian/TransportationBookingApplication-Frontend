@@ -3,19 +3,16 @@
 div {
   @include mixins.flex(column);
 
+  padding: 48px;
+
+}
+
+@media screen and (min-width: 992px) {
+  div {
+    padding: 0;
+  }
   app-flight-search-form {
-    padding: 48px;
-  }
-
-  app-flights-list {
-    padding-left: 48px;
-    padding-right: 48px;
+    padding-top: 48px;
   }
 }
 
-@media screen and (min-width: 992px){
-  div{
-    width: 60%;
-    margin: 0 auto;
-  }
-}

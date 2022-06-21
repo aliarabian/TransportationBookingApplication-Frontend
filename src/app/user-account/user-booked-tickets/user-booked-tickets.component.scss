@@ -16,6 +16,7 @@ p {
     color: colors.$grey-900;
     padding: 8px;
     border-radius: 4px;
+    width: 100%;
   }
 }
 
@@ -81,14 +82,9 @@ article {
   }
 }
 
-
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   #tickets-container {
-
-    h1 {
-      align-self: center;
-      width: 80%;
-    }
+    padding: 8px 0 0;
   }
   .hide {
     display: inherit !important;
@@ -100,6 +96,7 @@ article {
         justify-content: space-between;
         align-items: baseline;
         padding: 8px;
+
         & span:nth-child(2n) {
           color: inherit;
         }
@@ -114,17 +111,12 @@ article {
   }
 }
 
-@media (min-width: 768px) {
-}
 
 @media screen and (min-width: 992px) {
   mat-expansion-panel-header {
     mat-panel-title {
       font-size: 14px;
     }
-  }
-  article {
-    width: 80%;
   }
 }
 
