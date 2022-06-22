@@ -11,9 +11,9 @@ const PROXY_CONFIG = [
     changeOrigin: true,
     secure: false,
     logLevel: "debug",
-    "pathRewrite": {
-      "/registration": "/users/registration"
-    },
+    // "pathRewrite": {
+    //   "/registration": "/users/registration"
+    // },
   }
 ]
 

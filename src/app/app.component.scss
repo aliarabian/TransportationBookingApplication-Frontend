@@ -3,7 +3,6 @@
 
 #content-wrapper {
   width: 100%;
-  //background: colors.$grey-700;
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +53,10 @@ header {
 
 @media screen and (min-width: 992px) {
   #content-wrapper {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
+    header{
+      width: 100%;
+    }
   }
 }

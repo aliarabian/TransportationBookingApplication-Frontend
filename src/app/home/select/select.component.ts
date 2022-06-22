@@ -1,4 +1,4 @@
-import {Component, ElementRef, forwardRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 
@@ -21,12 +21,13 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   disabled = false;
   @Input() terms$?: Observable<string[]>;
   @Input() placeholder?: string;
+  @ViewChild("iv") inputChild?: ElementRef;
   onChange = (_: any) => {
   };
   onTouched = () => {
   };
 
-  constructor() {
+  constructor(private _renderer: Renderer2) {
   }
 
   ngOnInit(): void {
@@ -76,9 +77,10 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   onClick(terminal: string) {
     this.onClickToggleCitiesList();
-    this.writeValue(terminal);
-    this.onChange(terminal);
-
+    // this.writeValue(terminal);
+    // this.onChange(terminal);
+    // this._renderer.setProperty(this.inputChild?.nativeElement,'value', terminal)
+    this.terminal.setValue(terminal);
   }
 }
 

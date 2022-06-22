@@ -1,4 +1,4 @@
-<div (clickOutside)="clickedOutside()">
+<div (clickOutside)="clickedOutside()" (keydown.enter)="clickedOutside()">
 
   <mat-form-field appearance="outline"
                   (click)="onClickToggleCitiesList()">
