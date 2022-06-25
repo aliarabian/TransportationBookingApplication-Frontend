@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {AuthService} from "./auth/auth.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -39,6 +39,11 @@ export class AppComponent implements OnInit {
           this.titleService.setTitle(title);
         }
       });
+  }
+
+  @HostListener('window:unload', ['$event'])
+  logoutOnClose() {
+    this.authService.logout();
   }
 
   goHome() {

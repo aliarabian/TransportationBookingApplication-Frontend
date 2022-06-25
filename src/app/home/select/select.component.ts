@@ -78,7 +78,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   onClick(terminal: string) {
     this.onClickToggleCitiesList();
     // this.writeValue(terminal);
-    // this.onChange(terminal);
+    this.onChange(terminal);
     // this._renderer.setProperty(this.inputChild?.nativeElement,'value', terminal)
     this.terminal.setValue(terminal);
   }
