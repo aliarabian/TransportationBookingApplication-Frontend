@@ -13,9 +13,10 @@ article {
   width: 100%;
 }
 
-mat-form-field{
+mat-form-field {
   width: 100%;
 }
+
 .flight-search-form-section {
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@ mat-form-field{
     background: colors.$grey-600;
     color: colors.$grey-0;
     padding: 8px;
+
     mat-icon {
       vertical-align: -30%;
     }
@@ -42,14 +44,17 @@ app-select {
 @media screen and (min-width: 576px) {
   .flight-search-form-section {
     flex-direction: row;
-    mat-form-field{
+
+    mat-form-field {
       width: 20%;
     }
-     button {
+
+    button {
       width: 20%;
-       align-self: start;
-       margin-top: 4px;
+      align-self: start;
+      margin-top: 4px;
     }
+
     app-select {
       width: 25%;
     }
@@ -62,9 +67,11 @@ app-select {
     align-items: baseline;
     justify-content: flex-start;
     column-gap: 16px;
-    mat-form-field{
+
+    mat-form-field {
       width: 30%;
     }
+
     button {
       width: 20%;
     }

@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, ReplaySubject} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {ApiResponse} from "../../api-response";
 import {Flight} from "./flight";
 import {FlightSearchQuery} from "../flight-search-form/flight-search-form.component";
-import {fchmod} from "fs";
 
 @Injectable({
   providedIn: 'root'

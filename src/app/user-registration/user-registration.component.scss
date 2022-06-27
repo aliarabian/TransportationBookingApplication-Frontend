@@ -26,6 +26,7 @@ section {
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.05rem;
+
     &:disabled {
       background: colors.$grey-200;
       color: colors.$grey-0;

@@ -29,7 +29,7 @@ export class UserRegistrationComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService, private router: Router,
               private dialog: MatDialog) {
-    if (authService.isLoggedIn()) {
+    if (this.authService.isLoggedIn()) {
       this.router.navigate(['home'])
     }
   }

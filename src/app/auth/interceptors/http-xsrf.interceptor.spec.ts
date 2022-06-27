@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { HttpXsrfInterceptor } from './http-xsrf.interceptor';
+import {HttpXsrfInterceptor} from './http-xsrf.interceptor';
 
 describe('HttpXsrfInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       HttpXsrfInterceptor
-      ]
+    ]
   }));
 
   it('should be created', () => {

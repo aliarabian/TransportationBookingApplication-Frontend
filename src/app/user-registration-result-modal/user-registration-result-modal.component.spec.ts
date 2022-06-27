@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { UserRegistrationResultModalComponent } from './user-registration-result-modal.component';
+import {UserRegistrationResultModalComponent} from './user-registration-result-modal.component';
 
 describe('UserRegistrationResultModalComponent', () => {
   let component: UserRegistrationResultModalComponent;
@@ -8,9 +8,9 @@ describe('UserRegistrationResultModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserRegistrationResultModalComponent ]
+      declarations: [UserRegistrationResultModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

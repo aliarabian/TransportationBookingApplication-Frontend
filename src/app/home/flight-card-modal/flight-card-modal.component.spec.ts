@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FlightCardModalComponent } from './flight-card-modal.component';
+import {FlightCardModalComponent} from './flight-card-modal.component';
 
 describe('FlightCardModalComponent', () => {
   let component: FlightCardModalComponent;
@@ -8,9 +8,9 @@ describe('FlightCardModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlightCardModalComponent ]
+      declarations: [FlightCardModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -8,9 +8,9 @@ describe('FlightSearchFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FlightSearchFormComponent ]
+      declarations: [FlightSearchFormComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {Flight} from "./flight";
-import {HttpClient} from "@angular/common/http";
 import {SeatingSection} from "./seating-section";
 import {FlightCardModalComponent} from "../flight-card-modal/flight-card-modal.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -40,7 +39,7 @@ export class FlightsListComponent implements OnInit, OnChanges {
   collapsed: boolean[][] = [];
   filters: string[] = ['business class', 'economy class', 'first class'];
 
-  constructor(private http: HttpClient, public dialog: MatDialog) {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {

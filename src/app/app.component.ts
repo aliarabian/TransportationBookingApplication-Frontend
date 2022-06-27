@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "./auth/auth.service";
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -13,7 +13,7 @@ import {FlightsSearchService} from "./home/flights-list/flights-search.service";
 export class AppComponent implements OnInit {
   title = 'TransportationBookingApplication-Frontend';
 
-  constructor(private router: Router, public authService: AuthService, private activatedRoute: ActivatedRoute,
+  constructor(private router: Router, public authService: AuthService,
               private titleService: Title,
               private flightService: FlightsSearchService) {
   }
@@ -41,10 +41,10 @@ export class AppComponent implements OnInit {
       });
   }
 
-  @HostListener('window:unload', ['$event'])
-  logoutOnClose() {
-    this.authService.logout();
-  }
+  // @HostListener('window:unload', ['$event'])
+  // logoutOnClose() {
+  //   this.authService.logout();
+  // }
 
   goHome() {
     if (this.router.url !== '/home') {

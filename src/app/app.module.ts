@@ -22,7 +22,9 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {HomeModule} from "./home/home.module";
 import {UserAccountModule} from "./user-account/user-account.module";
-import { UserRegistrationResultModalComponent } from './user-registration-result-modal/user-registration-result-modal.component';
+import {
+  UserRegistrationResultModalComponent
+} from './user-registration-result-modal/user-registration-result-modal.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
@@ -32,28 +34,28 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     UserRegistrationComponent,
     UserRegistrationResultModalComponent,
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        RouterModule,
-        AuthModule,
-        HomeModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        BrowserAnimationsModule,
-        MatDialogModule,
-        MatExpansionModule,
-        MatMenuModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatDividerModule,
-        MatProgressBarModule,
-        MatInputModule,
-        MatFormFieldModule,
-        UserAccountModule,
-        MatProgressSpinnerModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule,
+    AuthModule,
+    HomeModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    UserAccountModule,
+    MatProgressSpinnerModule
+  ],
   providers: [],
   exports: [],
   bootstrap: [AppComponent]

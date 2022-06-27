@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 
@@ -27,7 +27,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   onTouched = () => {
   };
 
-  constructor(private _renderer: Renderer2) {
+  constructor() {
   }
 
   ngOnInit(): void {

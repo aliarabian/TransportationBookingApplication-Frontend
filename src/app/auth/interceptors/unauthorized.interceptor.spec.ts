@@ -6,7 +6,7 @@ describe('UnauthorizedInterceptor', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       UnauthorizedInterceptor
-      ]
+    ]
   }));
 
   it('should be created', () => {
