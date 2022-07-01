@@ -1,5 +1,5 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Flight} from "../../home/flights-list/flight";
 import {SeatingSection} from "../../home/flights-list/seating-section";
 import {Observable, Subscription, throwError} from "rxjs";
@@ -14,6 +14,7 @@ import {BookingRequest} from "./booking-request";
 import {catchError} from "rxjs/operators";
 import {MatDialog} from "@angular/material/dialog";
 import {BookingFailedModalComponent} from "../booking-failed-modal/booking-failed-modal.component";
+import {SseService} from "../sse.service";
 
 @Component({
   selector: 'app-booking-form',
@@ -28,15 +29,24 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   countries?: Observable<Country[]>;
   validPassportExpiryDate?: Date;
+  seats: FormControl = new FormControl('');
 
   constructor(private fb: FormBuilder, private router: Router, private flightService: FlightsSearchService, private activateRoute: ActivatedRoute,
-              private countriesService: CountriesService, private bookingService: BookingService, private dialog: MatDialog) {
+              private countriesService: CountriesService, private bookingService: BookingService, private dialog: MatDialog, private sseService: SseService) {
   }
 
   ngOnInit(): void {
     this.initializeFlightDetails();
     this.countries = this.countriesService.fetchAllCountries();
     this.addPassengerForm();
+
+    let flightId = Number(this.activateRoute.snapshot.queryParamMap.get("flightId"));
+    const sectionId = Number(this.activateRoute.snapshot.queryParamMap.get("sectionId"));
+    this.sseService.getServerSentEvent(`/flights/${flightId}/sections/${sectionId}`)
+      .subscribe(event => {
+        console.log(event);
+        this.selectedSection = JSON.parse(event.data);
+      }, error => console.log(error));
   }
 
   private initializeFlightDetails() {
@@ -77,7 +87,8 @@ export class BookingFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     let bookingRequest = this.createBookingRequest();
-    this.bookingService.bookTickets(bookingRequest)
+    // this.bookingService.bookTickets(bookingRequest)
+    this.bookingService.bookTicketsWithRequestedSeats(bookingRequest)
       .pipe(
         catchError(err => {
           console.log(err);
@@ -87,11 +98,14 @@ export class BookingFormComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           this.passengersForm.reset();
-          this.router.navigate(['tickets'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
+          // this.router.navigate(['tickets'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
+          this.router.navigate(['checkout'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
+
         }, error => {
           this.passengersForm.reset();
           this.dialog.open(BookingFailedModalComponent)
         });
+
   }
 
   private createBookingRequest() {
@@ -99,7 +113,7 @@ export class BookingFormComponent implements OnInit, OnDestroy {
       passenger.value.lastName, passenger.value.nationalId, passenger.value.birthDate,
       passenger.value.passportNO, passenger.value.expiresAt, passenger.value.issuedIn)));
     return new BookingRequest(924427, this.flight!.id,
-      this.selectedSection?.id!, bookingDetails);
+      this.selectedSection?.id!, bookingDetails, this.seats.value);
   }
 
   hasError(formGroup: FormGroup, formControlName: string, errorTitle: string): boolean {

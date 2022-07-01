@@ -7,5 +7,12 @@ export interface SeatingSection {
       id: number
     }
   ],
+  seats: [
+    {
+      id: number,
+      seatNO: string,
+      state: string
+    }
+  ]
   title: string
 }

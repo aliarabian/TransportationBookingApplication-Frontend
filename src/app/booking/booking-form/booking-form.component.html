@@ -1,5 +1,14 @@
 <section id="booking-container">
   <app-flight-details *ngIf="flight" [flightDetails]="flight" [section]="selectedSection"></app-flight-details>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Select Seats</mat-label>
+      <mat-select [formControl]="seats" multiple>
+        <mat-option *ngFor="let seat of selectedSection?.seats" value="{{seat.id}}">{{seat.seatNO}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
   <div id="passengers-form-wrapper">
     <article>
       <ng-container *ngFor="let passenger of passengers(); let i = index">
@@ -74,7 +83,7 @@
                 (click)="addPassengerForm()">+
         </button>
         <button mat-raised-button id="booking-btn" type="submit" (click)="onSubmit()"
-                [disabled]="!passengersForm.valid || passengersForm.length === 0">Book
+                [disabled]="!passengersForm.valid || passengersForm.length === 0 || seats.value.length === 0">Book
           Tickets
         </button>
       </div>
