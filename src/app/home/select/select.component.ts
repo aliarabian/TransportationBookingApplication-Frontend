@@ -1,11 +1,27 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  Input,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren
+} from '@angular/core';
 import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
+import {FocusKeyManager} from "@angular/cdk/a11y";
+import {ListItemComponent} from "../list-item/list-item.component";
 
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
+  // host: {
+  //   tabindex: '0',
+  //   role: 'list'
+  // },
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -14,14 +30,16 @@ import {Observable} from "rxjs";
     }
   ]
 })
-export class SelectComponent implements OnInit, ControlValueAccessor {
+export class SelectComponent implements OnInit, AfterViewInit, ControlValueAccessor {
   terminal: FormControl = new FormControl('', [Validators.required]);
   citiesListState: boolean = false;
   touched = false;
   disabled = false;
-  @Input() terms$?: Observable<string[]>;
+  @Input() terminals$?: Observable<string[]>;
   @Input() placeholder?: string;
   @ViewChild("iv") inputChild?: ElementRef;
+  @ViewChildren(ListItemComponent) citiesList?: QueryList<ListItemComponent>;
+  private keyManager?: FocusKeyManager<ListItemComponent>;
   onChange = (_: any) => {
   };
   onTouched = () => {
@@ -33,14 +51,24 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.keyManager = new FocusKeyManager<ListItemComponent>(this.citiesList!)
+      .withWrap();
+  }
+
   registerOnChange(onChangeFn: any): void {
     this.onChange = onChangeFn;
+  }
+
+  @HostListener('keydown', ['$event'])
+  onKeydown($event: any) {
+    console.log($event)
+    this.keyManager?.onKeydown($event);
   }
 
   registerOnTouched(onTouchedFn: any): void {
     console.log(onTouchedFn)
     this.onTouched = onTouchedFn;
-
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -76,6 +104,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   onClick(terminal: string) {
+    console.log(terminal)
     this.onClickToggleCitiesList();
     // this.writeValue(terminal);
     this.onChange(terminal);
