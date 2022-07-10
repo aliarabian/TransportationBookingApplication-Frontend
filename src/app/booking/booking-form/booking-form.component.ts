@@ -16,6 +16,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {BookingFailedModalComponent} from "../booking-failed-modal/booking-failed-modal.component";
 import {SseService} from "../sse.service";
 
+
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
@@ -30,6 +31,7 @@ export class BookingFormComponent implements OnInit, OnDestroy {
   countries?: Observable<Country[]>;
   validPassportExpiryDate?: Date;
   seats: FormControl = new FormControl('');
+  unavailableSeats: any[] = []
 
   constructor(private fb: FormBuilder, private router: Router, private flightService: FlightsSearchService, private activateRoute: ActivatedRoute,
               private countriesService: CountriesService, private bookingService: BookingService, private dialog: MatDialog, private sseService: SseService) {
@@ -44,9 +46,31 @@ export class BookingFormComponent implements OnInit, OnDestroy {
     const sectionId = Number(this.activateRoute.snapshot.queryParamMap.get("sectionId"));
     this.sseService.getServerSentEvent(`/flights/${flightId}/sections/${sectionId}`)
       .subscribe(event => {
-        console.log(event);
         this.selectedSection = JSON.parse(event.data);
+        this.unavailableSeats = this.getUnavailableSeats();
+        if (this.unavailableSeats.length > 0) {
+          setTimeout(() => this.unavailableSeats = [], 5000);
+        }
+        if (this.unavailableSeats.length == this.seats.value.length)
+          this.seats.setValue([]);
+        else {
+          console.log(this.seats.value)
+          console.log(this.unavailableSeats)
+          const availableSeats = this.seats.value.filter((seat: any) => !this.unavailableSeats.some(s => s == seat.seatNO));
+          console.log(availableSeats);
+          this.seats.setValue(availableSeats);
+        }
       }, error => console.log(error));
+  }
+
+  private getUnavailableSeats(): string[] {
+    if (this.seats.value == '') {
+      return [];
+    }
+    let unavailableSeats =
+      this.seats.value.filter((seat: any) => !this.selectedSection?.seats.some(s => s.id == seat.id))
+        .map((seat: any) => seat.seatNO);
+    return unavailableSeats ? unavailableSeats : [];
   }
 
   private initializeFlightDetails() {
@@ -87,7 +111,6 @@ export class BookingFormComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     let bookingRequest = this.createBookingRequest();
-    // this.bookingService.bookTickets(bookingRequest)
     this.bookingService.bookTicketsWithRequestedSeats(bookingRequest)
       .pipe(
         catchError(err => {
@@ -98,7 +121,6 @@ export class BookingFormComponent implements OnInit, OnDestroy {
       .subscribe(
         response => {
           this.passengersForm.reset();
-          // this.router.navigate(['tickets'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
           this.router.navigate(['checkout'], {state: {tickets: response.data}, relativeTo: this.activateRoute})
 
         }, error => {
@@ -112,8 +134,9 @@ export class BookingFormComponent implements OnInit, OnDestroy {
     let bookingDetails = this.passengers().map(passenger => new BookingDetails([], new PassengerDetails(passenger.value.firstName,
       passenger.value.lastName, passenger.value.nationalId, passenger.value.birthDate,
       passenger.value.passportNO, passenger.value.expiresAt, passenger.value.issuedIn)));
+    console.log(this.seats.value)
     return new BookingRequest(924427, this.flight!.id,
-      this.selectedSection?.id!, bookingDetails, this.seats.value);
+      this.selectedSection?.id!, bookingDetails, this.seats.value.map((seat: any) => seat.id));
   }
 
   hasError(formGroup: FormGroup, formControlName: string, errorTitle: string): boolean {

@@ -4,10 +4,21 @@
     <mat-form-field appearance="fill">
       <mat-label>Select Seats</mat-label>
       <mat-select [formControl]="seats" multiple>
-        <mat-option *ngFor="let seat of selectedSection?.seats" value="{{seat.id}}">{{seat.seatNO}}</mat-option>
+        <mat-option *ngFor="let seat of selectedSection?.seats" [value]="seat">{{seat.seatNO}}</mat-option>
       </mat-select>
     </mat-form-field>
-
+    <div>
+      <h3>Selected Seats:</h3>
+      <ul>
+        <li *ngFor="let seat of seats.value" span><span>{{seat.seatNO}}</span></li>
+      </ul>
+    </div>
+    <div style="background: #9f3d3d; color: #f2fffa" *ngIf="unavailableSeats.length > 0">
+      <h3>selected seats are not available anymore:</h3>
+      <ul>
+        <li *ngFor="let seat of unavailableSeats"><span>{{seat}}</span></li>
+      </ul>
+    </div>
   </div>
   <div id="passengers-form-wrapper">
     <article>

@@ -1,1 +1,3 @@
 <button mat-button type="button" name="checkout" (click)="checkout()">Checkout</button>
+<span>{{counter | formatTime}}</span>
+<p *ngIf="timedout" style="background:darkred">Order Timed-out</p>

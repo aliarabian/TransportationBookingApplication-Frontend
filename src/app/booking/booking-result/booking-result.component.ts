@@ -16,6 +16,7 @@ export class BookingResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.tickets = history.state.tickets;
+    console.log(this.tickets)
     if (!this.tickets) {
       this.router.navigate(['home']);
     }

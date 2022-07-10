@@ -14,7 +14,7 @@ import {BookingFailedModalComponent} from './booking-failed-modal/booking-failed
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
-import { CheckoutComponent } from './checkout/checkout.component';
+import {CheckoutComponent, FormatTimePipe} from './checkout/checkout.component';
 
 @NgModule(
   {
@@ -23,7 +23,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
       BookingFormComponent,
       BookingResultComponent,
       BookingFailedModalComponent,
-      CheckoutComponent
+      CheckoutComponent,
+      FormatTimePipe
 
     ],
     imports: [
