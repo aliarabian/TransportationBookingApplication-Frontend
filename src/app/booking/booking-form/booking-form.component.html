@@ -8,13 +8,13 @@
       </mat-select>
     </mat-form-field>
     <div *ngIf="seats.value.length > 0">
-      <h3>Selected Seats:</h3>
-      <ul>
-        <li *ngFor="let seat of seats.value"><span>{{seat.seatNO}}</span></li>
-      </ul>
+      <h4>Selected Seats:</h4>
+      <div id="seats-container">
+        <span class="selected-seat" *ngFor="let seat of seats.value"><span>{{seat.seatNO}}</span></span>
+      </div>
     </div>
     <div style="background: #9f3d3d; color: #f2fffa" *ngIf="unavailableSeats.length > 0">
-      <h3>selected seats are not available anymore:</h3>
+      <h4>selected seats are not available anymore:</h4>
       <ul>
         <li *ngFor="let seat of unavailableSeats"><span>{{seat}}</span></li>
       </ul>
