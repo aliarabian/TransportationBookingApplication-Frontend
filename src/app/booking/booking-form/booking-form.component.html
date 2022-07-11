@@ -7,10 +7,10 @@
         <mat-option *ngFor="let seat of selectedSection?.seats" [value]="seat">{{seat.seatNO}}</mat-option>
       </mat-select>
     </mat-form-field>
-    <div>
+    <div *ngIf="seats.value.length > 0">
       <h3>Selected Seats:</h3>
       <ul>
-        <li *ngFor="let seat of seats.value" span><span>{{seat.seatNO}}</span></li>
+        <li *ngFor="let seat of seats.value"><span>{{seat.seatNO}}</span></li>
       </ul>
     </div>
     <div style="background: #9f3d3d; color: #f2fffa" *ngIf="unavailableSeats.length > 0">
@@ -68,7 +68,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Issuer Country</mat-label>
               <mat-select id="issuedIn" formControlName="issuedIn" required>
-                <mat-option value="" disabled selected>Select Passport Issuer Country</mat-option>
+                <mat-option value="" disabled>Select Passport Issuer Country</mat-option>
                 <mat-option *ngFor="let country of countries |async" value="{{country.code}}">
                   {{country.name}}
                 </mat-option>
@@ -94,7 +94,8 @@
                 (click)="addPassengerForm()">+
         </button>
         <button mat-raised-button id="booking-btn" type="submit" (click)="onSubmit()"
-                [disabled]="!passengersForm.valid || passengersForm.length === 0 || seats.value.length === 0">Book
+                [disabled]="!passengersForm.valid || passengersForm.length === 0 || seats.value.length === 0 || passengersForm.length !== seats.value.length">
+          Book
           Tickets
         </button>
       </div>

@@ -1,8 +1,7 @@
-<div (clickOutside)="clickedOutside()" (keydown.enter)="clickedOutside()">
+<div (clickOutside)="clickedOutside()" (keydown.enter)="clickedOutside()" (keydown.tab)="onClickToggleCitiesList()">
 
   <mat-form-field role="list" appearance="outline"
                   (keyup.tab)="onClickToggleCitiesList()"
-                  (keydown.tab)="onClickToggleCitiesList()"
                   (click)="onClickToggleCitiesList()"
   >
     <mat-label>{{placeholder}}</mat-label>

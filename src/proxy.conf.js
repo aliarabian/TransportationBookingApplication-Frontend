@@ -7,7 +7,7 @@ const PROXY_CONFIG = [
       "/auth",
       "/countries"
     ],
-    target: "http://localhost:8080",
+    target: "https://localhost:8443",
     changeOrigin: true,
     secure: false,
     logLevel: "debug",
